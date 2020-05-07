@@ -40,15 +40,16 @@ dependencies:
   # 轻量级数据保存，
   shared_preferences: ^0.5.7
   # json序列化
-  json_annotation: ^3.0.0
+  json_annotation: ^2.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   #json依赖
+  json_model: #latest version
   build_runner: ^1.0.0
-  json_serializable: ^3.2.0
+  json_serializable: ^2.0.0
 
 
 

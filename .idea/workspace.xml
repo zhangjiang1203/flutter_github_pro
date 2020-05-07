@@ -5,34 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a82fdc3-4e62-4e12-b0ca-be91f5310860" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileChanges/last-build.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/5.2.1/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/goods_share_btn_weiixn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/languages/i18n_en.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/languages/i18n_zh.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Podfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/LocaleTool.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/Translations.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/ZJColorsTool.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/ZJRegExpTool.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/ZJTextStyleTool.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/routes/home_pages.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jsons/cacheConfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jsons/profile.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jsons/repo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jsons/user.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/common/CacheObject.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/common/Global.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/common/NetWorkRequest.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/common/ProfileChangeNotifier.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/cacheConfig.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/cacheConfig.g.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/index.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/profile.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/profile.g.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/repo.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/repo.g.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/user.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/user.g.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/routes/ThemeChangeRoute.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fluttergithubpro.iml" beforeDir="false" afterPath="$PROJECT_DIR$/fluttergithubpro.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/home_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/home_pages.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,6 +57,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">

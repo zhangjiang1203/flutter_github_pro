@@ -25,6 +25,10 @@ class _HomePageState extends State<AppHomePage> {
           child: Column(
             children: <Widget>[
               Text('我是首页'),
+              RaisedButton(
+                child: Text('修改主题'),
+                onPressed: ()=> Navigator.pushNamed(context,"theme_change_route"),
+              ),
             ],
           ),
         ) // This trailing comma makes auto-formatting nicer for build methods.
