@@ -19,14 +19,37 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
+  # 设置多种样式的grid
+  flutter_staggered_grid_view: ^0.3.0
+  # 设置heade的tableview
+  flutter_section_table_view: ^1.0.5
+  #设置状态管理
+  provider: ^3.2.0
+  #路径设置
+  path_provider: ^1.6.5
+  # 网络请求
+  dio: ^3.0.9
+  # webSocket
+  web_socket_channel: ^1.1.0
+  # 轻量级数据保存，
+  shared_preferences: ^0.5.7
+  # json序列化
+  json_annotation: ^3.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  #json依赖
+  build_runner: ^1.0.0
+  json_serializable: ^3.2.0
+
 
 
 # For information on the generic Dart part of this file, see the
@@ -41,9 +64,13 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #  - images/a_dot_burr.jpeg
-  #  - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/
+    - assets/fonts/
+    - assets/languages/
+    - assets/languages/i18n_en.json
+    - assets/languages/i18n_zh.json
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
