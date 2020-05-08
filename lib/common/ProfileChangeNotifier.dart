@@ -14,8 +14,7 @@ class ProfileChangeNotifier extends ChangeNotifier {
 
   @override
   void notifyListeners() {
-    // TODO: implement notifyListeners
-//    Global.saveProfile();
+    Global.saveProfile();
     super.notifyListeners();
   }
 }
@@ -63,11 +62,11 @@ class LocaleProvider extends ProfileChangeNotifier {
     return Locale(t[0],t[1]);
   }
 
-  String get _locale => _profile.locale;
+  String get locale => _profile.locale;
 
-  set locale(String locale) {
-    if(locale != _locale){
-      _profile.locale = locale;
+  set locale(String loc) {
+    if(loc != locale){
+      _profile.locale = loc;
       notifyListeners();
     }
   }

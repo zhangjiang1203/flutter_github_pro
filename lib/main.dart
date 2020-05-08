@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fluttergithubpro/routes/ThemeChangeRoute.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'common/Translations.dart';
 import 'common/LocaleTool.dart';
-import 'routes/home_pages.dart';
+
 import 'common/Global.dart';
 import 'package:provider/provider.dart';
 import 'common/ProfileChangeNotifier.dart';
 
+import 'routes/home_pages.dart';
+import 'routes/ChangeLocalRoute.dart';
+
 ///初始化相关的配置之后再runapp
 //void main() => Global.init().then( (e)=>runApp(MyApp()) );
 
-void main()=> runApp(MyApp());
-
-
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Global.init();
+  runApp(MyApp());
+}
 class MyApp extends StatefulWidget {
 
   @override
@@ -26,6 +32,14 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     // TODO: implement initState
     super.initState();
+  }
+
+  Map<String,WidgetBuilder> _setUpWidgetRoutes(BuildContext context) {
+    return {
+      "/": (context) => AppHomePage(),
+      "theme_change_route": (context) => ThemeChangeRoute(),
+      "Change_local_route": (context)=> ChangeLocalRoute(),
+      };
   }
 
   @override
@@ -73,10 +87,7 @@ class _MyAppState extends State<MyApp> {
               /// 初始化当前的路由，命名路由
               initialRoute: "/",
               /// 配置对应的路由信息
-              routes: {
-                "/": (context) => AppHomePage(),
-                "theme_change_route": (context) => ThemeChangeRoute(),
-              },
+              routes: _setUpWidgetRoutes(context),
               /// 判断路由跳转的权限
               onGenerateRoute: (RouteSettings settings){
                 return MaterialPageRoute(

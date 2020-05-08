@@ -9,6 +9,7 @@ import 'LocaleTool.dart';
 import 'dart:convert';
 import 'dart:async';
 import 'package:flutter/services.dart' show rootBundle;
+import 'Global.dart';
 
 /// Class for Translate
 ///
@@ -63,6 +64,7 @@ class Translations {
   static Future<Translations> load(Locale locale) async {
     Translations translationsLanguage = new Translations(locale);
 
+    print("当前语言==="+locale.languageCode);
     String jsonContent = await rootBundle.loadString("assets/languages/i18n_${locale.languageCode}.json");
     _localizedValues = json.decode(jsonContent);
     return translationsLanguage;
@@ -77,20 +79,21 @@ class TranslationsDelegate extends LocalizationsDelegate<Translations> {
 
   @override
   bool isSupported(Locale locale) {
-    // TODO: implement isSupported
     localTool.languageCode = locale.languageCode;
     return localTool.supportLangs.contains(locale.languageCode);
   }
 
   @override
   Future<Translations> load(Locale locale) {
-    // TODO: implement load
-    return Translations.load(locale);
+    //加载配置文件中的设置
+    if(Global.profile.locale == null){
+      return Translations.load(Locale('en',''));
+    }
+    return Translations.load(Locale(Global.profile.locale,''));
   }
 
   @override
   bool shouldReload(LocalizationsDelegate<Translations> old) {
-    // TODO: implement shouldReload
     return true;
   }
 }

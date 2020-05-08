@@ -37,13 +37,12 @@ class Global {
      var _profile = _preferences.getString("profile");
      if(_profile != null){
        try{
-         print("解析成功");
          profile = Profile.fromJson(jsonDecode(_profile));
+         print("Global全局设置解析成功${jsonDecode(_profile)}");
        } catch(e){
-         print("解析失败 $e");
+         print("Global全局设置解析失败 $e  $Function()");
        }
      }
-     print("object");
      //如果没有缓存策略。设置默认缓存策略
      profile.cache = profile.cache ?? CacheConfig()
                                ..enable = true

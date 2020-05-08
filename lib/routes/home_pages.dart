@@ -29,6 +29,10 @@ class _HomePageState extends State<AppHomePage> {
                 child: Text('修改主题'),
                 onPressed: ()=> Navigator.pushNamed(context,"theme_change_route"),
               ),
+              RaisedButton(
+                child: Text('修改语言'),
+                onPressed: ()=> Navigator.pushNamed(context,"Change_local_route"),
+              ),
             ],
           ),
         ) // This trailing comma makes auto-formatting nicer for build methods.

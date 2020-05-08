@@ -5,29 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a82fdc3-4e62-4e12-b0ca-be91f5310860" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/jsons/cacheConfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsons/profile.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsons/repo.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsons/user.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/CacheObject.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/Global.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/NetWorkRequest.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/ProfileChangeNotifier.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/cacheConfig.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/cacheConfig.g.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/index.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/profile.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/profile.g.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/repo.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/repo.g.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/user.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/user.g.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/routes/ThemeChangeRoute.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/routes/ChangeLocalRoute.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/languages/i18n_en.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/languages/i18n_en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/languages/i18n_zh.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/languages/i18n_zh.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jsons/profile.json" beforeDir="false" afterPath="$PROJECT_DIR$/jsons/profile.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/Global.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/Global.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/LocaleTool.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/LocaleTool.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/ProfileChangeNotifier.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/ProfileChangeNotifier.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/Translations.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/Translations.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/profile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/profile.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/profile.g.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/routes/home_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/home_pages.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

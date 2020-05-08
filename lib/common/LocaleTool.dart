@@ -45,13 +45,14 @@ class LocaleTool  {
 
   void saveUserLanguage(String language) async{
     //保存,当前选中是同一种语言什么都不操作
+    print("当前系统语言===$language");
     if(language == languageCode){
       return;
     }
     languageCode = language;
     SharedPreferences preferences = await SharedPreferences.getInstance();
     await preferences.setString('user_current_language', language);
-    onLocaleChangeed(Locale(language,''));
+//    onLocaleChangeed(Locale(language,''));
   }
 }
 
