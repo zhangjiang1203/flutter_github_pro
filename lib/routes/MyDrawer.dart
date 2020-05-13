@@ -6,24 +6,52 @@
 
 import 'package:flutter/material.dart';
 
-class MyDrawer extends StatefulWidget {
-  MyDrawer({Key key}) : super(key: key);
-
-  @override
-  _MyDrawer createState() => _MyDrawer();
-}
-
-class _MyDrawer extends State<MyDrawer> {
+class MyDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("MyDrawer"),
-        ),
-        body: Center(
-          child: Column(),
-        ) // This trailing comma makes auto-formatting nicer for build methods.
+    return Drawer(
+      child: MediaQuery.removePadding(
+        removeTop: true,
+          context: context,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 40, 0, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          ClipOval(
+                            child: Image.asset("assets/images/goodnight.jpeg",width: 50,),
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.only(start: 5),
+                            child: Text("我就是我不一样的烟火"),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: ListView(
+                  itemExtent: 40,
+                  children: <Widget>[
+                    ListTile(title: Text("第一个"),),
+                    ListTile(title: Text("第二个"),),
+                  ],
+                ),
+              ),
+            ],
+          ),
+      ),
     );
   }
 }
