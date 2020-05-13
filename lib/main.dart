@@ -53,9 +53,9 @@ class _MyAppState extends State<MyApp> {
       child: Consumer2<ThemeProvider,LocaleProvider>(
           builder: (BuildContext context,themeProvider,localeProvider,Widget child){
             return MaterialApp(
-              title: "我就是我",
               theme: ThemeData(
                 primarySwatch: themeProvider.theme,
+                appBarTheme: AppBarTheme(elevation: 0),
               ),
               ///多语言设置
               onGenerateTitle: (context) {
