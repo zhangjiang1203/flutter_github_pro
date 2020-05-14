@@ -41,6 +41,10 @@ dependencies:
   shared_preferences: ^0.5.7
   # json序列化
   json_annotation: ^2.0.0
+  # 自定义的组件,无限列表，轮播图 城市选择器等等
+  flukit: ^1.0.2
+  #图片缓存
+  cached_network_image: ^2.2.0+1
 
 dev_dependencies:
   flutter_test:

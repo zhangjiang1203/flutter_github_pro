@@ -11,6 +11,7 @@ import 'common/ProfileChangeNotifier.dart';
 
 import 'routes/home_pages.dart';
 import 'routes/ChangeLocalRoute.dart';
+import 'routes/LoginRoute.dart';
 
 ///初始化相关的配置之后再runapp
 //void main() => Global.init().then( (e)=>runApp(MyApp()) );
@@ -39,6 +40,7 @@ class _MyAppState extends State<MyApp> {
       "/": (context) => AppHomePage(),
       "theme_change_route": (context) => ThemeChangeRoute(),
       "Change_local_route": (context)=> ChangeLocalRoute(),
+      "Login_route":(context) => LoginRoute(),
       };
   }
 
