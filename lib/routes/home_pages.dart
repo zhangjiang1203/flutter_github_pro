@@ -82,6 +82,12 @@ class _HomePageState extends State<AppHomePage> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         drawer: MyDrawer(),
@@ -111,22 +117,21 @@ class _HomePageState extends State<AppHomePage> {
       );
     }else{
       return InfiniteListView(
-        onRetrieveData: (int page,List<Repo> items,bool refresh) async{
-          var data = NetWorkRequest(context).getRepos(
+        onRetrieveData: (int page,List<Repoitems> items,bool refresh) async{
+          var data = await NetWorkRequest(context).getRepos(
               refresh: refresh,
               parameters: {
                 'page':page,
-                'page_size':20
+                'page_size':20,
+                'q':'language:Swift',
+                'sort':'stars'
               },);
-          var dataLength = 0;
-          data.then((value) {
-            dataLength = value.length;
-            items.addAll(value);
-          });
+          var dataLength = data.length;
+          items.addAll(data);
           //返回的数据是否是20，不是的话就没有下一页了
           return dataLength == 20;
         },
-        itemBuilder: (List<Repo> data,int index,BuildContext context){
+        itemBuilder: (List<Repoitems> data,int index,BuildContext context){
           return GitPubItems(data[index]);
         },
       );
@@ -137,7 +142,7 @@ class _HomePageState extends State<AppHomePage> {
 class GitPubItems extends StatefulWidget {
   GitPubItems(@required this.repo):super(key:ValueKey(repo.id));
 
-  final Repo repo;
+  final Repoitems repo;
 
   @override
   _GitPubState createState() => _GitPubState();

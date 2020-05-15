@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:dio/dio.dart';
-import 'package:dio/adapter.dart';
 import '../models/index.dart';
 import 'dart:io';
 import 'Global.dart';
@@ -27,7 +26,7 @@ class NetWorkRequest {
 
   static Dio dio = new Dio(
     BaseOptions(
-      baseUrl: "https://api.github.com",
+      baseUrl: "https://api.github.com/",
       headers: {
         HttpHeaders.acceptHeader: "application/vnd.github.squirrel-girl-preview,"
         "application/vnd.github.symmetra-preview+json",
@@ -36,9 +35,9 @@ class NetWorkRequest {
 
   static void init(){
     //添加缓存插件
-    dio.interceptors.add(Global.netCache);
+//    dio.interceptors.add(Global.netCache);
     //设置用户token
-    dio.options.headers[HttpHeaders.authorizationHeader] = Global.profile.token;
+//    dio.options.headers[HttpHeaders.authorizationHeader] = Global.profile.token;
     //调试模式下需要抓包测试，使用代理 禁用HTTPS证书校验
     if(!Global.isRelease){
       //设置代理
@@ -70,14 +69,15 @@ class NetWorkRequest {
   }
 
   //获取用户项目列表
-  Future<List<Repo>> getRepos({Map<String,dynamic> parameters,refresh = false}) async{
+  Future<List<Repoitems>> getRepos({Map<String,dynamic> parameters,refresh = false}) async{
 
     if(refresh){
       //清空缓存，拦截器中或读取这些信息清空缓存
       _options.extra.addAll({"refresh":true,"list":true});
     }
-    var r = await dio.get("user/repos",queryParameters: parameters,options: _options);
-    return r.data.map((e)=>Repo.fromJson(e)).toList();
+    var r = await dio.get("search/repositories",queryParameters: parameters,options: _options);
+    var list = Allrepolist.fromJson(r.data).items;
+    return list;
   }
 
 

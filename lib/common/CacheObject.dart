@@ -47,53 +47,54 @@ class NetCache extends Interceptor {
   @override
   Future onRequest(RequestOptions options) async {
     // TODO: implement onRequest
-    zjPrint('''请求方式==${options.method}\n请求的url===${options.uri} \n请求参数===${options.queryParameters.toString()}
-        ''',StackTrace.current);
+    print('''请求方式==${options.method}\n请求的url===${options.uri} \n请求参数===${options.queryParameters.toString()}
+        ''');
+    return options;
     //不需要缓存直接返回
-    if(!Global.profile.cache.enable) return options;
-
-    // refresh 是否是下拉刷新，是的话直接删除之前的缓存信息
-    bool refresh = options.extra['refresh'] == true;
-    if (refresh){
-      if(options.extra['list'] == true){
-        //若是list，则只要url中包含当前path的缓存全部删除
-        cache.removeWhere((key,v)=>key.contains(options.path));
-      }else{
-        //不是列表只删除uri相同的缓存
-        cache.remove(options.uri.toString());
-      }
-      return options;
-    }
-
-    if(options.extra['noCache'] != true && options.method.toLowerCase() == 'get'){
-      String key = options.extra['cacheKey'] ?? options.uri.toString();
-      var ob = cache[key];
-      if(ob != null){
-        //缓存没有过期，返回缓存内容
-        if((DateTime.now().millisecondsSinceEpoch - ob.timeStamp) /1000 < Global.profile.cache.maxAge){
-          return cache[key].response;
-        }else{
-          //过期直接删除，重新请求
-          cache.remove(key);
-        }
-      }
-    }
+//    if(!Global.profile.cache.enable) return options;
+//
+//    // refresh 是否是下拉刷新，是的话直接删除之前的缓存信息
+//    bool refresh = options.extra['refresh'] == true;
+//    if (refresh){
+//      if(options.extra['list'] == true){
+//        //若是list，则只要url中包含当前path的缓存全部删除
+//        cache.removeWhere((key,v)=>key.contains(options.path));
+//      }else{
+//        //不是列表只删除uri相同的缓存
+//        cache.remove(options.uri.toString());
+//      }
+//      return options;
+//    }
+//
+//    if(options.extra['noCache'] != true && options.method.toLowerCase() == 'get'){
+//      String key = options.extra['cacheKey'] ?? options.uri.toString();
+//      var ob = cache[key];
+//      if(ob != null){
+//        //缓存没有过期，返回缓存内容
+//        if((DateTime.now().millisecondsSinceEpoch - ob.timeStamp) /1000 < Global.profile.cache.maxAge){
+//          return cache[key].response;
+//        }else{
+//          //过期直接删除，重新请求
+//          cache.remove(key);
+//        }
+//      }
+//    }
   }
 
   @override
   // ignore: missing_return
   Future onResponse(Response response) {
-    if(Global.profile.cache.enable){
-      RequestOptions options = response.request;
-      if(options.extra["noCache"] != true && options.method.toLowerCase() == 'get'){
-        //如果缓存数量超过最大值，移除最早的一条记录
-        if(cache.length >= Global.profile.cache.maxCount){
-          cache.remove(cache[cache.keys.first]);
-        }
-        String key = options.extra["cacheKey"] ?? options.uri.toString();
-        cache[key] = CacheObject(response);
-      }
-    }
+//    if(Global.profile.cache.enable){
+//      RequestOptions options = response.request;
+//      if(options.extra["noCache"] != true && options.method.toLowerCase() == 'get'){
+//        //如果缓存数量超过最大值，移除最早的一条记录
+//        if(cache.length >= Global.profile.cache.maxCount){
+//          cache.remove(cache[cache.keys.first]);
+//        }
+//        String key = options.extra["cacheKey"] ?? options.uri.toString();
+//        cache[key] = CacheObject(response);
+//      }
+//    }
   }
 
 }
