@@ -71,6 +71,11 @@ class Translations {
   }
 
   get currentLanguage => locale.languageCode;
+
+  //获取title
+  get title => text("title");
+  get loginName => text("login_name");
+  get password  => text("password_text");
 }
 
 //遵循这两个代理

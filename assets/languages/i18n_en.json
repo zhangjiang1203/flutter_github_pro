@@ -6,5 +6,7 @@
   "third_page":"third_page",
   "forth_page":"forth_page",
   "change_language":"change language",
-  "auto": "auto"
+  "auto": "auto",
+  "login_title": "登录"
+
 }

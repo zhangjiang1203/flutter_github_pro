@@ -14,3 +14,5 @@ export 'ZJAvatar.dart';
 export 'ZJColorsTool.dart';
 export 'ZJRegExpTool.dart';
 export 'ZJTextStyleTool.dart';
+export 'ZJShowDialogTool.dart';
+export 'ZJLogTool.dart';

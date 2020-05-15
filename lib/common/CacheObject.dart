@@ -7,7 +7,8 @@
 import 'package:dio/dio.dart';
 import 'package:fluttergithubpro/common/Global.dart';
 import 'dart:collection';
-import '../models/index.dart';
+import 'ZJLogTool.dart';
+
 /*
 dio包的option.extra是专门用于扩展请求参数的
 refresh	bool	如果为true，则本次请求不使用缓存，但新的请求结果依然会被缓存
@@ -46,6 +47,8 @@ class NetCache extends Interceptor {
   @override
   Future onRequest(RequestOptions options) async {
     // TODO: implement onRequest
+    zjPrint('''请求方式==${options.method}\n请求的url===${options.uri} \n请求参数===${options.queryParameters.toString()}
+        ''',StackTrace.current);
     //不需要缓存直接返回
     if(!Global.profile.cache.enable) return options;
 
