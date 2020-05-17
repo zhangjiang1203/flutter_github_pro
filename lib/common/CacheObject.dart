@@ -47,8 +47,8 @@ class NetCache extends Interceptor {
   @override
   Future onRequest(RequestOptions options) async {
     // TODO: implement onRequest
-    print('''请求方式==${options.method}\n请求的url===${options.uri} \n请求参数===${options.queryParameters.toString()}
-        ''');
+//    print('''请求方式==${options.method}\n请求的url===${options.uri} \n请求参数===${options.queryParameters.toString()}
+//        ''');
     return options;
     //不需要缓存直接返回
 //    if(!Global.profile.cache.enable) return options;

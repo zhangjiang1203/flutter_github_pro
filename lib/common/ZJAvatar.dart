@@ -13,7 +13,7 @@ Widget ZJAvatar(String url,{
   BoxFit fit,
   BorderRadius borderRadius,
 }){
-  var placeholder = Image.asset("",width: width,height: height,);
+  var placeholder = Image.asset("asstes/images/default_avator.png",width: width,height: height,);
   return ClipRRect(
     borderRadius: borderRadius ?? BorderRadius.circular(2),
     child: CachedNetworkImage(
