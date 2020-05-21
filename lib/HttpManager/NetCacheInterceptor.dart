@@ -1,39 +1,15 @@
 /*
-* CacheObject created by zj 
-* on 2020/5/7 3:34 PM
+* LogInterceptor created by zj 
+* on 2020/5/21 3:06 PM
 * copyright on zhangjiang
 */
 
 import 'package:dio/dio.dart';
-import 'package:fluttergithubpro/common/Global.dart';
 import 'dart:collection';
-import 'ZJLogTool.dart';
-
-/*
-dio包的option.extra是专门用于扩展请求参数的
-refresh	bool	如果为true，则本次请求不使用缓存，但新的请求结果依然会被缓存
-noCache	bool	本次请求禁用缓存，请求结果也不会被缓存。
-*/
-class CacheObject{
-  CacheObject(this.response):
-        assert(response != null),
-        timeStamp = DateTime.now().millisecondsSinceEpoch;
-
-  Response response;
-  int timeStamp;
-
-  @override
-  bool operator ==(other) {
-    // TODO: implement ==
-    return response.hashCode == other.hashCode;
-  }
-
-  //请求的url作为缓存的key
-  int get hashCode => response.realUri.hashCode;
-}
+import '../common/index.dart';
 
 //继承interceptor
-class NetCache extends Interceptor {
+class NetCacheInterceptor extends Interceptor {
   //为了保证迭代器顺序和对象插入时间一致，顺序一致，我们使用LinkedHashMap
   var cache = LinkedHashMap<String,CacheObject>();
 

@@ -7,7 +7,6 @@
 export 'CacheObject.dart' ;
 export 'Global.dart' ;
 export 'LocaleTool.dart' ;
-export 'NetWorkRequest.dart' ;
 export 'ProfileChangeNotifier.dart';
 export 'Translations.dart';
 export 'ZJAvatar.dart';

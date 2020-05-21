@@ -4,8 +4,9 @@
 * copyright on zhangjiang
 */
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttergithubpro/common/NetWorkRequest.dart';
+import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
 import 'MyDrawer.dart';
 import '../models/index.dart';
 import 'package:flukit/flukit.dart';
@@ -30,7 +31,6 @@ class _HomePageState extends State<AppHomePage> {
         print("取消了");
       },
       onSelected: (value){
-        print("选择的项目===$value");
         if (value == "主题"){
           Navigator.pushNamed(context,"theme_change_route");
         }else if (value == "语言"){
@@ -81,10 +81,33 @@ class _HomePageState extends State<AppHomePage> {
     });
   }
 
+  void _getItems() async{
+//    HTTPManager().get(url: "search/repositories", tag: "getitems",params: {
+//      'page':1,
+//      'page_size':20,
+//      'q':'language:Swift',
+//      'sort':'stars'
+//    },options: Options(extra: {"refresh":false,'noCache':false}),successCallback: (res){
+//      print(res);
+//    },failureCallback: (e){
+//      print(e.toString());
+//    });
+//    Allrepolist.fromJson(r.data).items
+    var response = await HTTPManager().getAsync<List<Repoitems>>(url: "search/repositories", tag: "getitems",params: {
+      'page':1,
+      'page_size':20,
+      'q':'language:Swift',
+      'sort':'stars'
+    },options: Options(extra: {"refresh":false,'noCache':false}));
+    zjPrint(response, StackTrace.current);
+
+  }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    _getItems();
   }
 
   @override
@@ -101,7 +124,11 @@ class _HomePageState extends State<AppHomePage> {
             )
           ],
         ),
-        body: _buildBody(),
+        body: Row(
+          children: <Widget>[
+            Text("哈哈哈")
+          ],
+        )// _buildBody(),
     );
   }
 
@@ -118,16 +145,14 @@ class _HomePageState extends State<AppHomePage> {
     }else{
       return InfiniteListView(
         onRetrieveData: (int page,List<Repoitems> items,bool refresh) async{
-          var data = await NetWorkRequest(context).getRepos(
-              refresh: refresh,
-              parameters: {
-                'page':page,
-                'page_size':20,
-                'q':'language:Swift',
-                'sort':'stars'
-              },);
-          var dataLength = data.length;
-          items.addAll(data);
+          var itemsData = await HTTPManager().getAsync<List<Repoitems>>(url: "search/repositories", tag: "getitems",params: {
+            'page':1,
+            'page_size':20,
+            'q':'language:Swift',
+            'sort':'stars'
+          },options: Options(extra: {"refresh":false,'noCache':false}));
+          var dataLength = itemsData.length;
+          items.addAll(itemsData);
           //返回的数据是否是20，不是的话就没有下一页了
           return dataLength == 20;
         },

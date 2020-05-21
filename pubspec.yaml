@@ -45,6 +45,10 @@ dependencies:
   flukit: ^1.0.2
   #图片缓存
   cached_network_image: ^2.2.0+1
+  #网络状态
+  connectivity: ^0.4.8+6
+  #常用工具设置
+  flutter_common_utils: ^1.1.0
 
 dev_dependencies:
   flutter_test:

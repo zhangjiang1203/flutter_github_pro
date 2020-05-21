@@ -5,10 +5,10 @@
 */
 
 import 'package:flutter/material.dart';
-import 'package:fluttergithubpro/common/index.dart';
 import 'package:provider/provider.dart';
 import '../common/index.dart';
 import '../models/index.dart';
+
 class LoginRoute extends StatefulWidget {
   LoginRoute({Key key}) : super(key: key);
 
@@ -30,7 +30,6 @@ class _LoginRoute extends State<LoginRoute> {
     if((_formKey.currentState as FormState).validate()){
       User user;
       try{
-        user = await NetWorkRequest(context).login("896884553@qq.com", 'zj@901203');
         print(user.login);
         //保存信息
         Provider.of<UserProvider>(context,listen: false).user = user;

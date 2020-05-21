@@ -63,8 +63,6 @@ class Translations {
 
   static Future<Translations> load(Locale locale) async {
     Translations translationsLanguage = new Translations(locale);
-
-    print("当前语言==="+locale.languageCode);
     String jsonContent = await rootBundle.loadString("assets/languages/i18n_${locale.languageCode}.json");
     _localizedValues = json.decode(jsonContent);
     return translationsLanguage;
