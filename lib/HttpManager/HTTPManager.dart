@@ -45,6 +45,7 @@ HTTPManager().get(url: "search/repositories", tag: "getitems",params: {
     },options: Options(extra: {"refresh":false,'noCache':false}));
     print(response);
 
+    /// extra中可以设置context数据，在请求错误或者失败的情况下弹出错误信息
 
     //登录成功之后更新公共头，此后所有的请求都会带上用户信息
     dio.options.headers[HttpHeaders.authorizationHeader] = basic;
@@ -52,6 +53,7 @@ HTTPManager().get(url: "search/repositories", tag: "getitems",params: {
     Global.netCache.cache.clear();
     //更新用户的token信息
     Global.profile.token = basic;
+
 * */
 
 class HTTPManager {
