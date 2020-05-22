@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:fluttergithubpro/routes/ThemeChangeRoute.dart';
+import 'package:fluttergithubpro/routes/MinePage/theme_change_route.dart';
 import 'common/Translations.dart';
 import 'common/LocaleTool.dart';
 
@@ -8,10 +8,10 @@ import 'common/Global.dart';
 import 'package:provider/provider.dart';
 import 'common/ProfileChangeNotifier.dart';
 
-import 'routes/home_pages.dart';
-import 'routes/ChangeLocalRoute.dart';
-import 'routes/LoginRoute.dart';
-import 'routes/GetBatteryLevel.dart';
+import 'routes/indexPage/home_pages.dart';
+import 'routes/MinePage/change_local_route.dart';
+import 'routes/Login/login_page.dart';
+import 'routes/MinePage/get_battery_level.dart';
 
 ///初始化相关的配置之后再runapp
 //void main() => Global.init().then( (e)=>runApp(MyApp()) );

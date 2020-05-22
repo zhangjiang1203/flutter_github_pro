@@ -6,8 +6,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../common/index.dart';
-import '../models/index.dart';
+import '../../common/index.dart';
+import '../../models/index.dart';
 
 class LoginRoute extends StatefulWidget {
   LoginRoute({Key key}) : super(key: key);
