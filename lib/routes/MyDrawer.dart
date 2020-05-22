@@ -28,7 +28,7 @@ class MyDrawer extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           ClipOval(
-                            child: Image.asset("assets/images/default_avator.png",width: 50,),
+                            child: Image.asset("assets/images/goodnight.jpeg",width: 50,),
                           ),
                           Padding(
                             padding: const EdgeInsetsDirectional.only(start: 5),

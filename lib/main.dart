@@ -11,6 +11,7 @@ import 'common/ProfileChangeNotifier.dart';
 import 'routes/home_pages.dart';
 import 'routes/ChangeLocalRoute.dart';
 import 'routes/LoginRoute.dart';
+import 'routes/GetBatteryLevel.dart';
 
 ///初始化相关的配置之后再runapp
 //void main() => Global.init().then( (e)=>runApp(MyApp()) );
@@ -40,6 +41,7 @@ class _MyAppState extends State<MyApp> {
       "theme_change_route": (context) => ThemeChangeRoute(),
       "Change_local_route": (context)=> ChangeLocalRoute(),
       "Login_route":(context) => LoginRoute(),
+      "get_battery_level":(context)=> GetBatteryLevel(),
       };
   }
 
@@ -54,6 +56,7 @@ class _MyAppState extends State<MyApp> {
       child: Consumer2<ThemeProvider,LocaleProvider>(
           builder: (BuildContext context,themeProvider,localeProvider,Widget child){
             return MaterialApp(
+              debugShowCheckedModeBanner: false,
               theme: ThemeData(
                 primarySwatch: themeProvider.theme,
                 appBarTheme: AppBarTheme(elevation: 0),

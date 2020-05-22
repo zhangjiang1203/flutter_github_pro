@@ -75,6 +75,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/images/default_avator.png
     - assets/fonts/
     - assets/languages/
     - assets/languages/i18n_en.json

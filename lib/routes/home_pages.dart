@@ -35,22 +35,29 @@ class _HomePageState extends State<AppHomePage> {
           Navigator.pushNamed(context,"theme_change_route");
         }else if (value == "语言"){
           Navigator.pushNamed(context,"Change_local_route");
+        }else if (value == "电量"){
+          Navigator.pushNamed(context,"get_battery_level");
         }
       },
     );
   }
 
    List<PopupMenuEntry<String>> _getPopMenuButton(BuildContext context) {
-    return <PopupMenuEntry<String>>[
-      PopupMenuItem<String>(
-        value: '主题',
-        child: Text('主题'),
-      ),
-      PopupMenuItem<String>(
-        value: '语言',
-        child: Text('语言'),
-      ),
-    ];
+    return ["主题","语言","电量"].map((e) => PopupMenuItem<String>(value: e,child: Text(e),)).toList();
+//    return <PopupMenuEntry<String>>[
+//      PopupMenuItem<String>(
+//        value: '主题',
+//        child: Text('主题'),
+//      ),
+//      PopupMenuItem<String>(
+//        value: '语言',
+//        child: Text('语言'),
+//      ),
+//      PopupMenuItem<String>(
+//        value: '电量',
+//        child: Text('电量'),
+//      ),
+//    ];
   }
 
   void _showPopMenu(BuildContext context) {
@@ -93,13 +100,13 @@ class _HomePageState extends State<AppHomePage> {
 //      print(e.toString());
 //    });
 //    Allrepolist.fromJson(r.data).items
-    var response = await HTTPManager().getAsync<List<Repoitems>>(url: "search/repositories", tag: "getitems",params: {
-      'page':1,
-      'page_size':20,
-      'q':'language:Swift',
-      'sort':'stars'
-    },options: Options(extra: {"refresh":false,'noCache':false}));
-    zjPrint(response, StackTrace.current);
+//    var response = await HTTPManager().getAsync<List<Repoitems>>(url: "search/repositories", tag: "getitems",params: {
+//      'page':1,
+//      'page_size':20,
+//      'q':'language:Swift',
+//      'sort':'stars'
+//    },options: Options(extra: {"refresh":false,'noCache':false}));
+//    zjPrint(response, StackTrace.current);
 
   }
 
@@ -124,11 +131,7 @@ class _HomePageState extends State<AppHomePage> {
             )
           ],
         ),
-        body: Row(
-          children: <Widget>[
-            Text("哈哈哈")
-          ],
-        )// _buildBody(),
+        body: _buildBody(),
     );
   }
 
@@ -145,16 +148,16 @@ class _HomePageState extends State<AppHomePage> {
     }else{
       return InfiniteListView(
         onRetrieveData: (int page,List<Repoitems> items,bool refresh) async{
+          zjPrint("当前page:$page", StackTrace.current);
           var itemsData = await HTTPManager().getAsync<List<Repoitems>>(url: "search/repositories", tag: "getitems",params: {
-            'page':1,
-            'page_size':20,
+            'page':page,
             'q':'language:Swift',
             'sort':'stars'
-          },options: Options(extra: {"refresh":false,'noCache':false}));
+          },options: Options(extra: {"refresh":refresh}));
           var dataLength = itemsData.length;
           items.addAll(itemsData);
           //返回的数据是否是20，不是的话就没有下一页了
-          return dataLength == 20;
+          return dataLength == 30;
         },
         itemBuilder: (List<Repoitems> data,int index,BuildContext context){
           return GitPubItems(data[index]);

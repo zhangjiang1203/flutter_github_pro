@@ -10,8 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a82fdc3-4e62-4e12-b0ca-be91f5310860" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/routes/GetBatteryLevel.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/HttpManager/HTTPManager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HttpManager/HTTPManager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fluttergithubpro.iml" beforeDir="false" afterPath="$PROJECT_DIR$/fluttergithubpro.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/AppDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/AppDelegate.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/ZJAvatar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/ZJAvatar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/MyDrawer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/MyDrawer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/home_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/home_pages.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
