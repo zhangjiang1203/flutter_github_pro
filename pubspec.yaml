@@ -49,6 +49,8 @@ dependencies:
   connectivity: ^0.4.8+6
   #常用工具设置
   flutter_common_utils: ^1.1.0
+  #加载网页
+  webview_flutter: ^0.3.22+1
 
 dev_dependencies:
   flutter_test:

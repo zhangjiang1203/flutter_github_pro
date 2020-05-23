@@ -5,13 +5,14 @@
 */
 
 import 'package:dio/dio.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
 import '../Login/my_drawer.dart';
 import '../../models/index.dart';
 import 'package:flukit/flukit.dart';
 import '../../common/index.dart';
-
+import '../BaseWidget/base_web_page.dart';
 
 GlobalKey _button = GlobalKey();
 
@@ -44,33 +45,12 @@ class _HomePageState extends State<AppHomePage> {
 
    List<PopupMenuEntry<String>> _getPopMenuButton(BuildContext context) {
     return ["主题","语言","电量"].map((e) => PopupMenuItem<String>(value: e,child: Text(e),)).toList();
-//    return <PopupMenuEntry<String>>[
-//      PopupMenuItem<String>(
-//        value: '主题',
-//        child: Text('主题'),
-//      ),
-//      PopupMenuItem<String>(
-//        value: '语言',
-//        child: Text('语言'),
-//      ),
-//      PopupMenuItem<String>(
-//        value: '电量',
-//        child: Text('电量'),
-//      ),
-//    ];
   }
 
   void _showPopMenu(BuildContext context) {
     //获取Position和items
     final RenderBox button = _button.currentContext.findRenderObject();
     final Offset offsetA = button.localToGlobal(Offset.zero);
-//    final RenderBox overlay = Overlay.of(context).context.findRenderObject();
-//    final Offset offsetB = button.localToGlobal(button.size.bottomRight(Offset.zero),
-//        ancestor: overlay);
-//    RelativeRect position = RelativeRect.fromRect(
-//        Rect.fromPoints(offsetA, offsetB,),
-//        Offset.zero & overlay.size,
-//    );
     //获取到按钮点击的位置信息，去绘制showView的位置
     RelativeRect position = RelativeRect.fromLTRB(offsetA.dx, offsetA.dy+button.size.height,0,0);// position.right, position.bottom);
     var _pop = _popupMenuButton();
@@ -88,33 +68,10 @@ class _HomePageState extends State<AppHomePage> {
     });
   }
 
-  void _getItems() async{
-//    HTTPManager().get(url: "search/repositories", tag: "getitems",params: {
-//      'page':1,
-//      'page_size':20,
-//      'q':'language:Swift',
-//      'sort':'stars'
-//    },options: Options(extra: {"refresh":false,'noCache':false}),successCallback: (res){
-//      print(res);
-//    },failureCallback: (e){
-//      print(e.toString());
-//    });
-//    Allrepolist.fromJson(r.data).items
-//    var response = await HTTPManager().getAsync<List<Repoitems>>(url: "search/repositories", tag: "getitems",params: {
-//      'page':1,
-//      'page_size':20,
-//      'q':'language:Swift',
-//      'sort':'stars'
-//    },options: Options(extra: {"refresh":false,'noCache':false}));
-//    zjPrint(response, StackTrace.current);
-
-  }
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _getItems();
   }
 
   @override
@@ -137,33 +94,35 @@ class _HomePageState extends State<AppHomePage> {
 
   //创建视图
   Widget _buildBody() {
-    Profile profile = Global.profile;
-    if (profile.token != null){
-      return Center(
-        child: RaisedButton(
-          child: Text("登录"),
-          onPressed: () => Navigator.of(context).pushNamed("Login_route"),
+    //登录先不做
+//    Profile profile = Global.profile;
+//    if (profile.token != null){
+//      return Center(
+//        child: RaisedButton(
+//          child: Text("登录"),
+//          onPressed: () => Navigator.of(context).pushNamed("Login_route"),
+//        ),
+//      );
+//    }else{
+      return SafeArea(
+        child: InfiniteListView(
+          onRetrieveData: (int page,List<Repoitems> items,bool refresh) async{
+            zjPrint("当前page:$page", StackTrace.current);
+            var itemsData = await HTTPManager().getAsync<List<Repoitems>>(url: "search/repositories", tag: "getitems",params: {
+              'page':page,
+              'q':'language:Swift',
+              'sort':'stars'
+            },options: Options(extra: {"refresh":refresh}));
+            var dataLength = itemsData.length;
+            items.addAll(itemsData);
+            //返回的数据是否是20，不是的话就没有下一页了
+            return dataLength == 30;
+          },
+          itemBuilder: (List<Repoitems> data,int index,BuildContext context){
+            return GitPubItems(data[index]);
+          },
         ),
       );
-    }else{
-      return InfiniteListView(
-        onRetrieveData: (int page,List<Repoitems> items,bool refresh) async{
-          zjPrint("当前page:$page", StackTrace.current);
-          var itemsData = await HTTPManager().getAsync<List<Repoitems>>(url: "search/repositories", tag: "getitems",params: {
-            'page':page,
-            'q':'language:Swift',
-            'sort':'stars'
-          },options: Options(extra: {"refresh":refresh}));
-          var dataLength = itemsData.length;
-          items.addAll(itemsData);
-          //返回的数据是否是20，不是的话就没有下一页了
-          return dataLength == 30;
-        },
-        itemBuilder: (List<Repoitems> data,int index,BuildContext context){
-          return GitPubItems(data[index]);
-        },
-      );
-    }
   }
 }
 
@@ -182,56 +141,65 @@ class _GitPubState extends State<GitPubItems>{
   Widget build(BuildContext context) {
     // TODO: implement build
     var subtitle;
-    return Padding(
-      padding: const EdgeInsets.only(top: 8),
-      child: Material(
-        color: Colors.white,
-        shape: BorderDirectional(
-          bottom: BorderSide(
-            color: Theme.of(context).dividerColor,
-            width: 0.5,
-          )
-        ),
-        child: Padding(
-          padding: const EdgeInsets.only(top: 0,bottom: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              ListTile(
-                dense: true,
-                leading: ZJAvatar(widget.repo.owner.avatar_url,width: 24,borderRadius: BorderRadius.circular(12)),
-                title: Text(widget.repo.owner.login,textScaleFactor: 0.9,),
-                subtitle: subtitle,
-                trailing: Text(widget.repo.language ?? ""),
-              ),
-              ///绘制标题和描述
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(widget.repo.fork ? widget.repo.full_name : widget.repo.name,
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          fontStyle: widget.repo.fork ? FontStyle.italic : FontStyle.normal
-                        ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8,bottom: 12),
-                      child: widget.repo.description != null ? Text(widget.repo.description,maxLines: 3,style: TextStyle(height:1.15,color:Colors.blueGrey[700],fontSize: 13)) :
-                      Text(Translations.of(context).text("no_description"),style: TextStyle(fontStyle: FontStyle.italic,color: Colors.grey[700]),),
-                    ),
-                  ],
+    return GestureDetector(
+      onTap: (){
+        Navigator.of(context).push(MaterialPageRoute(builder: (_){
+          zjPrint("当前url===${widget.repo.html_url}", StackTrace.current);
+          return BaseWebPage(url: widget.repo.html_url,title: widget.repo.name,);
+        }));
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(top: 8),
+        child: Material(
+          color: Colors.white,
+          shape: BorderDirectional(
+              bottom: BorderSide(
+                color: Theme.of(context).dividerColor,
+                width: 0.5,
+              )
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 0,bottom: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                ListTile(
+                  dense: true,
+                  leading: ZJAvatar(widget.repo.owner.avatar_url,width: 24,borderRadius: BorderRadius.circular(12)),
+                  title: Text(widget.repo.owner.login,textScaleFactor: 0.9,),
+                  subtitle: subtitle,
+                  trailing: Text(widget.repo.language ?? ""),
                 ),
-              ),
-              ///图标和展示数据
-              _builderBottom(),
-            ],
+                ///绘制标题和描述
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(widget.repo.fork ? widget.repo.full_name : widget.repo.name,
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: widget.repo.fork ? FontStyle.italic : FontStyle.normal
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8,bottom: 12),
+                        child: widget.repo.description != null ? Text(widget.repo.description,maxLines: 3,style: TextStyle(height:1.15,color:Colors.blueGrey[700],fontSize: 13)) :
+                        Text(Translations.of(context).text("no_description"),style: TextStyle(fontStyle: FontStyle.italic,color: Colors.grey[700]),),
+                      ),
+                    ],
+                  ),
+                ),
+                ///图标和展示数据
+                _builderBottom(),
+              ],
+            ),
           ),
         ),
       ),
-    );
+     );
+
   }
 
   Widget _builderBottom(){
@@ -272,41 +240,3 @@ class _GitPubState extends State<GitPubItems>{
     );
   }
 }
-
-//DropdownButton(
-//value: 1,
-//underline: Container(),
-//onChanged: (value){
-//print("value change $value");
-//},
-//items: <DropdownMenuItem>[
-//DropdownMenuItem(
-//value: 1,
-//child: Text("哈哈哈1"),
-//onTap: (){
-//
-//},
-//),
-//DropdownMenuItem(
-//value: 2,
-//child: Text("哈哈哈2"),
-//onTap: (){
-//
-//},
-//),
-//DropdownMenuItem(
-//value: 3,
-//child: Text("哈哈哈3"),
-//onTap: (){
-//
-//},
-//),
-//DropdownMenuItem(
-//value: 4,
-//child: Text("哈哈哈4"),
-//onTap: (){
-//
-//},
-//),
-//],
-//),

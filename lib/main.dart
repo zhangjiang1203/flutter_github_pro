@@ -14,8 +14,6 @@ import 'routes/Login/login_page.dart';
 import 'routes/MinePage/get_battery_level.dart';
 
 ///初始化相关的配置之后再runapp
-//void main() => Global.init().then( (e)=>runApp(MyApp()) );
-
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Global.init();

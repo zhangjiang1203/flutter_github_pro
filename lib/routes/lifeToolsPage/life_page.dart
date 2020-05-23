@@ -22,7 +22,12 @@ class _LifePage extends State<LifePage> {
           title: Text("LifePage"),
         ),
         body: Center(
-          child: Column(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text('我就是我不一样的烟火'),
+            ],
+          ),
         ) // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

@@ -22,7 +22,12 @@ class _mine_page extends State<mine_page> {
           title: Text("mine_page"),
         ),
         body: Center(
-          child: Column(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text('MinePage'),
+            ],
+          ),
         ) // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
