@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:fluttergithubpro/routes/BaseWidget/base_tabbar_page.dart';
 import 'package:fluttergithubpro/routes/MinePage/theme_change_route.dart';
 import 'common/Translations.dart';
 import 'common/LocaleTool.dart';
@@ -35,7 +36,8 @@ class _MyAppState extends State<MyApp> {
 
   Map<String,WidgetBuilder> _setUpWidgetRoutes(BuildContext context) {
     return {
-      "/": (context) => AppHomePage(),
+      "/": (context) => BaseTabbarPage(),//AppHomePage(),
+      "home_page":(context)=> AppHomePage(),
       "theme_change_route": (context) => ThemeChangeRoute(),
       "Change_local_route": (context)=> ChangeLocalRoute(),
       "Login_route":(context) => LoginRoute(),

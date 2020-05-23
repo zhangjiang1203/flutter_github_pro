@@ -51,6 +51,8 @@ dependencies:
   flutter_common_utils: ^1.1.0
   #加载网页
   webview_flutter: ^0.3.22+1
+  #图表
+  fl_chart: ^0.9.4
 
 dev_dependencies:
   flutter_test:

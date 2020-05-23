@@ -8,6 +8,7 @@ PODS:
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
+  - LookinServer (1.0.0)
   - path_provider (0.0.1):
     - Flutter
   - path_provider_macos (0.0.1):
@@ -29,6 +30,7 @@ DEPENDENCIES:
   - connectivity (from `.symlinks/plugins/connectivity/ios`)
   - connectivity_macos (from `.symlinks/plugins/connectivity_macos/ios`)
   - Flutter (from `Flutter`)
+  - LookinServer
   - path_provider (from `.symlinks/plugins/path_provider/ios`)
   - path_provider_macos (from `.symlinks/plugins/path_provider_macos/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
@@ -40,6 +42,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - FMDB
+    - LookinServer
     - Reachability
 
 EXTERNAL SOURCES:
@@ -69,6 +72,7 @@ SPEC CHECKSUMS:
   connectivity_macos: e2e9731b6b22dda39eb1b128f6969d574460e191
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  LookinServer: 0002891cd3cec5e082a910e897dfe71b4f06b89e
   path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
   path_provider_macos: f760a3c5b04357c380e2fddb6f9db6f3015897e0
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
@@ -78,6 +82,6 @@ SPEC CHECKSUMS:
   sqflite: 4001a31ff81d210346b500c55b17f4d6c7589dd0
   webview_flutter: d2b4d6c66968ad042ad94cbb791f5b72b4678a96
 
-PODFILE CHECKSUM: 7c043f4379ceb9aa4df7ffd0af6e4b7b65178218
+PODFILE CHECKSUM: ac8364e17716b01bdf21800abee71fb7242e7a90
 
 COCOAPODS: 1.8.4
