@@ -10,22 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a82fdc3-4e62-4e12-b0ca-be91f5310860" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/images/weather.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/yiguoqu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/routes/lifeToolsPage/cheng_yu_ci_dian_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/routes/lifeToolsPage/jin_ri_you_jia_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/routes/lifeToolsPage/jin_ri_yun_shi_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/routes/lifeToolsPage/news_top_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/doulexiaohuaicon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/ic_tab_joke.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/xiaohuadaquan.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/jiayouzhanzulin01.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/jiayouzhan.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/jiazhaomonikaoshi.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/jin.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/jinriyunshi.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/kuaijiecaidan_chengyucidian.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/chengyucidian.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/home_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/home_pages.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/lifeToolsPage/banner_detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/lifeToolsPage/banner_detail_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/routes/lifeToolsPage/life_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/lifeToolsPage/life_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/lifeToolsPage/news_top_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/lifeToolsPage/news_top_page.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

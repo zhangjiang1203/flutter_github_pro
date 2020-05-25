@@ -32,6 +32,8 @@ class Global {
   //是否是release
   static bool get isRelease => bool.fromEnvironment('dart.vm.product');
 
+  static Image get placeholder => Image.asset("assets/images/goodnight.jpeg");
+
   //初始化全局信息
   static Future init() async {
      _preferences = await SharedPreferences.getInstance();

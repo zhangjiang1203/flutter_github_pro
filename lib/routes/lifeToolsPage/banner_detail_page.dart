@@ -5,6 +5,7 @@
 */
 
 import 'package:flutter/material.dart';
+import 'package:fluttergithubpro/common/index.dart';
 
 class BannerDetailPage extends StatefulWidget {
   BannerDetailPage(
@@ -28,6 +29,7 @@ class _BannerDetailPageState extends State<BannerDetailPage> {
 
   @override
   Widget build(BuildContext context) {
+    zjPrint('当前tag===${widget.tag}', StackTrace.current);
     return Scaffold(
         appBar: AppBar(
           title: Text("banner_detail_page"),

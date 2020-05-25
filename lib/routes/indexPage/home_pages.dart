@@ -25,6 +25,9 @@ class AppHomePage extends StatefulWidget {
 
 class _HomePageState extends State<AppHomePage> {
 
+  ScrollController _controller ;
+  bool _isShowBtn;
+
   PopupMenuButton _popupMenuButton(){
     return PopupMenuButton(
       itemBuilder: (context) => _getPopMenuButton(context),
@@ -72,23 +75,43 @@ class _HomePageState extends State<AppHomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    _isShowBtn = false;
+    _controller = new ScrollController();
+    _controller.addListener(() {
+      if(_controller.offset < 1000 && _isShowBtn){
+        setState(() {
+          _isShowBtn = false;
+        });
+      }else if(_controller.offset >= 1000 && !_isShowBtn){
+        setState(() {
+          _isShowBtn = true;
+        });
+      }
+    });
+
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: MyDrawer(),
-        appBar: AppBar(
-          title: Text(Translations.of(context).text("home_title")),
-          actions: <Widget>[
-            IconButton(
-              key: _button,
-              icon: Icon(Icons.select_all),
-              onPressed: () => _showPopMenu(context),
-            )
-          ],
-        ),
-        body: _buildBody(),
+      drawer: MyDrawer(),
+      appBar: AppBar(
+        title: Text(Translations.of(context).text("home_title")),
+        actions: <Widget>[
+          IconButton(
+            key: _button,
+            icon: Icon(Icons.select_all),
+            onPressed: () => _showPopMenu(context),
+          )
+        ],
+      ),
+      body: _buildBody(),
+      floatingActionButton: !_isShowBtn ? null : FloatingActionButton(
+        child: Icon(Icons.arrow_upward),
+        onPressed: (){
+          _controller.animateTo(0, duration: const Duration(milliseconds: 200), curve: Curves.ease);
+        },
+      ),
     );
   }
 
@@ -106,6 +129,7 @@ class _HomePageState extends State<AppHomePage> {
 //    }else{
       return SafeArea(
         child: InfiniteListView(
+          scrollController: _controller,
           onRetrieveData: (int page,List<Repoitems> items,bool refresh) async{
             zjPrint("当前page:$page", StackTrace.current);
             var itemsData = await HTTPManager().getAsync<List<Repoitems>>(url: "search/repositories", tag: "getitems",params: {
@@ -144,7 +168,6 @@ class _GitPubState extends State<GitPubItems>{
     return GestureDetector(
       onTap: (){
         Navigator.of(context).push(MaterialPageRoute(builder: (_){
-          zjPrint("当前url===${widget.repo.html_url}", StackTrace.current);
           return BaseWebPage(url: widget.repo.html_url,title: widget.repo.name,);
         }));
       },

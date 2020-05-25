@@ -8,6 +8,7 @@ import 'package:flukit/flukit.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttergithubpro/common/index.dart';
 import 'package:fluttergithubpro/routes/lifeToolsPage/banner_detail_page.dart';
+import 'package:fluttergithubpro/routes/lifeToolsPage/news_top_page.dart';
 
 class LifePage extends StatefulWidget {
   LifePage({Key key}) : super(key: key);
@@ -51,11 +52,13 @@ class _LifePage extends State<LifePage> {
             flexibleSpace: FlexibleSpaceBar(
               title: Text('生活助手'),
               background: Swiper(
+                indicator: RectangleSwiperIndicator(),
                 reverse: true,
                 children: bannerData.asMap().keys.map((e) => Hero(
-                  tag: "swiper_hero_action",
+                  tag: 'swiper_hero_action_$e',
                   child: GestureDetector(
                     onTap: (){
+                      print('当前的tag==swiper_hero_action_$e');
                       Navigator.of(context).push(MaterialPageRoute(builder: (_){
                         return BannerDetailPage(imageURL: bannerData[e],tag: 'swiper_hero_action_$e',);
                       }));
@@ -73,8 +76,12 @@ class _LifePage extends State<LifePage> {
               mainAxisSpacing:10.0,
               crossAxisSpacing:10,
               children: lifeDataDict.keys.map((e) => GestureDetector(
-                onTap: ()=>{
-
+                onTap: (){
+                  if (e == '新闻头条'){
+                    Navigator.of(context).push(MaterialPageRoute(builder: (_){
+                      return NewsTopPage();
+                    }));
+                  }
                 },
                 child: Container(
                     alignment: Alignment.center,
