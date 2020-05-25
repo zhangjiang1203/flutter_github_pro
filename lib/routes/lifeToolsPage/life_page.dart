@@ -18,7 +18,16 @@ class LifePage extends StatefulWidget {
 
 class _LifePage extends State<LifePage> {
 
-  var dataList = ['1','2','3','4','5','6','7','8','11'];
+  var lifeDataDict = {
+    '新闻头条':'toutiao.png',
+    '星座运势':'jinriyunshi.png',
+    '今日油价':'jiayouzhan.png',
+    '成语词典':'chengyucidian.png',
+    '笑话大全':'xiaohuadaquan.png',
+    '历史上今天':'yiguoqu.png',
+    '驾照题库':'jiazhao.png',
+    '天气预报':'weather.png',};
+
   var bannerData = ["http://images.uiiiuiii.com/wp-content/uploads/2018/05/i-bn20180509-2-01.jpg",
     "http://images.uiiiuiii.com/wp-content/uploads/2018/03/i-bn20180305-2-01.jpg",
     "http://img.zcool.cn/community/01b3905ebebdb3a8012072005818c2.jpg@2o.jpg",
@@ -58,19 +67,29 @@ class _LifePage extends State<LifePage> {
             ),
           ),
           SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.all(10),
             sliver: SliverGrid.count(
-              crossAxisCount: 2,
+              crossAxisCount: 3,
               mainAxisSpacing:10.0,
               crossAxisSpacing:10,
-              children: dataList.map((e) => Container(
-                color: ZJColor.randomColor(),
-                alignment: Alignment.center,
-                child: Text(e,style: TextStyle(color: Colors.white),),
+              children: lifeDataDict.keys.map((e) => GestureDetector(
+                onTap: ()=>{
+
+                },
+                child: Container(
+                    alignment: Alignment.center,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Image.asset('assets/images/${lifeDataDict[e]}',width: 50,fit: BoxFit.cover,),
+                        Padding(padding: const EdgeInsets.only(top: 8),),
+                        Text(e,style: TextStyle(color: ZJColor.StringColor('333333')),),
+                      ],
+                      )
+                    ),
               )).toList(),
             ),
           ),
-
         ],
       ),
     );
