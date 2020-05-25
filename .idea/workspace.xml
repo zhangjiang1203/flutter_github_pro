@@ -10,20 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a82fdc3-4e62-4e12-b0ca-be91f5310860" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/routes/BaseWidget/base_tabbar_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/routes/BaseWidget/common_provider.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/routes/lifeToolsPage/banner_detail_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/AppDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/AppDelegate.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Base.lproj/Main.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Base.lproj/Main.storyboard" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/MinePage/mine_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/MinePage/mine_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fluttergithubpro.iml" beforeDir="false" afterPath="$PROJECT_DIR$/fluttergithubpro.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/routes/lifeToolsPage/life_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/lifeToolsPage/life_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

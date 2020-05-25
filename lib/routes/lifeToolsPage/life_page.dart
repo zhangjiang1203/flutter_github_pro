@@ -30,6 +30,7 @@ class _LifePage extends State<LifePage> {
       child: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
+            backgroundColor: Colors.white,
             actions: <Widget>[
               IconButton(
                 icon: Icon(Icons.school),
@@ -42,15 +43,15 @@ class _LifePage extends State<LifePage> {
               title: Text('生活助手'),
               background: Swiper(
                 reverse: true,
-                children: bannerData.map((e) => Hero(
+                children: bannerData.asMap().keys.map((e) => Hero(
                   tag: "swiper_hero_action",
                   child: GestureDetector(
                     onTap: (){
                       Navigator.of(context).push(MaterialPageRoute(builder: (_){
-                        return BannerDetailPage(imageURL: e,tag: 'swiper_hero_action',);
+                        return BannerDetailPage(imageURL: bannerData[e],tag: 'swiper_hero_action_$e',);
                       }));
                     },
-                    child: Image.network(e,fit: BoxFit.fitHeight),
+                    child: Image.network(bannerData[e],fit: BoxFit.fitHeight),
                   ),
                 )).toList(),
               ),
