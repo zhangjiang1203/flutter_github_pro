@@ -8,6 +8,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
+import 'package:fluttergithubpro/HttpManager/index.dart';
 import '../Login/my_drawer.dart';
 import '../../models/index.dart';
 import 'package:flukit/flukit.dart';
@@ -35,11 +36,11 @@ class _HomePageState extends State<AppHomePage> {
         print("取消了");
       },
       onSelected: (value){
-        if (value == "主题"){
+        if (value == "app_theme"){
           Navigator.pushNamed(context,"theme_change_route");
-        }else if (value == "语言"){
+        }else if (value == "app_language"){
           Navigator.pushNamed(context,"Change_local_route");
-        }else if (value == "电量"){
+        }else if (value == "app_battery"){
           Navigator.pushNamed(context,"get_battery_level");
         }
       },
@@ -47,7 +48,7 @@ class _HomePageState extends State<AppHomePage> {
   }
 
    List<PopupMenuEntry<String>> _getPopMenuButton(BuildContext context) {
-    return ["主题","语言","电量"].map((e) => PopupMenuItem<String>(value: e,child: Text(e),)).toList();
+    return ["app_theme","app_language","app_battery"].map((e) => PopupMenuItem<String>(value: e,child: Text(Translations.of(context).text(e)),)).toList();
   }
 
   void _showPopMenu(BuildContext context) {
@@ -132,7 +133,7 @@ class _HomePageState extends State<AppHomePage> {
           scrollController: _controller,
           onRetrieveData: (int page,List<Repoitems> items,bool refresh) async{
             zjPrint("当前page:$page", StackTrace.current);
-            var itemsData = await HTTPManager().getAsync<List<Repoitems>>(url: "search/repositories", tag: "getitems",params: {
+            var itemsData = await HTTPManager().getAsync<List<Repoitems>>(url: getGitHubPub, tag: "getitems",params: {
               'page':page,
               'q':'language:Swift',
               'sort':'stars'

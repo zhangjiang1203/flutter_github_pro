@@ -360,7 +360,9 @@ class HTTPManager {
           return jsonParse(response.data);
         }else{
 //          print(response.data);
-          return Allrepolist.fromJson(response.data).items as T; //response.data as T;
+//          return Allrepolist.fromJson(response.data).items as T; //response.data as T;
+          return response.data as T;
+
         }
 //      }
 //      else{

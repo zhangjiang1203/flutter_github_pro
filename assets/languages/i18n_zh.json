@@ -1,11 +1,37 @@
 {
   "home_title": "flutter测试",
   "about_page_slogan":"健康从这里开始",
-  "first_page":"首页",
-  "second_page":"帮助",
-  "third_page":"中心",
-  "forth_page":"我的",
+  "index_page":"首页",
+  "life_page":"生活",
+  "mine_page":"我的",
   "change_language":"更改语言",
   "auto": "跟随系统",
-  "login_title": "登录"
+  "login_title": "登录",
+
+  "app_theme": "主题",
+  "app_language": "语言",
+  "app_battery": "电量",
+  "top_news":"新闻头条",
+  "constellation":"星座运势",
+  "today_oil":"今日油价",
+  "cheng_yu_zi_dian":"成语词典",
+  "jokes":"笑话大全",
+  "history_today":"历史上今天",
+  "car_test":"驾照题库",
+  "weather_pro":"天气预报",
+  "life_assist":"生活助手",
+
+  "news_shehui": "社会",
+  "news_guonei": "国内",
+  "news_guoji": "国际",
+  "news_yule": "娱乐",
+  "news_tiyu": "体育",
+  "news_junshi": "军事",
+  "news_keji": "科技",
+  "news_caijing": "财经",
+  "news_shishang": "时尚",
+  "news_top": "头条",
+  "news_title":"新闻头条"
+
+
 }

@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttergithubpro/common/index.dart';
 import 'package:fluttergithubpro/routes/lifeToolsPage/banner_detail_page.dart';
 import 'package:fluttergithubpro/routes/lifeToolsPage/news_top_page.dart';
+import 'package:provider/provider.dart';
 
 class LifePage extends StatefulWidget {
   LifePage({Key key}) : super(key: key);
@@ -18,16 +19,15 @@ class LifePage extends StatefulWidget {
 }
 
 class _LifePage extends State<LifePage> {
-
   var lifeDataDict = {
-    '新闻头条':'toutiao.png',
-    '星座运势':'jinriyunshi.png',
-    '今日油价':'jiayouzhan.png',
-    '成语词典':'chengyucidian.png',
-    '笑话大全':'xiaohuadaquan.png',
-    '历史上今天':'yiguoqu.png',
-    '驾照题库':'jiazhao.png',
-    '天气预报':'weather.png',};
+    'top_news':'toutiao.png',
+    'constellation':'jinriyunshi.png',
+    'today_oil':'jiayouzhan.png',
+    'cheng_yu_zi_dian':'chengyucidian.png',
+    'jokes':'xiaohuadaquan.png',
+    'history_today':'yiguoqu.png',
+    'car_test':'jiazhao.png',
+    'weather_pro':'weather.png',};
 
   var bannerData = ["http://images.uiiiuiii.com/wp-content/uploads/2018/05/i-bn20180509-2-01.jpg",
     "http://images.uiiiuiii.com/wp-content/uploads/2018/03/i-bn20180305-2-01.jpg",
@@ -37,10 +37,11 @@ class _LifePage extends State<LifePage> {
   @override
   Widget build(BuildContext context) {
     return Material(
+      elevation: 0,
       child: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-            backgroundColor: Colors.white,
+            backgroundColor: Provider.of<ThemeProvider>(context).theme,
             actions: <Widget>[
               IconButton(
                 icon: Icon(Icons.school),
@@ -50,7 +51,7 @@ class _LifePage extends State<LifePage> {
             expandedHeight: 200,
             pinned: true, 
             flexibleSpace: FlexibleSpaceBar(
-              title: Text('生活助手'),
+              title: Text(Translations.of(context).text('life_assist')),
               background: Swiper(
                 indicator: RectangleSwiperIndicator(),
                 reverse: true,
@@ -77,7 +78,7 @@ class _LifePage extends State<LifePage> {
               crossAxisSpacing:10,
               children: lifeDataDict.keys.map((e) => GestureDetector(
                 onTap: (){
-                  if (e == '新闻头条'){
+                  if ("top_news" == e){
                     Navigator.of(context).push(MaterialPageRoute(builder: (_){
                       return NewsTopPage();
                     }));
@@ -90,7 +91,7 @@ class _LifePage extends State<LifePage> {
                       children: <Widget>[
                         Image.asset('assets/images/${lifeDataDict[e]}',width: 50,fit: BoxFit.cover,),
                         Padding(padding: const EdgeInsets.only(top: 8),),
-                        Text(e,style: TextStyle(color: ZJColor.StringColor('333333')),),
+                        Text(Translations.of(context).text(e),style: TextStyle(color: ZJColor.StringColor('333333')),),
                       ],
                       )
                     ),

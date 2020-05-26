@@ -5,6 +5,7 @@
 */
 
 import 'package:flutter/material.dart';
+import 'package:fluttergithubpro/common/index.dart';
 import 'package:fluttergithubpro/routes/BaseWidget/common_provider.dart';
 import 'package:fluttergithubpro/routes/MinePage/mine_page.dart';
 import 'package:fluttergithubpro/routes/indexPage/home_pages.dart';
@@ -73,9 +74,9 @@ class _BaseTabbarPageState extends State<BaseTabbarPage> with TickerProviderStat
             },
             type: BottomNavigationBarType.fixed,
             items: [
-              BottomNavigationBarItem(icon: Icon(Icons.first_page),title: Text('首页')),
-              BottomNavigationBarItem(icon: Icon(Icons.room_service),title: Text('生活')),
-              BottomNavigationBarItem(icon: Icon(Icons.settings),title: Text('设置')),
+              BottomNavigationBarItem(icon: Icon(Icons.first_page),title: Text(Translations.of(context).text("index_page"))),
+              BottomNavigationBarItem(icon: Icon(Icons.room_service),title: Text(Translations.of(context).text("life_page"))),
+              BottomNavigationBarItem(icon: Icon(Icons.settings),title: Text(Translations.of(context).text("mine_page"))),
             ],
           ),
     );
