@@ -13,6 +13,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_common_utils/http/http_error.dart';
 import 'package:flutter_common_utils/http/http_manager.dart';
 import 'package:flutter_common_utils/log_util.dart';
+import 'package:fluttergithubpro/generated/json/base/json_convert_content.dart';
+import 'package:fluttergithubpro/routes/BaseWidget/common_provider.dart';
 import '../models/index.dart';
 
 
@@ -354,13 +356,21 @@ class HTTPManager {
         data: data,
         onSendProgress: onSendProgress,
       );
-//      String flage = response.data["flag"];
-//      if (flage == '1'){
         if (jsonParse != null){
           return jsonParse(response.data);
         }else{
-//          print(response.data);
-//          return Allrepolist.fromJson(response.data).items as T; //response.data as T;
+          Map<String,dynamic> tempMap = response.data;
+          print("网络返回数据===${tempMap.keys}");
+          if(tempMap.containsKey('items')){
+            List listRepo = tempMap['items'];
+            T items = listRepo.map((e) => Repoitems.fromJson(e)).toList() as T;
+            return items;
+          }else if (tempMap.containsKey('error_code') && tempMap.containsKey('result')){
+            Map datasMap = tempMap['result'];
+            List showData = datasMap['data'];
+            T items = JsonConvert.fromJsonAsT<T>(showData);
+            return items;
+          }
           return response.data as T;
 
         }

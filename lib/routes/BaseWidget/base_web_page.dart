@@ -43,7 +43,7 @@ class _BaseWebPageState extends State<BaseWebPage> {
     }
     return Scaffold(
         appBar: AppBar(
-          title: Text(widget.title),
+          title: Text(widget.title ?? ""),
         ),
         body:SafeArea(
           child:Stack(

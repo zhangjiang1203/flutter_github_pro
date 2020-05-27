@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
 import 'package:fluttergithubpro/HttpManager/index.dart';
 import 'package:fluttergithubpro/common/index.dart';
+import 'package:fluttergithubpro/models/index.dart';
+import 'package:fluttergithubpro/routes/BaseWidget/base_web_page.dart';
 
 class NewsTopPage extends StatefulWidget {
   NewsTopPage({Key key}) : super(key: key);
@@ -72,8 +74,8 @@ class _NewsTopPageState extends State<NewsTopPage> with SingleTickerProviderStat
           child: TabBarView(
             controller: _tabController,
             children: tabBarData.keys.map((e){
-              return Container(
-                child: Text(Translations.of(context).text(e),textScaleFactor: 3,),
+              return Center(
+                child: NewsListPage(tabBarData[e]),// Text(Translations.of(context).text(e),textScaleFactor: 3,),
               );
             }).toList(),
           ),
@@ -83,14 +85,32 @@ class _NewsTopPageState extends State<NewsTopPage> with SingleTickerProviderStat
 }
 
 
-class NewsListPage extends StatelessWidget {
+class NewsListPage extends StatefulWidget {
 
   NewsListPage(this.type);
-
   String type = 'top';
 
+  @override
+  _NewsListPageState createState() => _NewsListPageState();
+}
+
+
+class _NewsListPageState extends State<NewsListPage>{
+
+
   Future getNewsItems(){
-    return HTTPManager().getAsync(url: getNewsData,params: {'type':type}, tag: 'newsListPage');
+    return HTTPManager().getAsync<List<NewsTopModelEntity>>(url: getNewsData,params: {'type':widget.type}, tag: 'newsListPage');
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    Map temp = {"name":"123","age":"23",'data':[{"address":"123","email":"897978"},{"address":"dfd","email":"342"}]};
+    print("是否包含${temp.containsKey('data')}");
+    List<Map<String,dynamic>> list = temp['data'] ;
+    print("当前的===$list");
   }
 
   @override
@@ -105,18 +125,19 @@ class NewsListPage extends StatelessWidget {
               child: Text('暂无此分类信息',textScaleFactor: 2,),
             );
           }else{
-            Map<String,dynamic> tempDict = snapshot.data;
-            if(tempDict.containsKey("result")){
-              Map<String,dynamic> resultMap = tempDict['result'];
-              if(resultMap.containsKey('data')){
-                List<Map<String,dynamic>> listData = resultMap['data'];
-//                listData.map((e) => null)
-              }
-            }
-            return ListView.builder(itemBuilder: (context,index){
-              return ListTile(
-                title:Text("nihao"),
-              );
+            List<NewsTopModelEntity> showData = snapshot.data;
+            return ListView.builder(
+                itemCount: showData.length,
+                itemBuilder: (context,index){
+                  return ListTile(
+                    title:Text(showData[index].authorName),
+                    onTap: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder:(_){
+                        print('当前url==${showData[index].url}');
+                        return BaseWebPage(url: showData[index].url,);
+                      }));
+                    },
+                );
             });
           }
         }else {
