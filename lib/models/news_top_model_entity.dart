@@ -11,4 +11,8 @@ class NewsTopModelEntity with JsonConvert<NewsTopModelEntity> {
 	String url;
 	@JSONField(name: "thumbnail_pic_s")
 	String thumbnailPicS;
+	@JSONField(name: "thumbnail_pic_s02")
+	String thumbnailPicS02;
+	@JSONField(name: "thumbnail_pic_s03")
+	String thumbnailPicS03;
 }

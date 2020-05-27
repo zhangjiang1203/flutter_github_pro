@@ -356,35 +356,30 @@ class HTTPManager {
         data: data,
         onSendProgress: onSendProgress,
       );
-        if (jsonParse != null){
-          return jsonParse(response.data);
-        }else{
-          Map<String,dynamic> tempMap = response.data;
-          print("网络返回数据===${tempMap.keys}");
-          if(tempMap.containsKey('items')){
-            List listRepo = tempMap['items'];
-            T items = listRepo.map((e) => Repoitems.fromJson(e)).toList() as T;
-            return items;
-          }else if (tempMap.containsKey('error_code') && tempMap.containsKey('result')){
-            Map datasMap = tempMap['result'];
-            List showData = datasMap['data'];
-            T items = JsonConvert.fromJsonAsT<T>(showData);
-            return items;
-          }
-          return response.data as T;
-
+      if (jsonParse != null){
+        return jsonParse(response.data);
+      }else{
+        Map<String,dynamic> tempMap = response.data;
+        print("网络返回数据===${tempMap.keys}");
+        if(tempMap.containsKey('items')){
+          List listRepo = tempMap['items'];
+          T items = JsonConvert.fromJsonAsT<T>(listRepo);
+          return items;
+        }else if (tempMap.containsKey('error_code') && tempMap.containsKey('result')){
+          Map datasMap = tempMap['result'];
+          List showData = datasMap['data'];
+          T items = JsonConvert.fromJsonAsT<T>(showData);
+          return items;
         }
-//      }
-//      else{
-//        String message = response.data['message'];
-//        LogUtil.v('请求服务器出错:$message');
-//        return Future.error(HttpError(flage,message));
-//      }
+        return response.data as T;
+      }
     } on DioError catch(e,s) {
       LogUtil.v("请求出错:$e\n$s");
+      print("请求出错:$e\n$s");
       throw (HttpError.dioError(e));
     } catch (e,s){
       LogUtil.v("未知异常错误:$e\n$s");
+      print("未知异常错误:$e\n$s");
       throw (HttpError(HttpError.UNKNOWN,'网络异常，请稍后再试11'));
     }
   }

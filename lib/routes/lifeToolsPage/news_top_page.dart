@@ -4,6 +4,7 @@
 * copyright on zhangjiang
 */
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
 import 'package:fluttergithubpro/HttpManager/index.dart';
@@ -129,25 +130,89 @@ class _NewsListPageState extends State<NewsListPage>{
             return ListView.builder(
                 itemCount: showData.length,
                 itemBuilder: (context,index){
-                  return ListTile(
-                    title:Text(showData[index].authorName),
-                    onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder:(_){
-                        print('当前url==${showData[index].url}');
-                        return BaseWebPage(url: showData[index].url,);
-                      }));
-                    },
-                );
+                  return NewsTopItemWidget(showData[index]);
             });
           }
         }else {
           return CircularProgressIndicator();
         }
-        return ListView.builder(
-            itemBuilder: (context,index){
-              return null;
-            });
       },
     );
   }
+}
+
+
+class NewsTopItemWidget extends StatelessWidget{
+  NewsTopItemWidget(this.newsModel);
+
+  final NewsTopModelEntity newsModel;
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final width = size.width;
+    final height = size.height;
+    List<String> imageURls = [];
+    if(newsModel.thumbnailPicS != null){
+      imageURls.add(newsModel.thumbnailPicS);
+    }
+    if(newsModel.thumbnailPicS02!= null){
+      imageURls.add(newsModel.thumbnailPicS02);
+    }
+    if(newsModel.thumbnailPicS03!= null){
+      imageURls.add(newsModel.thumbnailPicS03);
+    }
+    return GestureDetector(
+      onTap: (){
+        Navigator.of(context).push(MaterialPageRoute(builder: (_){
+          return BaseWebPage(url: newsModel.url);
+        }));
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(top: 10),
+        child: Material(
+          color: Colors.white,
+          shape: BorderDirectional(
+              bottom: BorderSide(
+                color: Theme.of(context).dividerColor,
+                width: 0.5,
+              )
+          ),
+          child:  Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(newsModel.title,style: TextStyle(fontSize: 18,fontWeight:FontWeight.w500 ),),
+                Padding(
+                  padding: const EdgeInsets.only(top: 5,bottom: 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: imageURls.map((e){
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 5,left: 5),
+                        child: CachedNetworkImage(
+                          imageUrl: e,
+                          width: (width-50)/3,
+
+                          fit: BoxFit.fitHeight,
+                        ),
+                      );
+                    } ).toList(),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Text(newsModel.date),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
+      )
+    );
+  }
+
 }

@@ -10,9 +10,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a82fdc3-4e62-4e12-b0ca-be91f5310860" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/generated/json/repo_items_model_entity_helper.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/repo_items_model_entity.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/languages/i18n_en.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/languages/i18n_en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/HttpManager/RequestURLPath.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HttpManager/RequestURLPath.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/HttpManager/HTTPManager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HttpManager/HTTPManager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generated/json/base/json_convert_content.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated/json/base/json_convert_content.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generated/json/news_top_model_entity_helper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated/json/news_top_model_entity_helper.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generated/json/temp_data_model_entity_helper.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/allrepolist.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/allrepolist.g.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/index.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/news_top_model_entity.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/news_top_model_entity.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/repo.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/repo.g.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/repoitems.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/repoitems.g.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/temp_data_model_entity.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/home_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/home_pages.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/lifeToolsPage/news_top_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/lifeToolsPage/news_top_page.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +36,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_XL_API_28" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_6_API_29" />
   <component name="FavoritesManager">
     <favorites_list name="flutter_github_pro" />
   </component>

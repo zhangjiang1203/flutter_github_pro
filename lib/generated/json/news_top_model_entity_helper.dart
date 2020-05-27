@@ -22,6 +22,12 @@ newsTopModelEntityFromJson(NewsTopModelEntity data, Map<String, dynamic> json) {
 	if (json['thumbnail_pic_s'] != null) {
 		data.thumbnailPicS = json['thumbnail_pic_s']?.toString();
 	}
+	if (json['thumbnail_pic_s02'] != null) {
+		data.thumbnailPicS02 = json['thumbnail_pic_s02']?.toString();
+	}
+	if (json['thumbnail_pic_s03'] != null) {
+		data.thumbnailPicS03 = json['thumbnail_pic_s03']?.toString();
+	}
 	return data;
 }
 
@@ -34,5 +40,7 @@ Map<String, dynamic> newsTopModelEntityToJson(NewsTopModelEntity entity) {
 	data['author_name'] = entity.authorName;
 	data['url'] = entity.url;
 	data['thumbnail_pic_s'] = entity.thumbnailPicS;
+	data['thumbnail_pic_s02'] = entity.thumbnailPicS02;
+	data['thumbnail_pic_s03'] = entity.thumbnailPicS03;
 	return data;
 }

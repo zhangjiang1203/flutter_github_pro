@@ -131,9 +131,8 @@ class _HomePageState extends State<AppHomePage> {
       return SafeArea(
         child: InfiniteListView(
           scrollController: _controller,
-          onRetrieveData: (int page,List<Repoitems> items,bool refresh) async{
-            zjPrint("当前page:$page", StackTrace.current);
-            var itemsData = await HTTPManager().getAsync<List<Repoitems>>(url: getGitHubPub, tag: "getitems",params: {
+          onRetrieveData: (int page,List<RepoItemsModelEntity> items,bool refresh) async{
+            var itemsData = await HTTPManager().getAsync<List<RepoItemsModelEntity>>(url: getGitHubPub, tag: "getitems",params: {
               'page':page,
               'q':'language:Swift',
               'sort':'stars'
@@ -143,7 +142,7 @@ class _HomePageState extends State<AppHomePage> {
             //返回的数据是否是20，不是的话就没有下一页了
             return dataLength == 30;
           },
-          itemBuilder: (List<Repoitems> data,int index,BuildContext context){
+          itemBuilder: (List<RepoItemsModelEntity> data,int index,BuildContext context){
             return GitPubItems(data[index]);
           },
         ),
@@ -154,7 +153,7 @@ class _HomePageState extends State<AppHomePage> {
 class GitPubItems extends StatefulWidget {
   GitPubItems(@required this.repo):super(key:ValueKey(repo.id));
 
-  final Repoitems repo;
+  final RepoItemsModelEntity repo;
 
   @override
   _GitPubState createState() => _GitPubState();
@@ -169,7 +168,7 @@ class _GitPubState extends State<GitPubItems>{
     return GestureDetector(
       onTap: (){
         Navigator.of(context).push(MaterialPageRoute(builder: (_){
-          return BaseWebPage(url: widget.repo.html_url,title: widget.repo.name,);
+          return BaseWebPage(url: widget.repo.htmlUrl,title: widget.repo.name,);
         }));
       },
       child: Padding(
@@ -179,7 +178,7 @@ class _GitPubState extends State<GitPubItems>{
           shape: BorderDirectional(
               bottom: BorderSide(
                 color: Theme.of(context).dividerColor,
-                width: 0.5,
+                width: 2,
               )
           ),
           child: Padding(
@@ -189,7 +188,7 @@ class _GitPubState extends State<GitPubItems>{
               children: <Widget>[
                 ListTile(
                   dense: true,
-                  leading: ZJAvatar(widget.repo.owner.avatar_url,width: 24,borderRadius: BorderRadius.circular(12)),
+                  leading: ZJAvatar(widget.repo.owner.avatarUrl,width: 24,borderRadius: BorderRadius.circular(12)),
                   title: Text(widget.repo.owner.login,textScaleFactor: 0.9,),
                   subtitle: subtitle,
                   trailing: Text(widget.repo.language ?? ""),
@@ -200,7 +199,7 @@ class _GitPubState extends State<GitPubItems>{
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(widget.repo.fork ? widget.repo.full_name : widget.repo.name,
+                      Text(widget.repo.fork ? widget.repo.fullName : widget.repo.name,
                         style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
@@ -240,9 +239,9 @@ class _GitPubState extends State<GitPubItems>{
           child: Builder(builder: (context){
             var children =  <Widget>[
               Icon(Icons.star),
-              Text(" "+widget.repo.stargazers_count.toString().padRight(padding)),
+              Text(" "+widget.repo.stargazersCount.toString().padRight(padding)),
               Icon(Icons.info_outline),
-              Text(" " + widget.repo.open_issues_count.toString().padRight(padding)),
+              Text(" " + widget.repo.openIssuesCount.toString().padRight(padding)),
               Icon(Icons.next_week),
               Text("" + widget.repo.fork.toString().padRight(padding)),
             ];
