@@ -366,10 +366,18 @@ class HTTPManager {
           T items = JsonConvert.fromJsonAsT<T>(listRepo);
           return items;
         }else if (tempMap.containsKey('error_code') && tempMap.containsKey('result')){
-          Map datasMap = tempMap['result'];
-          List showData = datasMap['data'];
-          T items = JsonConvert.fromJsonAsT<T>(showData);
-          return items;
+          var datasMap = tempMap['result'];
+          if(datasMap is Map){
+            List showData = datasMap['data'];
+            T items = JsonConvert.fromJsonAsT<T>(showData);
+            return items;
+          }else if(datasMap is List){
+            print(datasMap);
+            T items = JsonConvert.fromJsonAsT<T>(datasMap);
+
+            return items;
+          }
+          return response.data as T;
         }
         return response.data as T;
       }

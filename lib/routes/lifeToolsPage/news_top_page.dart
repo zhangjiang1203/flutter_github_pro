@@ -156,10 +156,10 @@ class NewsTopItemWidget extends StatelessWidget{
     if(newsModel.thumbnailPicS != null){
       imageURls.add(newsModel.thumbnailPicS);
     }
-    if(newsModel.thumbnailPicS02!= null){
+    if(newsModel.thumbnailPicS02 != null){
       imageURls.add(newsModel.thumbnailPicS02);
     }
-    if(newsModel.thumbnailPicS03!= null){
+    if(newsModel.thumbnailPicS03 != null){
       imageURls.add(newsModel.thumbnailPicS03);
     }
     return GestureDetector(
@@ -185,7 +185,7 @@ class NewsTopItemWidget extends StatelessWidget{
               children: <Widget>[
                 Text(newsModel.title,style: TextStyle(fontSize: 18,fontWeight:FontWeight.w500 ),),
                 Padding(
-                  padding: const EdgeInsets.only(top: 5,bottom: 5),
+                  padding: const EdgeInsets.only(top: 5,bottom: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: imageURls.map((e){
@@ -194,19 +194,21 @@ class NewsTopItemWidget extends StatelessWidget{
                         child: CachedNetworkImage(
                           imageUrl: e,
                           width: (width-50)/3,
-
                           fit: BoxFit.fitHeight,
                         ),
                       );
                     } ).toList(),
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Text(newsModel.date),
-                  ],
-                )
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Text(newsModel.date),
+                    ],
+                  )
+                ),
               ],
             ),
           ),
