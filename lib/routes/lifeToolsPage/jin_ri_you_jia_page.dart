@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
 import 'package:fluttergithubpro/HttpManager/RequestURLPath.dart';
+import 'package:fluttergithubpro/common/index.dart';
 import 'package:fluttergithubpro/models/today_oil_price_model_entity.dart';
 import 'dart:math';
 class JinRiYouJiaPage extends StatefulWidget {
@@ -28,7 +29,7 @@ class _JinRiYouJiaState extends State<JinRiYouJiaPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("jin_ri_you_jia"),
+          title: Text(Translations.of(context).text("today_oil")),
         ),
         body: FutureBuilder(
           future: _getOilPrice(),

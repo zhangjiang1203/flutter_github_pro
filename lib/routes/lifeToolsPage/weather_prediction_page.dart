@@ -5,6 +5,7 @@
 */
 
 import 'package:flutter/material.dart';
+import 'package:fluttergithubpro/common/Translations.dart';
 
 class WeatherPredictionPage extends StatefulWidget {
   WeatherPredictionPage({Key key}) : super(key: key);
@@ -19,7 +20,7 @@ class _WeatherPredictionState extends State<WeatherPredictionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("weather_prediction_page"),
+          title: Text(Translations.of(context).text("weather_pro")),
         ),
         body: Center(
           child: Column(),

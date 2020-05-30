@@ -5,6 +5,7 @@
 */
 
 import 'package:flutter/material.dart';
+import 'package:fluttergithubpro/common/index.dart';
 
 class CarLicencePage extends StatefulWidget {
   CarLicencePage({Key key}) : super(key: key);
@@ -19,7 +20,7 @@ class _CarLicenceState extends State<CarLicencePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("car_licence_page"),
+          title: Text(Translations.of(context).text("car_test")),
         ),
         body: Center(
           child: Column(),

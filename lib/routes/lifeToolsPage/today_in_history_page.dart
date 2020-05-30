@@ -41,7 +41,7 @@ class _TodayInHistoryState extends State<TodayInHistoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("today_in_history_page"),
+          title: Text(Translations.of(context).text("history_today")),
           actions: <Widget>[
             IconButton(icon: Icon(Icons.calendar_today),
               onPressed: () async {

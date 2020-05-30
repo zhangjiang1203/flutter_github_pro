@@ -5,6 +5,7 @@
 */
 
 import 'package:flutter/material.dart';
+import 'package:fluttergithubpro/common/index.dart';
 
 class ChengYuCiDianPage extends StatefulWidget {
   ChengYuCiDianPage({Key key}) : super(key: key);
@@ -19,7 +20,7 @@ class _ChengYuCiDianState extends State<ChengYuCiDianPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("cheng_yu_ci_dian_page"),
+          title: Text(Translations.of(context).text("cheng_yu_ci_dian_page")),
         ),
         body: Center(
           child: Column(),

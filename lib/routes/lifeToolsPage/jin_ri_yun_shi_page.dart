@@ -5,6 +5,7 @@
 */
 
 import 'package:flutter/material.dart';
+import 'package:fluttergithubpro/common/Translations.dart';
 
 class JinRiYunShiPage extends StatefulWidget {
   JinRiYunShiPage({Key key}) : super(key: key);
@@ -19,7 +20,7 @@ class _JinRiYunShiState extends State<JinRiYunShiPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("jin_ri_yun_shi"),
+          title: Text(Translations.of(context).text("constellation")),
         ),
         body: Center(
           child: Column(),
