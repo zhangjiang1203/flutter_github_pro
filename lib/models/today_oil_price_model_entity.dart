@@ -4,11 +4,11 @@ import 'package:fluttergithubpro/generated/json/base/json_filed.dart';
 class TodayOilPriceModelEntity with JsonConvert<TodayOilPriceModelEntity> {
 	String city;
 	@JSONField(name: "92h")
-	String x92h;
+	String oil_92h;
 	@JSONField(name: "95h")
-	String x95h;
+	String oil_95h;
 	@JSONField(name: "98h")
-	String x98h;
+	String oil_98h;
 	@JSONField(name: "0h")
-	String x0h;
+	String oil_0h;
 }

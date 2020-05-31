@@ -3,15 +3,12 @@
 * on 2020/5/25 10:59 AM
 * copyright on zhangjiang
 */
-
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
 import 'package:fluttergithubpro/HttpManager/RequestURLPath.dart';
 import 'package:fluttergithubpro/common/index.dart';
-import 'package:fluttergithubpro/models/jokes_data_model_entity.dart';
 import 'package:fluttergithubpro/models/today_oil_price_model_entity.dart';
-import 'dart:math';
 
 class JinRiYouJiaPage extends StatefulWidget {
   JinRiYouJiaPage({Key key}) : super(key: key);
@@ -43,9 +40,11 @@ class _JinRiYouJiaState extends State<JinRiYouJiaPage> {
                     child: Text('获取油价信息失败',textScaleFactor: 2,),
                   );
                 }else{
+
                   List<TodayOilPriceModelEntity> showData = snapshot.data;
+                  print("油价信息成功==${showData.length}");
                   return Container(
-                    width: MediaQuery.of(context).size.width - 40,
+                    width: MediaQuery.of(context).size.width - 20,
                     child: _buildChatWidget(showData)
                   );
                 }
@@ -80,14 +79,17 @@ class _JinRiYouJiaState extends State<JinRiYouJiaPage> {
       titlesData: FlTitlesData(
         bottomTitles: SideTitles(
           showTitles: true,
-          reservedSize: 9,
+          reservedSize: 7,
           textStyle: const TextStyle(
             color: Color(0xff72719b),
             fontWeight: FontWeight.bold,
-            fontSize: 7,
+            fontSize: 6,
           ),
-          margin: 10,
+          margin: 2,
           getTitles: (value) {
+            if (value > showData.length - 1){
+               return "";
+            }
             return showData[value.toInt()].city;
           },
         ),
@@ -96,7 +98,7 @@ class _JinRiYouJiaState extends State<JinRiYouJiaPage> {
           textStyle: const TextStyle(
             color: Color(0xff75729e),
             fontWeight: FontWeight.bold,
-            fontSize: 10,
+            fontSize: 8,
           ),
           getTitles: (value) {
             switch (value.toInt()) {
@@ -125,10 +127,14 @@ class _JinRiYouJiaState extends State<JinRiYouJiaPage> {
       ),
       borderData: FlBorderData(
           show: true,
-          border: Border.all(color: Color(0xff4e4965), width: 1,)
+          border: Border(
+            bottom: BorderSide(
+              color: Color(0xff4e4965), width: 1,
+            )
+          )
       ),
       minX: 0,
-      maxX: 21,
+      maxX: showData.length.toDouble(),
       maxY: 7,
       minY: 0,
       lineBarsData: linesBarData2(showData),
@@ -137,8 +143,45 @@ class _JinRiYouJiaState extends State<JinRiYouJiaPage> {
 
   List<LineChartBarData> linesBarData2(List<TodayOilPriceModelEntity> showData) {
     return [LineChartBarData(
-      spots: showData.asMap().keys.map((e) =>FlSpot(e.toDouble(),showData[e].x0h.toDouble())).toList(),
-    )];
+      spots: showData.asMap().keys.map((e) =>FlSpot(e.toDouble(),double.parse(showData[e].oil_0h))).toList(),
+      isCurved: true,
+      curveSmoothness: 0,
+      colors: const [Colors.red],
+      isStrokeCapRound: true,
+      dotData: FlDotData(show: false),
+      belowBarData: BarAreaData(show: false),
+      barWidth: 4,
+    ),
+      LineChartBarData(
+        spots: showData.asMap().keys.map((e) =>FlSpot(e.toDouble(),double.parse(showData[e].oil_92h))).toList(),
+        isCurved: true,
+        curveSmoothness: 0,
+        colors: const [Colors.green],
+        isStrokeCapRound: true,
+        dotData: FlDotData(show: false),
+        belowBarData: BarAreaData(show: false),
+        barWidth: 4,
+      ),
+      LineChartBarData(
+        spots: showData.asMap().keys.map((e) =>FlSpot(e.toDouble(),double.parse(showData[e].oil_95h))).toList(),
+        isCurved: true,
+        curveSmoothness: 0,
+        colors: const [Colors.blue],
+        isStrokeCapRound: true,
+        dotData: FlDotData(show: false),
+        belowBarData: BarAreaData(show: false),
+        barWidth: 4,
+      ),
+      LineChartBarData(
+        spots: showData.asMap().keys.map((e) =>FlSpot(e.toDouble(),double.parse(showData[e].oil_98h))).toList(),
+        isCurved: true,
+        curveSmoothness: 0,
+        colors: const [Colors.yellow],
+        isStrokeCapRound: true,
+        dotData: FlDotData(show: false),
+        belowBarData: BarAreaData(show: false),
+        barWidth: 4,
+      )];
 
      return [LineChartBarData(
         spots: [

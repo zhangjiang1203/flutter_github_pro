@@ -360,7 +360,7 @@ class HTTPManager {
         return jsonParse(response.data);
       }else{
         Map<String,dynamic> tempMap = response.data;
-        print("网络返回数据===${tempMap.keys}");
+//        print("网络返回数据===${tempMap.keys}");
         if(tempMap.containsKey('items')){
           List listRepo = tempMap['items'];
           T items = JsonConvert.fromJsonAsT<T>(listRepo);
@@ -372,9 +372,8 @@ class HTTPManager {
             T items = JsonConvert.fromJsonAsT<T>(showData);
             return items;
           }else if(datasMap is List){
-            print(datasMap);
+//            print(datasMap);
             T items = JsonConvert.fromJsonAsT<T>(datasMap);
-
             return items;
           }
           return response.data as T;
