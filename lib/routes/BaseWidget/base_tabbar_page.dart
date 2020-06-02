@@ -26,18 +26,13 @@ class _BaseTabbarPageState extends State<BaseTabbarPage> with TickerProviderStat
   LifePage _lifePage = LifePage();
   MinePage _minePage = MinePage();
 
-//  MainPageProvide _provide;
-
   TabController _tabController;
-
-  int indexPage = 0;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _tabController = TabController(length: 3,vsync: this);
-//    _provide = MainPageProvide.instance;
   }
 
   @override
@@ -50,7 +45,7 @@ class _BaseTabbarPageState extends State<BaseTabbarPage> with TickerProviderStat
   ///初始化所有的tabbar
   Widget _initTabbarView() {
     return IndexedStack(
-      index: indexPage,
+      index: Provider.of<TabbarChooseNotifier>(context).selectIndex,
       children: <Widget>[
         _homePage,
         _lifePage,
@@ -66,11 +61,9 @@ class _BaseTabbarPageState extends State<BaseTabbarPage> with TickerProviderStat
       ),
       child: BottomNavigationBar(
             fixedColor: Theme.of(context).primaryColor,
-            currentIndex: indexPage,
+            currentIndex: Provider.of<TabbarChooseNotifier>(context).selectIndex,
             onTap: (index){
-              setState(() {
-                indexPage = index;
-              });
+              Provider.of<TabbarChooseNotifier>(context).selectIndex = index;
             },
             type: BottomNavigationBarType.fixed,
             items: [
@@ -84,9 +77,36 @@ class _BaseTabbarPageState extends State<BaseTabbarPage> with TickerProviderStat
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+
+    return  Scaffold(
         body: _initTabbarView(),
         bottomNavigationBar: _initTabBarItemsView(),
-      );
+    );
+  }
+}
+
+
+//添加点击provider的通知
+class TabbarChooseNotifier extends ChangeNotifier {
+
+//  factory TabbarChooseNotifier() => _getInstance();
+//  static TabbarChooseNotifier get instance => _getInstance();
+//  static TabbarChooseNotifier _instance;
+//  static TabbarChooseNotifier _getInstance() {
+//    if (_instance == null){
+//      _instance = new TabbarChooseNotifier._internal();
+//    }
+//  }
+//
+//  TabbarChooseNotifier._internal() {
+//    //初始化操作
+//  }
+
+
+  int _selectIndex = 0;
+  int get selectIndex => _selectIndex;
+  set selectIndex(int index){
+    _selectIndex = index;
+    notifyListeners();
   }
 }

@@ -51,7 +51,8 @@ class _MyAppState extends State<MyApp> {
       providers: <SingleChildCloneableWidget>[
         ChangeNotifierProvider.value(value: UserProvider()),
         ChangeNotifierProvider.value(value: ThemeProvider()),
-        ChangeNotifierProvider.value(value: LocaleProvider())
+        ChangeNotifierProvider.value(value: LocaleProvider()),
+        ChangeNotifierProvider.value(value: TabbarChooseNotifier())
       ],
       child: Consumer2<ThemeProvider,LocaleProvider>(
           builder: (BuildContext context,themeProvider,localeProvider,Widget child){

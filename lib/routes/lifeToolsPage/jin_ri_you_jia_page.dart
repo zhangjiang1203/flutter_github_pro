@@ -98,7 +98,7 @@ class _JinRiYouJiaState extends State<JinRiYouJiaPage> {
           textStyle: const TextStyle(
             color: Color(0xff75729e),
             fontWeight: FontWeight.bold,
-            fontSize: 8,
+            fontSize: 6,
           ),
           getTitles: (value) {
             switch (value.toInt()) {
