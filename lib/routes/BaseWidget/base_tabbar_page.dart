@@ -37,29 +37,23 @@ class _BaseTabbarPageState extends State<BaseTabbarPage> {
   }
 
   ///初始化所有的tabbar
-  Widget _initTabbarView() {
-    return Consumer<TabbarChooseNotifier>(
-      builder: (context,tabbar,child){
-        return  IndexedStack(
-          index: tabbar.selectIndex,
-          children: <Widget>[
-            _homePage,
-            _lifePage,
-            _minePage],
-        );
-      },
+  Widget _initTabbarView(TabbarChooseNotifier tabbar) {
+    return IndexedStack(
+      index: tabbar.selectIndex,
+      children: <Widget>[
+        _homePage,
+        _lifePage,
+        _minePage],
     );
   }
 
-  Widget _initTabBarItemsView() {
+  Widget _initTabBarItemsView(TabbarChooseNotifier tabbar) {
     return Theme(
       data: new ThemeData(
           canvasColor: Colors.white,
           textTheme: Theme.of(context).textTheme.copyWith(caption:TextStyle(color: Colors.grey))
       ),
-      child:Consumer<TabbarChooseNotifier>(
-        builder: (context,tabbar,child) {
-          return BottomNavigationBar(
+      child: BottomNavigationBar(
             fixedColor: Theme.of(context).primaryColor,
             currentIndex: 0,
             onTap: (index) {
@@ -74,8 +68,7 @@ class _BaseTabbarPageState extends State<BaseTabbarPage> {
               BottomNavigationBarItem(icon: Icon(Icons.settings),
                   title: Text(Translations.of(context).text("mine_page"))),
             ],
-          );
-        }),
+          ),
     );
 
   }
@@ -84,10 +77,14 @@ class _BaseTabbarPageState extends State<BaseTabbarPage> {
   Widget build(BuildContext context) {
       return ChangeNotifierProvider<TabbarChooseNotifier>(
         create: (context) => TabbarChooseNotifier() ,
-        child: Scaffold(
-          body: _initTabbarView(),
-          bottomNavigationBar: _initTabBarItemsView(),
-        ),
+        child: Consumer<TabbarChooseNotifier>(
+          builder: (context,tabbar,child){
+            return Scaffold(
+              body: _initTabbarView(tabbar),
+              bottomNavigationBar: _initTabBarItemsView(tabbar),
+            );
+          },
+        )
       );
   }
 }
