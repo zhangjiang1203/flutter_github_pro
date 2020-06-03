@@ -6,15 +6,12 @@
 
 import 'dart:core';
 import 'dart:async';
-import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_common_utils/http/http_error.dart';
-import 'package:flutter_common_utils/http/http_manager.dart';
 import 'package:flutter_common_utils/log_util.dart';
 import 'package:fluttergithubpro/generated/json/base/json_convert_content.dart';
-import 'package:fluttergithubpro/routes/BaseWidget/common_provider.dart';
 import '../models/index.dart';
 
 
