@@ -55,7 +55,7 @@ class _BaseTabbarPageState extends State<BaseTabbarPage> {
       ),
       child: BottomNavigationBar(
             fixedColor: Theme.of(context).primaryColor,
-            currentIndex: 0,
+            currentIndex: tabbar.selectIndex,
             onTap: (index) {
               tabbar.selectIndex = index;
             },
