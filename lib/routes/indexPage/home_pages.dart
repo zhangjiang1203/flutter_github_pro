@@ -9,11 +9,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
 import 'package:fluttergithubpro/HttpManager/index.dart';
+import 'package:fluttergithubpro/routes/Login/login_page.dart';
 import '../Login/my_drawer.dart';
 import '../../models/index.dart';
-import 'package:flukit/flukit.dart';
 import '../../common/index.dart';
 import '../BaseWidget/base_web_page.dart';
+import '../../widgets/my_infinite_listview.dart';
 
 GlobalKey _button = GlobalKey();
 
@@ -28,6 +29,13 @@ class _HomePageState extends State<AppHomePage> {
 
   ScrollController _controller ;
   bool _isShowBtn;
+  //选中的语言
+  String _chooseLang;
+  //缓存数据
+  List<RepoItemsModelEntity> _itemsData;
+
+  GlobalKey<RefreshIndicatorState> refreshIndicatorKey =
+  new GlobalKey<RefreshIndicatorState>(debugLabel: "home_page");
 
   PopupMenuButton _popupMenuButton(){
     return PopupMenuButton(
@@ -36,19 +44,18 @@ class _HomePageState extends State<AppHomePage> {
         print("取消了");
       },
       onSelected: (value){
-        if (value == "app_theme"){
-          Navigator.pushNamed(context,"theme_change_route");
-        }else if (value == "app_language"){
-          Navigator.pushNamed(context,"Change_local_route");
-        }else if (value == "app_battery"){
-          Navigator.pushNamed(context,"get_battery_level");
-        }
+        if(!mounted) return;
+        _chooseLang = value;
+        _controller.animateTo(0, duration: const Duration(milliseconds: 200), curve: Curves.ease);
+        //更新对应的listView
+        refreshIndicatorKey.currentState.show();
       },
     );
   }
 
    List<PopupMenuEntry<String>> _getPopMenuButton(BuildContext context) {
-    return ["app_theme","app_language","app_battery"].map((e) => PopupMenuItem<String>(value: e,child: Text(Translations.of(context).text(e)),)).toList();
+    return ["Swift","Objective-C","Python","Dart","JavaScript","Java","Ruby","Shell","C","C++"]
+        .map((e) => PopupMenuItem<String>(value: e,child: Text(e),)).toList();
   }
 
   void _showPopMenu(BuildContext context) {
@@ -76,9 +83,13 @@ class _HomePageState extends State<AppHomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    print("开始初始化");
+    _chooseLang = 'Swift';
+    _itemsData = [];
     _isShowBtn = false;
     _controller = new ScrollController();
     _controller.addListener(() {
+      print("滚动距离===${_controller.offset}");
       if(_controller.offset < 1000 && _isShowBtn){
         setState(() {
           _isShowBtn = false;
@@ -89,11 +100,19 @@ class _HomePageState extends State<AppHomePage> {
         });
       }
     });
+  }
 
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    print("开始释放");
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    print("home_page 开始");
     return Scaffold(
       drawer: MyDrawer(),
       appBar: AppBar(
@@ -116,31 +135,82 @@ class _HomePageState extends State<AppHomePage> {
     );
   }
 
+  Future<List<RepoItemsModelEntity>> _getItemData({bool isrefresh:true}) async{
+    if (isrefresh){
+      _itemsData.clear();
+    }
+    var itemsData = await HTTPManager().getAsync<List<RepoItemsModelEntity>>(url: getGitHubPub, tag: "getitems",params: {
+      'page':1,
+      'q':'language:$_chooseLang',
+      'sort':'stars'
+    },options: Options(extra: {"refresh":isrefresh}));
+    //包含的数据
+    _itemsData.addAll(itemsData);
+    return Future<List<RepoItemsModelEntity>>.value(_itemsData);
+  }
+
   //创建视图
   Widget _buildBody() {
+//    return Center(
+//      child: Text('你好'),
+//    );
     //登录先不做
-//    Profile profile = Global.profile;
-//    if (profile.token != null){
-//      return Center(
-//        child: RaisedButton(
-//          child: Text("登录"),
-//          onPressed: () => Navigator.of(context).pushNamed("Login_route"),
-//        ),
-//      );
+    Profile profile = Global.profile;
+    if (profile.token == null) {
+      return LoginRoute();
+    }
 //    }else{
+//     return SafeArea(
+//       child: Center(
+//         child: FutureBuilder<List<RepoItemsModelEntity>>(
+//           initialData: _itemsData,
+//           future: _getItemData(),
+//           builder: (context,snapshot){
+//              if(snapshot.connectionState == ConnectionState.done){
+//                if(snapshot.hasError){
+//                  return Text('网络请求错误请重试');
+//                }
+//                if(snapshot.data.length <= 0){
+//                  return CircularProgressIndicator();
+//                }
+//                return ListView.builder(
+//                    controller: _controller,
+//                    itemBuilder: (context,index) {
+//                      return GitPubItems(snapshot.data[index]);
+//                    });
+//              }else{
+//                return CircularProgressIndicator();
+//              }
+//           },
+//         ),
+//       ),
+//     );
+
       return SafeArea(
-        child: InfiniteListView(
+        child: MyInfiniteListView(
+          emptyBuilder: (refresh,context){
+            return Center(
+              child: Column(
+
+              ),
+            );
+          },
+          key: refreshIndicatorKey,
           scrollController: _controller,
+//          sliver: true,
           onRetrieveData: (int page,List<RepoItemsModelEntity> items,bool refresh) async{
             var itemsData = await HTTPManager().getAsync<List<RepoItemsModelEntity>>(url: getGitHubPub, tag: "getitems",params: {
               'page':page,
-              'q':'language:Swift',
+              'q':'language:$_chooseLang',
               'sort':'stars'
             },options: Options(extra: {"refresh":refresh}));
             var dataLength = itemsData.length;
             items.addAll(itemsData);
             //返回的数据是否是20，不是的话就没有下一页了
             return dataLength == 30;
+          },
+          initFailBuilder: (refresh,error,context){
+            return Center(child:Text(error.toString()));
           },
           itemBuilder: (List<RepoItemsModelEntity> data,int index,BuildContext context){
             return GitPubItems(data[index]);
@@ -208,8 +278,11 @@ class _GitPubState extends State<GitPubItems>{
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 8,bottom: 12),
-                        child: widget.repo.description != null ? Text(widget.repo.description,maxLines: 3,style: TextStyle(height:1.15,color:Colors.blueGrey[700],fontSize: 13)) :
-                        Text(Translations.of(context).text("no_description"),style: TextStyle(fontStyle: FontStyle.italic,color: Colors.grey[700]),),
+                        child: widget.repo.description != null ?
+                        Text(widget.repo.description,maxLines: 3,
+                            style: TextStyle(height:1.15,color:Colors.blueGrey[700],fontSize: 13)) :
+                        Text(Translations.of(context).text("no_description"),
+                          style: TextStyle(fontStyle: FontStyle.italic,color: Colors.grey[700]),),
                       ),
                     ],
                   ),

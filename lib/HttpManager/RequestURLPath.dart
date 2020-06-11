@@ -4,8 +4,18 @@
 * copyright on zhangjiang
 */
 
-///github 请求地址
-const String getGitHubPub = "https://api.github.com/search/repositories";
+
+const String GithubHomeURL = "https://api.github.com/";
+///获取认证信息,不支持邮箱登录
+const String githubAuthirizations = GithubHomeURL + "authorizations";
+///github 根据语言选择搜索仓库
+const String getGitHubPub = GithubHomeURL + "search/repositories";
+
+
+
+
+
+
 ///新闻类请求地址
 const String getNewsData = 'http://v.juhe.cn/toutiao/index?key=c7655cd96dd673d8de4b3f043d23f3ef';
 ///星座请求地址

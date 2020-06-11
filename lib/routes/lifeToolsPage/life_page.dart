@@ -61,6 +61,8 @@ class _LifePage extends State<LifePage> {
 
   @override
   Widget build(BuildContext context) {
+
+    print("life_page开始编译");
     return Material(
       elevation: 0,
       child: CustomScrollView(

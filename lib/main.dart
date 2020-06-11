@@ -89,7 +89,7 @@ class _MyAppState extends State<MyApp> {
               },
               ///多语言支持---end
               /// 初始化当前的路由，命名路由
-              initialRoute: "/",
+              initialRoute: Global.profile.token == null ? "Login_route" : "/",
               /// 配置对应的路由信息
               routes: _setUpWidgetRoutes(context),
               /// 判断路由跳转的权限

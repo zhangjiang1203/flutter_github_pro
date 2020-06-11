@@ -73,6 +73,8 @@ class _NewsTopPageState extends State<NewsTopPage> with SingleTickerProviderStat
         ),
         body:SafeArea(
           child: TabBarView(
+            //是否可以滚动
+//            physics: NeverScrollableScrollPhysics(),
             controller: _tabController,
             children: tabBarData.keys.map((e){
               return Center(
@@ -107,11 +109,6 @@ class _NewsListPageState extends State<NewsListPage>{
   void initState() {
     // TODO: implement initState
     super.initState();
-
-    Map temp = {"name":"123","age":"23",'data':[{"address":"123","email":"897978"},{"address":"dfd","email":"342"}]};
-    print("是否包含${temp.containsKey('data')}");
-    List<Map<String,dynamic>> list = temp['data'] ;
-    print("当前的===$list");
   }
 
   @override
