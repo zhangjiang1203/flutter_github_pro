@@ -8,7 +8,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
 import 'package:fluttergithubpro/HttpManager/RequestURLPath.dart';
 import 'package:fluttergithubpro/common/index.dart';
-import 'package:fluttergithubpro/models/today_oil_price_model_entity.dart';
+import 'package:fluttergithubpro/models/index.dart';
 
 class JinRiYouJiaPage extends StatefulWidget {
   JinRiYouJiaPage({Key key}) : super(key: key);
@@ -20,7 +20,7 @@ class JinRiYouJiaPage extends StatefulWidget {
 class _JinRiYouJiaState extends State<JinRiYouJiaPage> {
 
   Future _getOilPrice(){
-    return HTTPManager().getAsync<List<TodayOilPriceModelEntity>>(url: getTodayOilData, tag: "getTodayOilPrice");
+    return HTTPManager().getAsync<List<TodayOilPrice>>(url: URLAPI.getTodayOilData);
   }
 
 
@@ -41,7 +41,7 @@ class _JinRiYouJiaState extends State<JinRiYouJiaPage> {
                   );
                 }else{
 
-                  List<TodayOilPriceModelEntity> showData = snapshot.data;
+                  List<TodayOilPrice> showData = snapshot.data;
                   print("油价信息成功==${showData.length}");
                   return Container(
                     width: MediaQuery.of(context).size.width - 20,
@@ -57,9 +57,9 @@ class _JinRiYouJiaState extends State<JinRiYouJiaPage> {
     );
   }
 
-  Widget _buildChatWidget(List<TodayOilPriceModelEntity> showData){
+  Widget _buildChatWidget(List<TodayOilPrice> showData){
     //处理数据
-    for (TodayOilPriceModelEntity model in showData){
+    for (TodayOilPrice model in showData){
 
     }
 
@@ -68,7 +68,7 @@ class _JinRiYouJiaState extends State<JinRiYouJiaPage> {
     );
   }
 
-  LineChartData sampleData2(List<TodayOilPriceModelEntity> showData) {
+  LineChartData sampleData2(List<TodayOilPrice> showData) {
     return LineChartData(
       lineTouchData: LineTouchData(
         enabled: false,
@@ -141,7 +141,7 @@ class _JinRiYouJiaState extends State<JinRiYouJiaPage> {
     );
   }
 
-  List<LineChartBarData> linesBarData2(List<TodayOilPriceModelEntity> showData) {
+  List<LineChartBarData> linesBarData2(List<TodayOilPrice> showData) {
     return [LineChartBarData(
       spots: showData.asMap().keys.map((e) =>FlSpot(e.toDouble(),double.parse(showData[e].oil_0h))).toList(),
       isCurved: true,

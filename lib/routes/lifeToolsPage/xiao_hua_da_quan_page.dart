@@ -7,7 +7,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
 import 'package:fluttergithubpro/HttpManager/index.dart';
-import 'package:fluttergithubpro/models/jokes_data_model_entity.dart';
+import '../../models/index.dart';
 import '../../common/Translations.dart';
 
 class XiaoHuaDaQuanPage extends StatefulWidget {
@@ -20,7 +20,7 @@ class XiaoHuaDaQuanPage extends StatefulWidget {
 class _XiaoHuaDaQuanState extends State<XiaoHuaDaQuanPage> {
   Future _getJokeData() {
     int time = DateTime.now().millisecondsSinceEpoch ~/ 1000;
-    return HTTPManager().getAsync<List<JokesDataModelEntity>>(url: getJokesData,params: {'time':time}, tag: "getJokesData");
+    return HTTPManager().getAsync<List<JokesData>>(url: URLAPI.getJokesData,params: {'time':time});
   }
 
   @override
@@ -39,7 +39,7 @@ class _XiaoHuaDaQuanState extends State<XiaoHuaDaQuanPage> {
                     child: Text('获取笑话信息失败',textScaleFactor: 2,),
                   );
                 }else{
-                  List<JokesDataModelEntity> showData = snapshot.data;
+                  List<JokesData> showData = snapshot.data;
                   return ListView.builder(
                       itemCount: showData.length,
                       itemBuilder: (context,index){

@@ -32,7 +32,7 @@ class _HomePageState extends State<AppHomePage> {
   //选中的语言
   String _chooseLang;
   //缓存数据
-  List<RepoItemsModelEntity> _itemsData;
+  List<Repoitems> _itemsData;
 
   GlobalKey<RefreshIndicatorState> refreshIndicatorKey =
   new GlobalKey<RefreshIndicatorState>(debugLabel: "home_page");
@@ -135,18 +135,18 @@ class _HomePageState extends State<AppHomePage> {
     );
   }
 
-  Future<List<RepoItemsModelEntity>> _getItemData({bool isrefresh:true}) async{
+  Future<List<Repoitems>> _getItemData({bool isrefresh:true}) async{
     if (isrefresh){
       _itemsData.clear();
     }
-    var itemsData = await HTTPManager().getAsync<List<RepoItemsModelEntity>>(url: getGitHubPub, tag: "getitems",params: {
+    var itemsData = await HTTPManager().getAsync<List<Repoitems>>(url: URLAPI.getGitHubPub,params: {
       'page':1,
       'q':'language:$_chooseLang',
       'sort':'stars'
     },options: Options(extra: {"refresh":isrefresh}));
     //包含的数据
     _itemsData.addAll(itemsData);
-    return Future<List<RepoItemsModelEntity>>.value(_itemsData);
+    return Future<List<Repoitems>>.value(_itemsData);
   }
 
   //创建视图
@@ -155,10 +155,10 @@ class _HomePageState extends State<AppHomePage> {
 //      child: Text('你好'),
 //    );
     //登录先不做
-    Profile profile = Global.profile;
-    if (profile.token == null) {
-      return LoginRoute();
-    }
+//    Profile profile = Global.profile;
+//    if (profile.token == null) {
+//      return LoginRoute();
+//    }
 //    }else{
 //     return SafeArea(
 //       child: Center(
@@ -198,8 +198,8 @@ class _HomePageState extends State<AppHomePage> {
           key: refreshIndicatorKey,
           scrollController: _controller,
 //          sliver: true,
-          onRetrieveData: (int page,List<RepoItemsModelEntity> items,bool refresh) async{
-            var itemsData = await HTTPManager().getAsync<List<RepoItemsModelEntity>>(url: getGitHubPub, tag: "getitems",params: {
+          onRetrieveData: (int page,List<Repoitems> items,bool refresh) async{
+            var itemsData = await HTTPManager().getAsync<List<Repoitems>>(url: URLAPI.getGitHubPub,params: {
               'page':page,
               'q':'language:$_chooseLang',
               'sort':'stars'
@@ -212,7 +212,7 @@ class _HomePageState extends State<AppHomePage> {
           initFailBuilder: (refresh,error,context){
             return Center(child:Text(error.toString()));
           },
-          itemBuilder: (List<RepoItemsModelEntity> data,int index,BuildContext context){
+          itemBuilder: (List<Repoitems> data,int index,BuildContext context){
             return GitPubItems(data[index]);
           },
         ),
@@ -223,7 +223,7 @@ class _HomePageState extends State<AppHomePage> {
 class GitPubItems extends StatefulWidget {
   GitPubItems(@required this.repo):super(key:ValueKey(repo.id));
 
-  final RepoItemsModelEntity repo;
+  final Repoitems repo;
 
   @override
   _GitPubState createState() => _GitPubState();
@@ -238,7 +238,7 @@ class _GitPubState extends State<GitPubItems>{
     return GestureDetector(
       onTap: (){
         Navigator.of(context).push(MaterialPageRoute(builder: (_){
-          return BaseWebPage(url: widget.repo.htmlUrl,title: widget.repo.name,);
+          return BaseWebPage(url: widget.repo.html_url,title: widget.repo.name,);
         }));
       },
       child: Padding(
@@ -258,7 +258,7 @@ class _GitPubState extends State<GitPubItems>{
               children: <Widget>[
                 ListTile(
                   dense: true,
-                  leading: ZJAvatar(widget.repo.owner.avatarUrl,width: 24,borderRadius: BorderRadius.circular(12)),
+                  leading: ZJAvatar(widget.repo.owner.avatar_url,width: 24,borderRadius: BorderRadius.circular(12)),
                   title: Text(widget.repo.owner.login,textScaleFactor: 0.9,),
                   subtitle: subtitle,
                   trailing: Text(widget.repo.language ?? ""),
@@ -269,7 +269,7 @@ class _GitPubState extends State<GitPubItems>{
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(widget.repo.fork ? widget.repo.fullName : widget.repo.name,
+                      Text(widget.repo.fork ? widget.repo.full_name : widget.repo.name,
                         style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
@@ -312,9 +312,9 @@ class _GitPubState extends State<GitPubItems>{
           child: Builder(builder: (context){
             var children =  <Widget>[
               Icon(Icons.star),
-              Text(" "+widget.repo.stargazersCount.toString().padRight(padding)),
+              Text(" "+widget.repo.stargazers_count.toString().padRight(padding)),
               Icon(Icons.info_outline),
-              Text(" " + widget.repo.openIssuesCount.toString().padRight(padding)),
+              Text(" " + widget.repo.open_issues_count.toString().padRight(padding)),
               Icon(Icons.next_week),
               Text("" + widget.repo.fork.toString().padRight(padding)),
             ];

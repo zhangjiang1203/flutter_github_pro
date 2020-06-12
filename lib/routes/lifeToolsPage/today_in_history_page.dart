@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
 import 'package:fluttergithubpro/HttpManager/index.dart';
 import 'package:fluttergithubpro/common/index.dart';
-import 'package:fluttergithubpro/models/today_history_model_entity.dart';
+import '../../models/index.dart';
 
 class TodayInHistoryPage extends StatefulWidget {
   TodayInHistoryPage({Key key}) : super(key: key);
@@ -22,7 +22,7 @@ class _TodayInHistoryState extends State<TodayInHistoryPage> {
   String dateTime = '1/1';
 
   Future _getTodayInHistoryData(){
-    return HTTPManager().getAsync<List<TodayHistoryModelEntity>>(url: getTodayHistoryData,params: {'date':dateTime}, tag: 'getTodayHistoryData');
+    return HTTPManager().getAsync<List<TodayInHistory>>(url: URLAPI.getTodayHistoryData,params: {'date':dateTime});
   }
 
   //日历选择器
@@ -67,7 +67,7 @@ class _TodayInHistoryState extends State<TodayInHistoryPage> {
                   child: Text('获取油价信息失败',textScaleFactor: 2,),
                 );
               }else{
-                List<TodayHistoryModelEntity> showData = snapshot.data;
+                List<TodayInHistory> showData = snapshot.data;
                 return ListView.builder(
                     itemCount: showData.length,
                     itemBuilder: (context,index){
@@ -86,7 +86,7 @@ class _TodayInHistoryState extends State<TodayInHistoryPage> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text(showData[index].date,style: TextStyle(fontSize: 15,color: ZJColor.StringColor('999999'))),
+                                Text(showData[index].des,style: TextStyle(fontSize: 15,color: ZJColor.StringColor('999999'))),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 5),
                                   child: Text(showData[index].title,style: TextStyle(fontSize: 18),),

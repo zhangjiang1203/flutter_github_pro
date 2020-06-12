@@ -7,6 +7,7 @@
 import 'package:dio/dio.dart';
 import 'dart:collection';
 import '../common/index.dart';
+import 'CommentUse.dart';
 
 //继承interceptor
 class NetCacheInterceptor extends Interceptor {
@@ -71,4 +72,17 @@ class NetCacheInterceptor extends Interceptor {
     }
     return response;
   }
+}
+
+
+class HeaderInterceptor extends Interceptor {
+
+  @override
+  Future onRequest(RequestOptions options) async {
+    if(Global.profile.token != null){
+      options.headers.addAll({"Authorization":Global.profile.token});
+    }
+    return options;
+  }
+
 }

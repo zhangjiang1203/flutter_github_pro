@@ -11,8 +11,6 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_common_utils/http/http_error.dart';
 import 'package:flutter_common_utils/log_util.dart';
-import 'package:fluttergithubpro/generated/json/base/json_convert_content.dart';
-import '../models/index.dart';
 
 
 //设置成功回调
@@ -251,14 +249,13 @@ class HTTPManager {
   ///异步Future的get方法
   Future<T> getAsync<T>({
     @required String url,
-    @required String tag,
     Map<String,dynamic> params,
     Options options,
     JsonParse<T> jsonParse,
   }) async{
     return _requestAsync(
         url: url,
-        tag: tag,
+        tag: url,
         method: "GET",
         params: params,
         options: options,
@@ -268,7 +265,6 @@ class HTTPManager {
   ///异步Future的post方法
   Future<T> postAsync<T>({
     @required String url,
-    @required String tag,
     data,
     Map<String,dynamic> params,
     Options options,
@@ -276,7 +272,7 @@ class HTTPManager {
   }) async{
     return _requestAsync(
         url: url,
-        tag: tag,
+        tag: url,
         data: data,
         method: "POST",
         params: params,
@@ -357,24 +353,7 @@ class HTTPManager {
         return jsonParse(response.data);
       }else{
         Map<String,dynamic> tempMap = response.data;
-//        print("网络返回数据===${tempMap.keys}");
-        if(tempMap.containsKey('items')){
-          List listRepo = tempMap['items'];
-          T items = JsonConvert.fromJsonAsT<T>(listRepo);
-          return items;
-        }else if (tempMap.containsKey('error_code') && tempMap.containsKey('result')){
-          var datasMap = tempMap['result'];
-          if(datasMap is Map){
-            List showData = datasMap['data'];
-            T items = JsonConvert.fromJsonAsT<T>(showData);
-            return items;
-          }else if(datasMap is List){
-//            print(datasMap);
-            T items = JsonConvert.fromJsonAsT<T>(datasMap);
-            return items;
-          }
-          return response.data as T;
-        }
+        print("当前模型===${T.runtimeType}");
         return response.data as T;
       }
     } on DioError catch(e,s) {

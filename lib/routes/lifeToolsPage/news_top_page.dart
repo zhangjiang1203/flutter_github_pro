@@ -102,7 +102,7 @@ class _NewsListPageState extends State<NewsListPage>{
 
 
   Future getNewsItems(){
-    return HTTPManager().getAsync<List<NewsTopModelEntity>>(url: getNewsData,params: {'type':widget.type}, tag: 'newsListPage');
+    return HTTPManager().getAsync<List<Newstopmodel>>(url: URLAPI.getNewsData,params: {'type':widget.type});
   }
 
   @override
@@ -123,7 +123,7 @@ class _NewsListPageState extends State<NewsListPage>{
               child: Text('暂无此分类信息',textScaleFactor: 2,),
             );
           }else{
-            List<NewsTopModelEntity> showData = snapshot.data;
+            List<Newstopmodel> showData = snapshot.data;
             return ListView.builder(
                 itemCount: showData.length,
                 itemBuilder: (context,index){
@@ -142,7 +142,7 @@ class _NewsListPageState extends State<NewsListPage>{
 class NewsTopItemWidget extends StatelessWidget{
   NewsTopItemWidget(this.newsModel);
 
-  final NewsTopModelEntity newsModel;
+  final Newstopmodel newsModel;
 
   @override
   Widget build(BuildContext context) {
@@ -150,14 +150,14 @@ class NewsTopItemWidget extends StatelessWidget{
     final width = size.width;
     final height = size.height;
     List<String> imageURls = [];
-    if(newsModel.thumbnailPicS != null){
-      imageURls.add(newsModel.thumbnailPicS);
+    if(newsModel.thumbnail_pic_s != null){
+      imageURls.add(newsModel.thumbnail_pic_s);
     }
-    if(newsModel.thumbnailPicS02 != null){
-      imageURls.add(newsModel.thumbnailPicS02);
+    if(newsModel.thumbnail_pic_s02 != null){
+      imageURls.add(newsModel.thumbnail_pic_s02);
     }
-    if(newsModel.thumbnailPicS03 != null){
-      imageURls.add(newsModel.thumbnailPicS03);
+    if(newsModel.thumbnail_pic_s03 != null){
+      imageURls.add(newsModel.thumbnail_pic_s03);
     }
     return GestureDetector(
       onTap: (){

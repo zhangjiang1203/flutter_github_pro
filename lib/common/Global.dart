@@ -22,7 +22,7 @@ const _themes = <String,MaterialColor>{
 
 class Global {
   /// 定义的单例对象
-  static SharedPreferences _preferences;
+  static SharedPreferences preferences;
   static Profile profile = Profile();
   ///网络缓存对象
   static NetCache netCache = NetCache();
@@ -36,8 +36,8 @@ class Global {
 
   //初始化全局信息
   static Future init() async {
-     _preferences = await SharedPreferences.getInstance();
-     var _profile = _preferences.getString("profile");
+     preferences = await SharedPreferences.getInstance();
+     var _profile = preferences.getString("profile");
      if(_profile != null){
        try{
          profile = Profile.fromJson(jsonDecode(_profile));
@@ -55,10 +55,13 @@ class Global {
      HTTPManager().init(
 //       baseUrl: 'https://api.github.com/',
        interceptors:[
-         NetCacheInterceptor()
+         HeaderInterceptor(),
+         NetCacheInterceptor(),
        ]
      );
+
+    
   }
 
-  static saveProfile() => _preferences.setString("profile", jsonEncode(profile.toJson()));
+  static saveProfile() => preferences.setString("profile", jsonEncode(profile.toJson()));
 }

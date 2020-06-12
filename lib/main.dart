@@ -13,6 +13,7 @@ import 'routes/indexPage/home_pages.dart';
 import 'routes/MinePage/change_local_route.dart';
 import 'routes/Login/login_page.dart';
 import 'routes/MinePage/get_battery_level.dart';
+import 'common/ScreenUtil.dart';
 
 ///初始化相关的配置之后再runapp
 void main() async{
@@ -47,6 +48,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+
     return MultiProvider(
       providers: <SingleChildCloneableWidget>[
         ChangeNotifierProvider.value(value: UserProvider()),

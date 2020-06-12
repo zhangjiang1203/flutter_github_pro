@@ -10,7 +10,7 @@ import 'package:fluttergithubpro/routes/MinePage/mine_page.dart';
 import 'package:fluttergithubpro/routes/indexPage/home_pages.dart';
 import 'package:fluttergithubpro/routes/lifeToolsPage/life_page.dart';
 import 'package:provider/provider.dart';
-
+import '../../common/ScreenUtil.dart';
 class BaseTabbarPage extends StatefulWidget {
   BaseTabbarPage({Key key}) : super(key: key);
 
@@ -75,6 +75,8 @@ class _BaseTabbarPageState extends State<BaseTabbarPage> {
 
   @override
   Widget build(BuildContext context) {
+    //UI相关设置
+    ScreenUtil.init(context,width: 750,height: 1334,allowFontScaling: true);
       return ChangeNotifierProvider<TabbarChooseNotifier>(
         create: (context) => TabbarChooseNotifier() ,
         child: Consumer<TabbarChooseNotifier>(
