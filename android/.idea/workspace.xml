@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="65d29372-fbc9-4844-8c5b-cb2383e5db33" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/$CACHE_FILE$" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/convertModelTool/commandFile.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/models/JsonConvert.test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/common/Global.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/common/Global.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/common/ProfileChangeNotifier.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/common/ProfileChangeNotifier.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/models/index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/models/index.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/models/model_convert_content.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/models/profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/models/profile.dart" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1dH0RVXI5AtHk0MovfVbsagJ1T8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="65d29372-fbc9-4844-8c5b-cb2383e5db33" name="Default Changelist" comment="" />
+      <created>1592066702026</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1592066702026</updated>
+    </task>
+    <servers />
+  </component>
+</project>

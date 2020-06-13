@@ -47,10 +47,9 @@ class Global {
        }
      }
      //如果没有缓存策略。设置默认缓存策略
-     profile.cache = profile.cache ?? CacheConfig()
-                               ..enable = true
-                               ..maxAge = 3600
-                               ..maxCount = 1000;
+     profile.cache = profile.cache ?? CacheConfig()..enable = true
+       ..maxAge = 3600
+       ..maxCount = 1000;
      //初始化网络相关的配置，当前版本中baseUrl不统一，baseurl不设置
      HTTPManager().init(
 //       baseUrl: 'https://api.github.com/',

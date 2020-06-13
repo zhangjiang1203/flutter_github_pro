@@ -7,5 +7,4 @@ export 'cacheConfig.dart' ;
 export 'user.dart' ; 
 export 'todayOilPrice.dart' ; 
 export 'profile.dart' ; 
-export 'allrepolist.dart' ;
-export 'todayInHistory.dart';
+export 'allrepolist.dart' ; 

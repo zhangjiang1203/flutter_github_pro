@@ -10,62 +10,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a82fdc3-4e62-4e12-b0ca-be91f5310860" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/jsons/jokesData.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsons/todayInHistory.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jsons/todayOilPrice.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/HttpManager/CommentUse.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/HttpManager/RequestAPI.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/common/ScreenUtil.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/allrepolist.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/allrepolist.g.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/jokesData.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/jokesData.g.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/model_convert_content.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/newstopmodel.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/newstopmodel.g.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/repo.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/repo.g.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/repoitems.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/repoitems.g.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/todayInHistory.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/todayInHistory.g.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/todayOilPrice.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/todayOilPrice.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/$CACHE_FILE$" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/convertModelTool/commandFile.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/JsonConvert.test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/HttpManager/HTTPManager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HttpManager/HTTPManager.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/HttpManager/NetCacheInterceptor.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HttpManager/NetCacheInterceptor.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/HttpManager/RequestURLPath.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HttpManager/RequestURLPath.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/common/Global.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/Global.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generated/json/base/json_convert_content.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generated/json/base/json_filed.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generated/json/jokes_data_model_entity_helper.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generated/json/news_top_model_entity_helper.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generated/json/repo_items_model_entity_helper.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generated/json/today_history_model_entity_helper.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generated/json/today_oil_price_model_entity_helper.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/ProfileChangeNotifier.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/ProfileChangeNotifier.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/models/index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/index.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/jokes_data_model_entity.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/news_top_model_entity.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/repo_items_model_entity.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/today_history_model_entity.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/today_oil_price_model_entity.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/BaseWidget/base_tabbar_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/BaseWidget/base_tabbar_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/Login/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/Login/login_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/home_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/home_pages.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/lifeToolsPage/jin_ri_you_jia_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/lifeToolsPage/jin_ri_you_jia_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/lifeToolsPage/news_top_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/lifeToolsPage/news_top_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/lifeToolsPage/today_in_history_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/lifeToolsPage/today_in_history_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/lifeToolsPage/xiao_hua_da_quan_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/lifeToolsPage/xiao_hua_da_quan_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/model_convert_content.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/profile.dart" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_XL_API_28" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_6_API_29" />
   <component name="FavoritesManager">
     <favorites_list name="flutter_github_pro" />
   </component>
@@ -84,6 +52,11 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
@@ -92,7 +65,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="flutter.settings" />
+    <property name="settings.editor.selected.configurable" value="copyright.filetypes.JAVA" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -100,24 +73,24 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/convertModelTool" />
       <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/lib/routes/BaseWidget" />
       <recent name="$PROJECT_DIR$/lib/routes/Login" />
       <recent name="$PROJECT_DIR$/lib/routes/MinePage" />
-      <recent name="$PROJECT_DIR$/lib/routes/indexPage" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="RunManager" selected="Dart Command Line App.commandFile.dart">
+    <configuration name="commandFile.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/lib/convertModelTool/commandFile.dart" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <item itemvalue="Dart Command Line App.commandFile.dart" />
       </list>
-    </option>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -147,5 +120,39 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="576" y="412" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1592066670779">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="576" y="412" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592066670779" />
+    <state x="466" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592065328937">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="466" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592065328937" />
+    <state width="1358" height="259" key="GridCell.Tab.0.bottom" timestamp="1592066584682">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1358" height="259" key="GridCell.Tab.0.bottom/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592066584682" />
+    <state width="1358" height="259" key="GridCell.Tab.0.center" timestamp="1592066584681">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1358" height="259" key="GridCell.Tab.0.center/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592066584681" />
+    <state width="1358" height="259" key="GridCell.Tab.0.left" timestamp="1592066584680">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1358" height="259" key="GridCell.Tab.0.left/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592066584680" />
+    <state width="1358" height="259" key="GridCell.Tab.0.right" timestamp="1592066584681">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1358" height="259" key="GridCell.Tab.0.right/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592066584681" />
+    <state x="229" y="155" key="SettingsEditor" timestamp="1592066695958">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="229" y="155" key="SettingsEditor/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592066695958" />
+    <state x="380" y="273" width="987" height="486" key="find.popup" timestamp="1592066382395">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="380" y="273" width="987" height="486" key="find.popup/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592066382395" />
   </component>
 </project>
