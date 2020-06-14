@@ -4,6 +4,7 @@
 * copyright on zhangjiang
 */
 
+import 'dart:convert';
 import 'dart:core';
 import 'dart:async';
 import 'package:dio/dio.dart';
@@ -353,7 +354,8 @@ class HTTPManager {
         return jsonParse(response.data);
       }else{
         Map<String,dynamic> tempMap = response.data;
-        print("当前模型===${T.runtimeType}");
+
+        print("请求返回数据===${json.encode(tempMap).toString()}");
         return response.data as T;
       }
     } on DioError catch(e,s) {

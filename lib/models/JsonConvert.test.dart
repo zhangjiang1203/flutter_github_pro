@@ -12,25 +12,25 @@ class ConvertTemplate<T> {
   static _getFromJson<T>(Type type, data, json) {
     switch (type) {
          case JokesData:
-            return JokesData.fromJson(json) as T;
+       return JokesData.fromJson(json) as T;
      case Newstopmodel:
-            return Newstopmodel.fromJson(json) as T;
+       return Newstopmodel.fromJson(json) as T;
      case TodayInHistory:
-            return TodayInHistory.fromJson(json) as T;
+       return TodayInHistory.fromJson(json) as T;
      case Repoitems:
-            return Repoitems.fromJson(json) as T;
+       return Repoitems.fromJson(json) as T;
      case Repo:
-            return Repo.fromJson(json) as T;
+       return Repo.fromJson(json) as T;
      case CacheConfig:
-            return CacheConfig.fromJson(json) as T;
+       return CacheConfig.fromJson(json) as T;
      case User:
-            return User.fromJson(json) as T;
+       return User.fromJson(json) as T;
      case TodayOilPrice:
-            return TodayOilPrice.fromJson(json) as T;
+       return TodayOilPrice.fromJson(json) as T;
      case Profile:
-            return Profile.fromJson(json) as T;
+       return Profile.fromJson(json) as T;
      case Allrepolist:
-            return Allrepolist.fromJson(json) as T;
+       return Allrepolist.fromJson(json) as T;
 
   }
     return data as T;
@@ -39,25 +39,25 @@ class ConvertTemplate<T> {
   static _getToJson<T>(Type type,data) {
     switch (type) {
           case JokesData:
-            return (data as JokesData).toJson();
+       return (data as JokesData).toJson();
      case Newstopmodel:
-            return (data as Newstopmodel).toJson();
+       return (data as Newstopmodel).toJson();
      case TodayInHistory:
-            return (data as TodayInHistory).toJson();
+       return (data as TodayInHistory).toJson();
      case Repoitems:
-            return (data as Repoitems).toJson();
+       return (data as Repoitems).toJson();
      case Repo:
-            return (data as Repo).toJson();
+       return (data as Repo).toJson();
      case CacheConfig:
-            return (data as CacheConfig).toJson();
+       return (data as CacheConfig).toJson();
      case User:
-            return (data as User).toJson();
+       return (data as User).toJson();
      case TodayOilPrice:
-            return (data as TodayOilPrice).toJson();
+       return (data as TodayOilPrice).toJson();
      case Profile:
-            return (data as Profile).toJson();
+       return (data as Profile).toJson();
      case Allrepolist:
-            return (data as Allrepolist).toJson();
+       return (data as Allrepolist).toJson();
 
     }
     return data as T;
@@ -66,25 +66,25 @@ class ConvertTemplate<T> {
   static _fromJsonSingle(String type, json) {
     switch (type) {
            case 'JokesData':
-            return JokesData.fromJson(json);
+       return JokesData.fromJson(json);
      case 'Newstopmodel':
-            return Newstopmodel.fromJson(json);
+       return Newstopmodel.fromJson(json);
      case 'TodayInHistory':
-            return TodayInHistory.fromJson(json);
+       return TodayInHistory.fromJson(json);
      case 'Repoitems':
-            return Repoitems.fromJson(json);
+       return Repoitems.fromJson(json);
      case 'Repo':
-            return Repo.fromJson(json);
+       return Repo.fromJson(json);
      case 'CacheConfig':
-            return CacheConfig.fromJson(json);
+       return CacheConfig.fromJson(json);
      case 'User':
-            return User.fromJson(json);
+       return User.fromJson(json);
      case 'TodayOilPrice':
-            return TodayOilPrice.fromJson(json);
+       return TodayOilPrice.fromJson(json);
      case 'Profile':
-            return Profile.fromJson(json);
+       return Profile.fromJson(json);
      case 'Allrepolist':
-            return Allrepolist.fromJson(json);
+       return Allrepolist.fromJson(json);
 
     }
     return null;
@@ -94,25 +94,25 @@ class ConvertTemplate<T> {
   static _getListFromType(String type) {
     switch (type) {
            case 'JokesData':
-            return List<JokesData>();
+       return List<JokesData>();
      case 'Newstopmodel':
-            return List<Newstopmodel>();
+       return List<Newstopmodel>();
      case 'TodayInHistory':
-            return List<TodayInHistory>();
+       return List<TodayInHistory>();
      case 'Repoitems':
-            return List<Repoitems>();
+       return List<Repoitems>();
      case 'Repo':
-            return List<Repo>();
+       return List<Repo>();
      case 'CacheConfig':
-            return List<CacheConfig>();
+       return List<CacheConfig>();
      case 'User':
-            return List<User>();
+       return List<User>();
      case 'TodayOilPrice':
-            return List<TodayOilPrice>();
+       return List<TodayOilPrice>();
      case 'Profile':
-            return List<Profile>();
+       return List<Profile>();
      case 'Allrepolist':
-            return List<Allrepolist>();
+       return List<Allrepolist>();
 
     }
     return null;

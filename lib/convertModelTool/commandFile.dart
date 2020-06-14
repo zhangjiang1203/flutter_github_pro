@@ -34,19 +34,19 @@ void walk() { //遍历JSON目录生成模板
       if (name.startsWith("_")) return;
       //设置jsonTomodel
       jsonTomodelStr.write('     case $className:\r\n');
-      jsonTomodelStr.write("            return $className.fromJson(json) as T;\r\n");
+      jsonTomodelStr.write("       return $className.fromJson(json) as T;\r\n");
 
       //设置modelToJson
       modelToJsonStr.write('     case $className:\r\n');
-      modelToJsonStr.write("            return (data as $className).toJson();\r\n");
+      modelToJsonStr.write("       return (data as $className).toJson();\r\n");
 
       //singleModel
       signalModelStr.write("     case '$className':\r\n");
-      signalModelStr.write('            return $className.fromJson(json);\r\n');
+      signalModelStr.write('       return $className.fromJson(json);\r\n');
 
       //listModel
       listModelStr.write("     case '$className':\r\n");
-      listModelStr.write('            return List<$className>();\r\n');
+      listModelStr.write('       return List<$className>();\r\n');
 
       //添加索引,文件名不用大写
       indexStr.write("export '$name.dart' ; \r\n");

@@ -7,10 +7,10 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
 import 'package:fluttergithubpro/common/Global.dart';
 import 'package:fluttergithubpro/models/index.dart';
+import 'package:json_annotation/json_annotation.dart';
 import 'RequestURLPath.dart';
 import 'CommentUse.dart';
 
@@ -31,8 +31,9 @@ class GithubAPI{
 
   //获取token
   void getPassToken() async{
-    Options options = Options(headers: {"Authorization":getAuthorization()});
+    Options options = Options(headers: {"Authorization":getAuthorization()},method: 'POST');
     var r = await HTTPManager().postAsync(url: URLAPI.githubAuthirizations,data: json.encode(oAuthParams),options: options );
+    print("授权===$r");
     if(r['token'] != null){
       //更新token
       Global.profile.token = r['token'];
@@ -41,7 +42,7 @@ class GithubAPI{
 
 
   //登录接口
-  void login(String userName,String password) async {
+  Future<User> login(String userName,String password) async {
     //组装请求的格式
     String basic = "Basic" + base64.encode(utf8.encode('$userName"$password'));
     //保存用户名和密码
@@ -49,10 +50,11 @@ class GithubAPI{
     Global.preferences.setString(CommentUse.loginPassword, base64.encode(utf8.encode(password+CommentUse.base64Extra)));
     Global.preferences.setString(CommentUse.basic, basic);
     getPassToken();
-     var user = await HTTPManager().getAsync<User>(url: URLAPI.getUser(userName));
-     print('获取用户信息$user');
-//     Global.preferences.setString(CommentUse.RealName, user.login);
-//     return user;
+     var user = await HTTPManager().getAsync(url: URLAPI.getUser(userName));
+     User localUser =  User.fromJson(user);// JsonConverter<User>.fromJson(user);
+     Global.preferences.setString(CommentUse.RealName, localUser.login);
+     print('获取的用户模型===$localUser');
+     return localUser;
   }
 
 }

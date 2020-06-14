@@ -26,21 +26,21 @@ class _LoginRoute extends State<LoginRoute> {
   bool _isPwdShow = false;
   bool _nameAutoFocus = true;
   bool isClear = false;
+  bool _isShowClear = false;
+  bool _isShowPWD = false;
   //全局的key
   GlobalKey _formKey = new GlobalKey<FormState>();
 
-  void _login(){
-
-
+  void _login() async{
     //提交前验证数据
     if((_formKey.currentState as FormState).validate()){
       //开始登录
       User user;
       try{
-        RequestAPI().login(_nameController.text, _passwordController.text);
+        user = await RequestAPI().login(_nameController.text, _passwordController.text);
 
       }catch (e){
-
+        print("用户登录失败===${e.toString()}");
       } finally{
 
       }
@@ -95,7 +95,7 @@ class _LoginRoute extends State<LoginRoute> {
                       controller: _nameController,
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.person,color: Colors.white,),
-                        suffixIcon: IconButton(
+                        suffixIcon: !_isShowClear ? null : IconButton(
                           icon: Icon(Icons.clear,color: Colors.white,),
                           onPressed: ()=> setState(()=>_nameController.text = ""),
                         ),
@@ -114,7 +114,9 @@ class _LoginRoute extends State<LoginRoute> {
                         hintStyle: TextStyle(color: Color(0xffeeeeee)),
                       ),
                       onChanged: (v){
-                        print('用户名==$v');
+                        setState(() {
+                          _isShowClear = v.length > 0;
+                        });
                       },
                     ),
                   ),
@@ -129,7 +131,7 @@ class _LoginRoute extends State<LoginRoute> {
                       controller: _passwordController,
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.lock,color: Colors.white,),
-                        suffixIcon: IconButton(
+                        suffixIcon: !_isShowPWD ? null : IconButton(
                           icon: Icon(_isPwdShow ? Icons.visibility : Icons.visibility_off,color: Colors.white,),
                           onPressed: ()=>setState(()=> _isPwdShow = !_isPwdShow),
                         ),
@@ -165,7 +167,9 @@ class _LoginRoute extends State<LoginRoute> {
                         hintStyle: TextStyle(color: Color(0xffeeeeee)),
                       ),
                       onChanged: (v){
-                        print('密码==$v');
+                        setState(() {
+                          _isShowPWD = v.length > 0;
+                        });
                       },
                     ),
                   ),
