@@ -46,7 +46,7 @@ class _LoginRoute extends State<LoginRoute> {
         Provider.of<UserProvider>(context).user = user;
         print("获取的对象===$user");
       }catch (e){
-        print("用户登录失败===${e.toString()}");
+        print("用户登录失败===${e.message}");
       } finally{
         EasyLoading.dismiss();
       }

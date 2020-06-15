@@ -113,7 +113,6 @@ class _HomePageState extends State<AppHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    print("home_page 开始");
     return Scaffold(
       drawer: MyDrawer(),
       appBar: AppBar(
@@ -121,7 +120,7 @@ class _HomePageState extends State<AppHomePage> {
         actions: <Widget>[
           IconButton(
             key: _button,
-            icon: Icon(Icons.select_all),
+            icon: Icon(Icons.person),
             onPressed: () => _showPopMenu(context),
           )
         ],

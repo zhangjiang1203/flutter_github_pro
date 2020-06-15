@@ -66,13 +66,21 @@ class MyDrawer extends StatelessWidget {
                 children: <Widget>[
                   ClipOval(
                     child: CachedNetworkImage(
-                      imageUrl: Global.profile.user.avatar_url,
+                      imageUrl: Global.profile.user?.avatar_url ?? "",
                       width: 60,
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsetsDirectional.only(start: 5),
-                    child: Text(Global.profile.user.login,style: TextStyle(fontSize: 20,color: Colors.white),),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(Global.profile.user?.login ?? "请登录",style: TextStyle(fontSize: 20,color: Colors.white),),
+                        Padding(padding: const EdgeInsets.only(top: 5),),
+                        Text(Global.profile.user?.bio ?? "",style: TextStyle(fontSize: 14,color: Colors.white),maxLines: 3,)
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -89,7 +97,12 @@ class MyDrawer extends StatelessWidget {
         return ListView(
           itemExtent: 40,
           children: <Widget>[
-            ListTile(title: Text("个人主页"),),
+            ListTile(title: Text("个人主页"),onTap: (){},),
+            ListTile(title: Text("搜索"),onTap: (){},),
+            ListTile(title: Text("我的点赞"),onTap: (){},),
+            ListTile(title: Text("我的fork"),onTap: (){},),
+            ListTile(title: Text("流行趋势"),onTap: (){},),
+            ListTile(title: Text('本项目地址'),onTap: (){},)
           ],
         );
       },

@@ -55,6 +55,7 @@ class GithubAPI{
      return user;
   }
 
+  /*获取个人仓库*/
   Future<List<Repoitems>> getUserRepo(String userName,Map<String,dynamic> param) async{
 
     var data = await HTTPManager().getAsync<List<Repoitems>>(url: RequestURL.getRepos(userName),params: param);
