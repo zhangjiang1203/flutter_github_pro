@@ -9,10 +9,10 @@
 //注册地址： https://github.com/settings/applications/new
 
 
-class URLAPI {
+class RequestURL {
 
-  static String GithubClientId = '4620bbf80a15b80015e0';
-  static String GithubClientSecret ='82b054c46461b0d5c77540e43824b9e6c2ab277a';
+  static String GithubClientId = 'b6bffcdce925652cd1ea';
+  static String GithubClientSecret ='1e27a5c41f59e466b566305a1d197d31fbed2661';
 
   static String GithubHomeURL = "https://api.github.com/";
   ///获取认证信息,不支持邮箱登录
@@ -23,6 +23,11 @@ class URLAPI {
   //登录获取用户信息
   static getUser(String userName){
     return GithubHomeURL + "users/$userName";
+  }
+
+  //获取用户项目列表
+  static getRepos(String userName) {
+    return GithubHomeURL + "/users/$userName/repos";
   }
 
 

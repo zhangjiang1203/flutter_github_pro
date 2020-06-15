@@ -22,7 +22,7 @@ class _TodayInHistoryState extends State<TodayInHistoryPage> {
   String dateTime = '1/1';
 
   Future _getTodayInHistoryData(){
-    return HTTPManager().getAsync<List<TodayInHistory>>(url: URLAPI.getTodayHistoryData,params: {'date':dateTime});
+    return HTTPManager().getAsync<List<TodayInHistory>>(url: RequestURL.getTodayHistoryData,params: {'date':dateTime});
   }
 
   //日历选择器

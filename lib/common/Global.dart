@@ -8,9 +8,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:fluttergithubpro/common/index.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/index.dart';
 import '../HttpManager/index.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 const _themes = <String,MaterialColor>{
   "blue": Colors.blue,
@@ -58,9 +60,26 @@ class Global {
          NetCacheInterceptor(),
        ]
      );
-
-    
   }
 
-  static saveProfile() => preferences.setString("profile", jsonEncode(profile.toJson()));
+  static void configLoading(BuildContext context) {
+    EasyLoading.instance
+      ..displayDuration = const Duration(milliseconds: 2000)
+      ..indicatorType = EasyLoadingIndicatorType.fadingCircle
+      ..loadingStyle = EasyLoadingStyle.dark
+      ..indicatorSize = 45.0
+      ..radius = 10.0
+      ..progressColor = Provider.of<ThemeProvider>(context).theme
+      ..backgroundColor = Colors.green
+      ..indicatorColor = Colors.yellow
+      ..textColor = Color(0xff333333)
+      ..maskColor = Colors.blue.withOpacity(0.5)
+      ..userInteractions = true;
+  }
+
+
+  static saveProfile() {
+    print("开始保存信息");
+    preferences.setString("profile", jsonEncode(profile.toJson()));
+  }
 }

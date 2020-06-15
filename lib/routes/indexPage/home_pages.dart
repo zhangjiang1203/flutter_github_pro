@@ -16,7 +16,7 @@ import '../../common/index.dart';
 import '../BaseWidget/base_web_page.dart';
 import '../../widgets/my_infinite_listview.dart';
 
-GlobalKey _button = GlobalKey();
+
 
 class AppHomePage extends StatefulWidget {
   AppHomePage({Key key}) : super(key: key);
@@ -34,8 +34,9 @@ class _HomePageState extends State<AppHomePage> {
   //缓存数据
   List<Repoitems> _itemsData;
 
-  GlobalKey<RefreshIndicatorState> refreshIndicatorKey =
-  new GlobalKey<RefreshIndicatorState>(debugLabel: "home_page");
+  //手动触发列表刷新的key
+  final GlobalKey<RefreshIndicatorState> refreshIndicatorKey = new GlobalKey<RefreshIndicatorState>();
+  final GlobalKey _button = GlobalKey();
 
   PopupMenuButton _popupMenuButton(){
     return PopupMenuButton(
@@ -139,73 +140,41 @@ class _HomePageState extends State<AppHomePage> {
     if (isrefresh){
       _itemsData.clear();
     }
-    var itemsData = await HTTPManager().getAsync<List<Repoitems>>(url: URLAPI.getGitHubPub,params: {
+    var data = await HTTPManager().getAsync<Allrepolist>(url: RequestURL.getGitHubPub,params: {
       'page':1,
       'q':'language:$_chooseLang',
       'sort':'stars'
     },options: Options(extra: {"refresh":isrefresh}));
     //包含的数据
-    _itemsData.addAll(itemsData);
+    _itemsData.addAll(data.items);
     return Future<List<Repoitems>>.value(_itemsData);
   }
 
   //创建视图
   Widget _buildBody() {
-//    return Center(
-//      child: Text('你好'),
-//    );
-    //登录先不做
-//    Profile profile = Global.profile;
-//    if (profile.token == null) {
-//      return LoginRoute();
-//    }
-//    }else{
-//     return SafeArea(
-//       child: Center(
-//         child: FutureBuilder<List<RepoItemsModelEntity>>(
-//           initialData: _itemsData,
-//           future: _getItemData(),
-//           builder: (context,snapshot){
-//              if(snapshot.connectionState == ConnectionState.done){
-//                if(snapshot.hasError){
-//                  return Text('网络请求错误请重试');
-//                }
-//                if(snapshot.data.length <= 0){
-//                  return CircularProgressIndicator();
-//                }
-//                return ListView.builder(
-//                    controller: _controller,
-//                    itemBuilder: (context,index) {
-//                      return GitPubItems(snapshot.data[index]);
-//                    });
-//              }else{
-//                return CircularProgressIndicator();
-//              }
-//           },
-//         ),
-//       ),
-//     );
-
       return SafeArea(
-        child: MyInfiniteListView(
+        child: MyInfiniteListView<Repoitems>(
           emptyBuilder: (refresh,context){
             return Center(
               child: Column(
-
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Image.asset("",),
+                  Text('暂无数据')
+                ],
               ),
             );
           },
-          key: refreshIndicatorKey,
+          refreshKey: refreshIndicatorKey,
           scrollController: _controller,
-//          sliver: true,
           onRetrieveData: (int page,List<Repoitems> items,bool refresh) async{
-            var itemsData = await HTTPManager().getAsync<List<Repoitems>>(url: URLAPI.getGitHubPub,params: {
+            var data = await HTTPManager().getAsync<Allrepolist>(url: RequestURL.getGitHubPub,params: {
               'page':page,
               'q':'language:$_chooseLang',
               'sort':'stars'
             },options: Options(extra: {"refresh":refresh}));
-            var dataLength = itemsData.length;
-            items.addAll(itemsData);
+            var dataLength = data.items.length;
+            items.addAll(data.items);
             //返回的数据是否是20，不是的话就没有下一页了
             return dataLength == 30;
           },

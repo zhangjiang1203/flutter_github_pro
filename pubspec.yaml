@@ -53,6 +53,10 @@ dependencies:
   webview_flutter: ^0.3.22+1
   #图表
   fl_chart: ^0.9.4
+  #hud展示
+  flutter_easyloading: ^1.1.4
+  #Flutter支持MarkDown模式 https://github.com/flutter/flutter_markdown
+  flutter_markdown: 0.3.5
 
 dev_dependencies:
   flutter_test:

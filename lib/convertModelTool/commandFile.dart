@@ -68,13 +68,14 @@ String _getTemplateContent(){
   return '''
   
 import '../models/index.dart';
-class ConvertTemplate<T> {
-  T fromJson(Map<String, dynamic> json) {
-    return _getFromJson<T>(runtimeType, this, json);
+Type typeOf<T>() => T;
+class JsonConvert {
+  static fromJson<T>(Map<String, dynamic> json) {
+    return _getFromJson<T>(typeOf<T>(),T, json);
   }
 
-  Map<String, dynamic> toJson() {
-    return _getToJson<T>(runtimeType, this);
+  static Map<String, dynamic> toJson<T>() {
+    return _getToJson<T>(typeOf<T>(), T);
   }
 
   static _getFromJson<T>(Type type, data, json) {

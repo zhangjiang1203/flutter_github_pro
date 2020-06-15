@@ -44,6 +44,7 @@ class MyInfiniteListView<T> extends StatefulWidget {
     this.emptyBuilder,
     this.initState,
     this.physics,
+    this.refreshKey
   }) : super(key: key);
 
   @override
@@ -85,6 +86,7 @@ class MyInfiniteListView<T> extends StatefulWidget {
   final LoadingState initState;
   final ScrollPhysics physics;
   final bool sliver;
+  final Key refreshKey;
 }
 
 class _MyInfiniteListViewState<T> extends State<MyInfiniteListView<T>> {
@@ -227,7 +229,7 @@ class _MyInfiniteListViewState<T> extends State<MyInfiniteListView<T>> {
 
   Widget _build() {
     return RefreshIndicator(
-      key: widget.key,
+      key: widget.refreshKey,
       onRefresh: () => refresh(true),
       child: ListView.builder(
         physics: widget.physics,

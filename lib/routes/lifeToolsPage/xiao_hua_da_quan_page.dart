@@ -20,7 +20,7 @@ class XiaoHuaDaQuanPage extends StatefulWidget {
 class _XiaoHuaDaQuanState extends State<XiaoHuaDaQuanPage> {
   Future _getJokeData() {
     int time = DateTime.now().millisecondsSinceEpoch ~/ 1000;
-    return HTTPManager().getAsync<List<JokesData>>(url: URLAPI.getJokesData,params: {'time':time});
+    return HTTPManager().getAsync<List<JokesData>>(url: RequestURL.getJokesData,params: {'time':time});
   }
 
   @override

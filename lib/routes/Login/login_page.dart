@@ -4,9 +4,12 @@
 * copyright on zhangjiang
 */
 
+import 'dart:convert' as convert;
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:fluttergithubpro/HttpManager/CommentUse.dart';
 import 'package:fluttergithubpro/HttpManager/RequestAPI.dart';
 import 'package:fluttergithubpro/common/ScreenUtil.dart';
 import 'package:provider/provider.dart';
@@ -32,26 +35,49 @@ class _LoginRoute extends State<LoginRoute> {
   GlobalKey _formKey = new GlobalKey<FormState>();
 
   void _login() async{
+    EasyLoading.show(status: "loading……");
     //提交前验证数据
     if((_formKey.currentState as FormState).validate()){
       //开始登录
       User user;
       try{
         user = await RequestAPI().login(_nameController.text, _passwordController.text);
-
+        // 因为登录页返回后，首页会build，所以我们传false，更新user后不触发更新
+        Provider.of<UserProvider>(context).user = user;
+        print("获取的对象===$user");
       }catch (e){
         print("用户登录失败===${e.toString()}");
       } finally{
-
+        EasyLoading.dismiss();
       }
-
       if(user != null){
+        //跳转到首页，移除之前的login界面的路由
         Navigator.of(context).pushReplacementNamed("/");
       }
-
     }else{
       //提示用户账号密码输入不合适
+      EasyLoading.showError("账号密码错误，请重试");
+    }
+  }
+  
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    //填充上一次用户的用户名和密码
 
+    String userName = Global.preferences.getString(CommentUse.loginName);
+    if(userName != null){
+      _isShowClear = userName.length > 0;
+      _nameController.text = userName;
+    }
+
+    String password = Global.preferences.getString(CommentUse.loginPassword);
+    if(password != null){
+      var temp = convert.base64Decode(password);
+      password = convert.utf8.decode(temp).replaceFirst(CommentUse.base64Extra, "");
+      _isShowPWD = password.length > 0;
+      _passwordController.text = password;
     }
   }
 
@@ -132,26 +158,9 @@ class _LoginRoute extends State<LoginRoute> {
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.lock,color: Colors.white,),
                         suffixIcon: !_isShowPWD ? null : IconButton(
-                          icon: Icon(_isPwdShow ? Icons.visibility : Icons.visibility_off,color: Colors.white,),
+                          icon: Icon( !_isPwdShow ? Icons.visibility : Icons.visibility_off,color: Colors.white,),
                           onPressed: ()=>setState(()=> _isPwdShow = !_isPwdShow),
                         ),
-//                        Container(
-//                          width: 100,
-//                          child: Row(
-////                            mainAxisAlignment: MainAxisAlignment.end,
-//                            children: <Widget>[
-//                              IconButton(
-//                                icon: Icon(Icons.clear,color: Colors.white,),
-//                                onPressed: ()=> setState(()=>_passwordController.text = ""),
-//                              ),
-//                              IconButton(
-//                                icon: Icon(_isPwdShow ? Icons.visibility : Icons.visibility_off,color: Colors.white,),
-//                                onPressed: ()=>setState(()=> _isPwdShow = !_isPwdShow),
-//                              ),
-//                            ],
-//                          ) ,
-//                        ),
-
                         isDense: true,
                         fillColor: Color(0x30cccccc),
                         filled: true,

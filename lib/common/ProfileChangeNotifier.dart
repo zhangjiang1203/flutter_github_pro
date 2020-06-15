@@ -30,7 +30,7 @@ class UserProvider extends ProfileChangeNotifier {
 
   ///用户信息发生变化，通知依赖的widget更新
   set user(User user){
-    if(user?.login != _user.login){
+    if(user?.login != _profile.user?.login){
       _profile.lastLogin = _user?.login;
       _profile.user = user;
       notifyListeners();

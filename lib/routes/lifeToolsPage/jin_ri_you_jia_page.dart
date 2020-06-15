@@ -20,7 +20,7 @@ class JinRiYouJiaPage extends StatefulWidget {
 class _JinRiYouJiaState extends State<JinRiYouJiaPage> {
 
   Future _getOilPrice(){
-    return HTTPManager().getAsync<List<TodayOilPrice>>(url: URLAPI.getTodayOilData);
+    return HTTPManager().getAsync<List<TodayOilPrice>>(url: RequestURL.getTodayOilData);
   }
 
 

@@ -12,6 +12,8 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_common_utils/http/http_error.dart';
 import 'package:flutter_common_utils/log_util.dart';
+import 'package:fluttergithubpro/models/JsonConvert.test.dart';
+import 'package:fluttergithubpro/models/index.dart';
 
 
 //设置成功回调
@@ -354,13 +356,17 @@ class HTTPManager {
         return jsonParse(response.data);
       }else{
         Map<String,dynamic> tempMap = response.data;
-
-        print("请求返回数据===${json.encode(tempMap).toString()}");
+//        print("请求返回数据===${json.encode(tempMap).toString()}");
+        T data = ConvertTemplate.fromJson<T>(tempMap) as T;
+//        print("转换的数据===$data");
+        if (data != null){
+          return data;
+        }
         return response.data as T;
       }
     } on DioError catch(e,s) {
-      LogUtil.v("请求出错:$e\n$s");
-      print("请求出错:$e\n$s");
+      LogUtil.v("请求出错:${e.toString()}\n$s");
+      print("请求出错:${e.toString()}\n$s");
       throw (HttpError.dioError(e));
     } catch (e,s){
       LogUtil.v("未知异常错误:$e\n$s");

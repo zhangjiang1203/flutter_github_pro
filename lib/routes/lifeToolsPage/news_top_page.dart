@@ -102,7 +102,7 @@ class _NewsListPageState extends State<NewsListPage>{
 
 
   Future getNewsItems(){
-    return HTTPManager().getAsync<List<Newstopmodel>>(url: URLAPI.getNewsData,params: {'type':widget.type});
+    return HTTPManager().getAsync<List<Newstopmodel>>(url: RequestURL.getNewsData,params: {'type':widget.type});
   }
 
   @override

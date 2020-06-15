@@ -13,7 +13,8 @@ import 'routes/indexPage/home_pages.dart';
 import 'routes/MinePage/change_local_route.dart';
 import 'routes/Login/login_page.dart';
 import 'routes/MinePage/get_battery_level.dart';
-import 'common/ScreenUtil.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+
 
 ///初始化相关的配置之后再runapp
 void main() async{
@@ -48,15 +49,17 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-
-    return MultiProvider(
-      providers: <SingleChildCloneableWidget>[
-        ChangeNotifierProvider.value(value: UserProvider()),
-        ChangeNotifierProvider.value(value: ThemeProvider()),
-        ChangeNotifierProvider.value(value: LocaleProvider()),
-      ],
-      child: Consumer2<ThemeProvider,LocaleProvider>(
+    return FlutterEasyLoading(
+      child: MultiProvider(
+        providers: <SingleChildCloneableWidget>[
+          ChangeNotifierProvider.value(value: UserProvider()),
+          ChangeNotifierProvider.value(value: ThemeProvider()),
+          ChangeNotifierProvider.value(value: LocaleProvider()),
+        ],
+        child: Consumer2<ThemeProvider,LocaleProvider>(
           builder: (BuildContext context,themeProvider,localeProvider,Widget child){
+            //初始化展示的loading
+            Global.configLoading(context);
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
@@ -91,7 +94,7 @@ class _MyAppState extends State<MyApp> {
               },
               ///多语言支持---end
               /// 初始化当前的路由，命名路由
-              initialRoute: Global.profile.token == null ? "Login_route" : "/",
+              initialRoute: Provider.of<UserProvider>(context).isLogin ?  "/" : "Login_route",
               /// 配置对应的路由信息
               routes: _setUpWidgetRoutes(context),
               /// 判断路由跳转的权限
@@ -107,7 +110,8 @@ class _MyAppState extends State<MyApp> {
               },
             );
           },
-      ),
+        ),
+      )
     );
   }
 }

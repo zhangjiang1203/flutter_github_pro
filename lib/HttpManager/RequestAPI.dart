@@ -1,5 +1,5 @@
 /*
-* RequestAPI created by zj 
+* RequestURL created by zj
 * on 2020/6/12 4:23 PM
 * copyright on zhangjiang
 */
@@ -10,7 +10,6 @@ import 'package:dio/dio.dart';
 import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
 import 'package:fluttergithubpro/common/Global.dart';
 import 'package:fluttergithubpro/models/index.dart';
-import 'package:json_annotation/json_annotation.dart';
 import 'RequestURLPath.dart';
 import 'CommentUse.dart';
 
@@ -20,8 +19,8 @@ class GithubAPI{
   final Map oAuthParams = {
     "scopes": ['user', 'repo'],
     "note": "admin_script",
-    "client_id": URLAPI.GithubClientId,
-    "client_secret": URLAPI.GithubClientSecret
+    "client_id": RequestURL.GithubClientId,
+    "client_secret": RequestURL.GithubClientSecret
   };
 
   getAuthorization(){
@@ -30,9 +29,9 @@ class GithubAPI{
   }
 
   //获取token
-  void getPassToken() async{
-    Options options = Options(headers: {"Authorization":getAuthorization()},method: 'POST');
-    var r = await HTTPManager().postAsync(url: URLAPI.githubAuthirizations,data: json.encode(oAuthParams),options: options );
+  void getPassToken(String basic) async{
+    Options options = Options(headers: {"Authorization":basic});
+    var r = await HTTPManager().postAsync(url: RequestURL.githubAuthirizations,data: json.encode(oAuthParams),options: options );
     print("授权===$r");
     if(r['token'] != null){
       //更新token
@@ -45,19 +44,28 @@ class GithubAPI{
   Future<User> login(String userName,String password) async {
     //组装请求的格式
     String basic = "Basic" + base64.encode(utf8.encode('$userName"$password'));
+    print(basic);
     //保存用户名和密码
     Global.preferences.setString(CommentUse.loginName, userName);
     Global.preferences.setString(CommentUse.loginPassword, base64.encode(utf8.encode(password+CommentUse.base64Extra)));
     Global.preferences.setString(CommentUse.basic, basic);
-    getPassToken();
-     var user = await HTTPManager().getAsync(url: URLAPI.getUser(userName));
-     User localUser =  User.fromJson(user);// JsonConverter<User>.fromJson(user);
-     Global.preferences.setString(CommentUse.RealName, localUser.login);
-     print('获取的用户模型===$localUser');
-     return localUser;
+    getPassToken(basic);
+     var user = await HTTPManager().getAsync<User>(url: RequestURL.getUser(userName));
+     Global.preferences.setString(CommentUse.RealName, user.login);
+     return user;
+  }
+
+  Future<List<Repoitems>> getUserRepo(String userName,Map<String,dynamic> param) async{
+
+    var data = await HTTPManager().getAsync<Allrepolist>(url: RequestURL.getRepos(userName),params: param);
+
   }
 
 }
+
+
+
+
 
 class OpenNetAPI{
 

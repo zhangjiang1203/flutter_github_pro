@@ -1,15 +1,19 @@
   
 import '../models/index.dart';
-class ConvertTemplate<T> {
-  T fromJson(Map<String, dynamic> json) {
-    return _getFromJson<T>(runtimeType, this, json);
+
+Type typeOf<T>() => T;
+
+class ConvertTemplate {
+  static fromJson<T>(Map<String, dynamic> json) {
+    return _getFromJson<T>(typeOf<T>(),T, json);
   }
 
-  Map<String, dynamic> toJson() {
-    return _getToJson<T>(runtimeType, this);
+  static Map<String, dynamic> toJson<T>() {
+    return _getToJson<T>(typeOf<T>(), T);
   }
 
-  static _getFromJson<T>(Type type, data, json) {
+  static _getFromJson<T>(type,data, json) {
+    print("哈哈哈哈1111===$type");
     switch (type) {
          case JokesData:
        return JokesData.fromJson(json) as T;
@@ -24,6 +28,7 @@ class ConvertTemplate<T> {
      case CacheConfig:
        return CacheConfig.fromJson(json) as T;
      case User:
+       print("哈哈哈哈2222");
        return User.fromJson(json) as T;
      case TodayOilPrice:
        return TodayOilPrice.fromJson(json) as T;
@@ -33,6 +38,7 @@ class ConvertTemplate<T> {
        return Allrepolist.fromJson(json) as T;
 
   }
+  print("哈哈哈哈3333");
     return data as T;
   }
 
