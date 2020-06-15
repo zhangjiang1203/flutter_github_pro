@@ -27,7 +27,7 @@ class RequestURL {
 
   //获取用户项目列表
   static getRepos(String userName) {
-    return GithubHomeURL + "/users/$userName/repos";
+    return GithubHomeURL + "users/$userName/repos";
   }
 
 

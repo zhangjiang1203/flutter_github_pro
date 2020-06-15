@@ -43,7 +43,7 @@ class GithubAPI{
   //登录接口
   Future<User> login(String userName,String password) async {
     //组装请求的格式
-    String basic = "Basic" + base64.encode(utf8.encode('$userName"$password'));
+    String basic = "Basic" + base64.encode(utf8.encode('$userName:$password'));
     print(basic);
     //保存用户名和密码
     Global.preferences.setString(CommentUse.loginName, userName);
@@ -57,8 +57,8 @@ class GithubAPI{
 
   Future<List<Repoitems>> getUserRepo(String userName,Map<String,dynamic> param) async{
 
-    var data = await HTTPManager().getAsync<Allrepolist>(url: RequestURL.getRepos(userName),params: param);
-
+    var data = await HTTPManager().getAsync<List<Repoitems>>(url: RequestURL.getRepos(userName),params: param);
+    return data;
   }
 
 }

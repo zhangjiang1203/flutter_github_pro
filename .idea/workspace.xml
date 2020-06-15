@@ -10,30 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a82fdc3-4e62-4e12-b0ca-be91f5310860" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/routes/indexPage/RepoItems.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/languages/i18n_en.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/languages/i18n_en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/languages/i18n_zh.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/languages/i18n_zh.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/HttpManager/HTTPManager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HttpManager/HTTPManager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/HttpManager/NetCacheInterceptor.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HttpManager/NetCacheInterceptor.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/HttpManager/RequestAPI.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HttpManager/RequestAPI.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/HttpManager/RequestURLPath.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HttpManager/RequestURLPath.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/Global.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/Global.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/ProfileChangeNotifier.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/ProfileChangeNotifier.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/convertModelTool/commandFile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/convertModelTool/commandFile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/JsonConvert.test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/JsonConvert.test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/allrepolist.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/allrepolist.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/BaseWidget/base_tabbar_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/BaseWidget/base_tabbar_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/Login/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/Login/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/Login/my_drawer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/my_drawer.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/home_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/home_pages.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/lifeToolsPage/jin_ri_you_jia_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/lifeToolsPage/jin_ri_you_jia_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/lifeToolsPage/news_top_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/lifeToolsPage/news_top_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/lifeToolsPage/today_in_history_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/lifeToolsPage/today_in_history_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/lifeToolsPage/xiao_hua_da_quan_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/lifeToolsPage/xiao_hua_da_quan_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/my_infinite_listview.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/my_infinite_listview.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,11 +68,11 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/routes/indexPage" />
       <recent name="$PROJECT_DIR$/lib/convertModelTool" />
       <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/lib/routes/BaseWidget" />
       <recent name="$PROJECT_DIR$/lib/routes/Login" />
-      <recent name="$PROJECT_DIR$/lib/routes/MinePage" />
     </key>
   </component>
   <component name="RunDashboard">

@@ -3,7 +3,8 @@
 * on 2020/5/21 3:06 PM
 * copyright on zhangjiang
 */
-
+import 'dart:convert' as convert;
+import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'dart:collection';
 import '../common/index.dart';
@@ -79,9 +80,18 @@ class HeaderInterceptor extends Interceptor {
 
   @override
   Future onRequest(RequestOptions options) async {
-    if(Global.profile.token != null){
-      options.headers.addAll({"Authorization":Global.profile.token});
+    if(Global.profile.user != null) {
+      print("拼接header");
+      String userName = Global.preferences.getString(CommentUse.loginName);
+      String password = Global.preferences.getString(CommentUse.loginPassword);
+      var temp = convert.base64Decode(password);
+      password =
+          convert.utf8.decode(temp).replaceFirst(CommentUse.base64Extra, "");
+      String basic = "Basic" +
+          base64.encode(utf8.encode('$userName:$password'));
+      options.headers.addAll({"Authorization": basic});
     }
+
     return options;
   }
 

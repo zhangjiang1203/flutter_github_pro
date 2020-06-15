@@ -344,7 +344,7 @@ class HTTPManager {
         cancelToken = _cancelTokens[tag] == null ? CancelToken() : _cancelTokens[tag];
         _cancelTokens[tag] = cancelToken;
       }
-      Response<Map<String,dynamic>> response = await _client.request(
+      Response response = await _client.request(
         url,
         queryParameters: params,
         options: options,
@@ -355,13 +355,21 @@ class HTTPManager {
       if (jsonParse != null){
         return jsonParse(response.data);
       }else{
-        Map<String,dynamic> tempMap = response.data;
-//        print("请求返回数据===${json.encode(tempMap).toString()}");
-        T data = ConvertTemplate.fromJson<T>(tempMap) as T;
+        var tempData = response.data;
+//        print("请求返回数据===${json.encode(tempData).toString()}");
+        if (tempData is Map){
+          print("当前是Map");
+          T data = ConvertTemplate.fromJson<T>(tempData) as T;
 //        print("转换的数据===$data");
-        if (data != null){
-          return data;
+          if (data != null){
+            return data;
+          }
+        }else if (tempData is List){
+          print("当前是list");
+          T tem = ConvertTemplate.fromJsonAsT<T>(tempData);
+          return tem;
         }
+
         return response.data as T;
       }
     } on DioError catch(e,s) {
