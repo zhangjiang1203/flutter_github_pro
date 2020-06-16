@@ -18,22 +18,24 @@ class _UserRepoPageState extends State<UserRepoPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: EasyRefresh.custom(
-            slivers: <Widget>[
-              SliverFixedExtentList(
-                itemExtent: 50,
-                delegate: SliverChildBuilderDelegate((context,index) {
-                  return Container(
-                    padding: EdgeInsets.only(left: 15),
-                    alignment: Alignment.centerLeft,
-                    color: Colors.red[100*(index%9)],
-                    child: Text("listView==$index"),
-                  );
-                },
-                    childCount: 50),
-              ),
-            ]),
+    return MediaQuery.removePadding(
+      removeTop: true,
+      context: context,
+      child: EasyRefresh.custom(
+          slivers: <Widget>[
+            SliverFixedExtentList(
+              itemExtent: 50,
+              delegate: SliverChildBuilderDelegate((context,index) {
+                return Container(
+                  padding: EdgeInsets.only(left: 15),
+                  alignment: Alignment.centerLeft,
+                  color: Colors.red[100*(index%9)],
+                  child: Text("listView==$index"),
+                );
+              },
+                  childCount: 50),
+            ),
+          ]),
     );
   }
 }
