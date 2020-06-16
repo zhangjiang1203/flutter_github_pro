@@ -1,5 +1,6 @@
 import UIKit
 import Flutter
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
@@ -8,6 +9,9 @@ import Flutter
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     GeneratedPluginRegistrant.register(with: self)
+    IQKeyboardManager.shared.enable = true
+    IQKeyboardManager.shared.enableAutoToolbar = true
+    
     let controler  = window.rootViewController as! FlutterViewController
     
     let methodChannel = FlutterMethodChannel(name: "com.zhangj.fluttergithubpro.flutter.io/battery", binaryMessenger: controler.binaryMessenger)

@@ -23,15 +23,15 @@ class ProfileChangeNotifier extends ChangeNotifier {
 
 ///用户状态改变通知依赖项
 class UserProvider extends ProfileChangeNotifier {
-  User get _user => _profile.user;
+  User get user => _profile.user;
 
   ///是否登录
-  bool get isLogin => _user != null;
+  bool get isLogin => user != null;
 
   ///用户信息发生变化，通知依赖的widget更新
   set user(User user){
     if(user?.login != _profile.user?.login){
-      _profile.lastLogin = _user?.login;
+      _profile.lastLogin = user?.login;
       _profile.user = user;
       notifyListeners();
     }

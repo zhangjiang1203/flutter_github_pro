@@ -34,7 +34,11 @@ class Global {
   //是否是release
   static bool get isRelease => bool.fromEnvironment('dart.vm.product');
 
-  static Image get placeholder => Image.asset("assets/images/goodnight.jpeg");
+  //占位图
+  static Image get placeholder => Image.asset("assets/images/placeholder_image.png");
+
+  //无数据专用图
+  static Image get emptyImage => Image.asset("assets/images/placeholder_image.png");
 
   //初始化全局信息
   static Future init() async {

@@ -38,7 +38,7 @@ target 'Runner' do
   use_modular_headers!
   
   # Flutter Pod
-  
+  pod 'IQKeyboardManagerSwift', '~> 6.5.5'
   pod 'LookinServer', :configurations => ['Debug']
 
   copied_flutter_dir = File.join(__dir__, 'Flutter')

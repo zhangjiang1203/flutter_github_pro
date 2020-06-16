@@ -31,5 +31,13 @@
   "news_caijing": "finance and economics",
   "news_shishang": "fashion",
   "news_top": "recommend",
-  "news_title":"News Top"
+  "news_title":"News Top",
+
+  "drawer_owner": "My Repo",
+  "drawer_search":"Search",
+  "drawer_star":"My Star",
+  "drawer_fork":"My Fork",
+  "drawer_trend":"Trend",
+  "drawer_pub_address":"This Project",
+  "drawer_login_out":"Login Out"
 }

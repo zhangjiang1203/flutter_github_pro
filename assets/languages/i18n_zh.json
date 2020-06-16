@@ -31,7 +31,15 @@
   "news_caijing": "财经",
   "news_shishang": "时尚",
   "news_top": "头条",
-  "news_title":"新闻头条"
+  "news_title":"新闻头条",
+
+  "drawer_owner": "我的仓库",
+  "drawer_search":"搜索",
+  "drawer_star":"我的点赞",
+  "drawer_fork":"我的fork",
+  "drawer_trend":"流行趋势",
+  "drawer_pub_address":"本项目地址",
+  "drawer_login_out":"退出登录"
 
 
 }

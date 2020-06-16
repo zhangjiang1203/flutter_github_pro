@@ -21,13 +21,18 @@ class RequestURL {
   static String getGitHubPub = GithubHomeURL + "search/repositories";
 
   //登录获取用户信息
-  static getUser(String userName){
+  static getUserInfo(String userName){
     return GithubHomeURL + "users/$userName";
   }
 
   //获取用户项目列表
   static getRepos(String userName) {
     return GithubHomeURL + "users/$userName/repos";
+  }
+
+  //判断当前developer是否已follow
+  static isFollowing(String developerName) {
+    return GithubHomeURL + "user/following/$developerName";
   }
 
 

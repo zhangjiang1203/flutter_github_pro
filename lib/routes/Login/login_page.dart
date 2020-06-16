@@ -27,7 +27,6 @@ class _LoginRoute extends State<LoginRoute> {
   TextEditingController _nameController = new TextEditingController();
   TextEditingController _passwordController = new TextEditingController();
   bool _isPwdShow = false;
-  bool _nameAutoFocus = true;
   bool isClear = false;
   bool _isShowClear = false;
   bool _isShowPWD = false;
@@ -44,7 +43,6 @@ class _LoginRoute extends State<LoginRoute> {
         user = await RequestAPI().login(_nameController.text, _passwordController.text);
         // 因为登录页返回后，首页会build，所以我们传false，更新user后不触发更新
         Provider.of<UserProvider>(context).user = user;
-        print("获取的对象===$user");
       }catch (e){
         print("用户登录失败===${e.message}");
       } finally{
@@ -65,7 +63,6 @@ class _LoginRoute extends State<LoginRoute> {
     // TODO: implement initState
     super.initState();
     //填充上一次用户的用户名和密码
-
     String userName = Global.preferences.getString(CommentUse.loginName);
     if(userName != null){
       _isShowClear = userName.length > 0;
@@ -82,11 +79,17 @@ class _LoginRoute extends State<LoginRoute> {
   }
 
   @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+//    FocusScope.of(context).requestFocus(_nameAutoFocus);
+  }
+
+  @override
   Widget build(BuildContext context) {
+
     //UI相关设置
     ScreenUtil.init(context,width: 750,height: 1334,allowFontScaling: true);
-    var locale = Translations.of(context);
-
     return Scaffold(
       //防止键盘谈起遮挡
       resizeToAvoidBottomPadding:false,
@@ -117,6 +120,7 @@ class _LoginRoute extends State<LoginRoute> {
                   child: Container(
                     height: 60,
                     child: TextField(
+                      autofocus: true,
                       style: TextStyle(color: Colors.white,fontSize: 18),
                       controller: _nameController,
                       decoration: InputDecoration(

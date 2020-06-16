@@ -50,17 +50,29 @@ class GithubAPI{
     Global.preferences.setString(CommentUse.loginPassword, base64.encode(utf8.encode(password+CommentUse.base64Extra)));
     Global.preferences.setString(CommentUse.basic, basic);
     getPassToken(basic);
-     var user = await HTTPManager().getAsync<User>(url: RequestURL.getUser(userName));
+     var user = await getUserInfo(userName);
      Global.preferences.setString(CommentUse.RealName, user.login);
      return user;
   }
 
+  ///获取用户信息
+  Future<User> getUserInfo(String username) async{
+    User user = await HTTPManager().getAsync<User>(url: RequestURL.getUserInfo(username));
+    return user;
+  }
+
   /*获取个人仓库*/
   Future<List<Repoitems>> getUserRepo(String userName,Map<String,dynamic> param) async{
-
     var data = await HTTPManager().getAsync<List<Repoitems>>(url: RequestURL.getRepos(userName),params: param);
     return data;
   }
+
+  Future<int> checkIsFollowSomeone(String name) async{
+    int follow = await HTTPManager().getAsync<int>(url: RequestURL.isFollowing(name));
+    return follow;
+  }
+
+
 
 }
 

@@ -65,6 +65,7 @@ class _MyAppState extends State<MyApp> {
               theme: ThemeData(
                 primarySwatch: themeProvider.theme,
                 appBarTheme: AppBarTheme(elevation: 0),
+                visualDensity: VisualDensity.adaptivePlatformDensity,
               ),
               ///多语言设置
               onGenerateTitle: (context) {
