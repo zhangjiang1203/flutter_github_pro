@@ -11,6 +11,8 @@ import 'package:fluttergithubpro/routes/indexPage/home_pages.dart';
 import 'package:fluttergithubpro/routes/lifeToolsPage/life_page.dart';
 import 'package:provider/provider.dart';
 import '../../common/ScreenUtil.dart';
+import '../../Providers/ProvidersCollection.dart';
+
 class BaseTabbarPage extends StatefulWidget {
   BaseTabbarPage({Key key}) : super(key: key);
 
@@ -92,12 +94,3 @@ class _BaseTabbarPageState extends State<BaseTabbarPage> {
 }
 
 
-//添加点击provider的通知
-class TabbarChooseNotifier extends ChangeNotifier {
-  int _selectIndex = 0;
-  int get selectIndex => _selectIndex;
-  set selectIndex(int index){
-    _selectIndex = index;
-    notifyListeners();
-  }
-}

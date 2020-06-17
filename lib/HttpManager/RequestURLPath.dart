@@ -30,6 +30,15 @@ class RequestURL {
     return GithubHomeURL + "users/$userName/repos";
   }
 
+  //获取用户starred项目列表
+  static getStarredRepos(String userName) {
+    return GithubHomeURL + "users/$userName/starred";
+  }
+
+  static getDevEvents(String userName){
+    return GithubHomeURL + "users/$userName/events";
+  }
+
   //判断当前developer是否已follow
   static isFollowing(String developerName) {
     return GithubHomeURL + "user/following/$developerName";

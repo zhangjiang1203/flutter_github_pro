@@ -174,7 +174,7 @@ class _HomePageState extends State<AppHomePage> {
 //            },options: Options(extra: {"refresh":refresh}));
 
             //获取个人仓库信息
-            var data = await RequestAPI().getUserRepo(Global.profile.user.login,{"page":page,'page_size': 30});
+            var data = await RequestAPI().getUserRepo(userName:Global.profile.user.login,param:{"page":page,'page_size': 30});
 
 //            var dataLength = data.items.length;
             items.addAll(data);

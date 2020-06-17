@@ -62,18 +62,22 @@ class GithubAPI{
   }
 
   /*获取个人仓库*/
-  Future<List<Repoitems>> getUserRepo(String userName,Map<String,dynamic> param) async{
+  Future<List<Repoitems>> getUserRepo({String userName,Map<String,dynamic> param}) async{
     var data = await HTTPManager().getAsync<List<Repoitems>>(url: RequestURL.getRepos(userName),params: param);
     return data;
   }
 
+  /*获取用户关注的项目*/
+  Future<List<Repoitems>> getStarredRepos({String userName,Map<String,dynamic> param}) async{
+    var data = await HTTPManager().getAsync<List<Repoitems>>(url: RequestURL.getStarredRepos(userName),params: param);
+    return data;
+  }
+
+  /*是否关注*/
   Future<int> checkIsFollowSomeone(String name) async{
     int follow = await HTTPManager().getAsync<int>(url: RequestURL.isFollowing(name));
     return follow;
   }
-
-
-
 }
 
 

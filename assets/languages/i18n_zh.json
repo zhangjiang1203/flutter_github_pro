@@ -39,7 +39,12 @@
   "drawer_fork":"我的fork",
   "drawer_trend":"流行趋势",
   "drawer_pub_address":"本项目地址",
-  "drawer_login_out":"退出登录"
+  "drawer_login_out":"退出登录",
+  "personal_repos":"仓库",
+  "personal_stars":"星标",
+  "personal_dynamic":"动态",
+  "personal_focus":"关注",
+  "personal_fans":"粉丝"
 
 
 }

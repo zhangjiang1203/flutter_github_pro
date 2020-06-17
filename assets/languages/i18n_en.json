@@ -39,5 +39,11 @@
   "drawer_fork":"My Fork",
   "drawer_trend":"Trend",
   "drawer_pub_address":"This Project",
-  "drawer_login_out":"Login Out"
+  "drawer_login_out":"Login Out",
+
+  "personal_repos":"Repos",
+  "personal_stars":"Stars",
+  "personal_dynamic":"dynamic",
+  "personal_focus":"Focus",
+  "personal_fans":"Fans"
 }
