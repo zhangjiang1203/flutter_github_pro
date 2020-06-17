@@ -228,7 +228,7 @@ class _PersonalRepoPageState extends State<PersonalRepoPage> with SingleTickerPr
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 5),
-                      child: Text(user.created_at.substring(0,12),style: TextStyle(color: Colors.white70,fontSize: 13),),
+                      child: Text(user.created_at.substring(0,10),style: TextStyle(color: Colors.white70,fontSize: 13),),
                     ),
                   ],
                 ),

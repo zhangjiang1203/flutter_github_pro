@@ -10,13 +10,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a82fdc3-4e62-4e12-b0ca-be91f5310860" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jsons/eventactor.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jsons/eventcommits.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jsons/organization.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jsons/playloadmodel.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jsons/pubevents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/eventcommits.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/eventcommits.g.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/organization.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/organization.g.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/playloadmodel.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/playloadmodel.g.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/pubevents.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/models/pubevents.g.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/user_repo_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/user_repo_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fluttergithubpro.iml" beforeDir="false" afterPath="$PROJECT_DIR$/fluttergithubpro.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/HttpManager/RequestURLPath.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HttpManager/RequestURLPath.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/allrepolist.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/allrepolist.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/index.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/profile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/my_personal_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/my_personal_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/user_event_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/user_event_page.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +109,9 @@
     </task>
     <servers />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.json" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -116,37 +133,41 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="253" y="255" key="#PSD/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592067138589" />
+    <state x="525" y="340" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1592411569875">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="525" y="340" key="#com.intellij.fileTypes.FileTypeChooser/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592411569875" />
     <state x="576" y="412" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1592066670779">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="576" y="412" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592066670779" />
-    <state x="466" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592065328937">
+    <state x="466" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592411925696">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state x="466" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592065328937" />
-    <state width="1632" height="270" key="GridCell.Tab.0.bottom" timestamp="1592404278539">
+    <state x="466" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592411925696" />
+    <state width="1632" height="269" key="GridCell.Tab.0.bottom" timestamp="1592404781532">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1038" height="169" key="GridCell.Tab.0.bottom/-1080.23.1080.1897/0.23.1680.1027@-1080.23.1080.1897" timestamp="1592105820708" />
-    <state width="1632" height="270" key="GridCell.Tab.0.bottom/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592404278539" />
+    <state width="1632" height="269" key="GridCell.Tab.0.bottom/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592404781532" />
     <state width="1632" height="7" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1592322760833" />
-    <state width="1632" height="270" key="GridCell.Tab.0.center" timestamp="1592404278538">
+    <state width="1632" height="269" key="GridCell.Tab.0.center" timestamp="1592404781531">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1038" height="169" key="GridCell.Tab.0.center/-1080.23.1080.1897/0.23.1680.1027@-1080.23.1080.1897" timestamp="1592105820707" />
-    <state width="1632" height="270" key="GridCell.Tab.0.center/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592404278538" />
+    <state width="1632" height="269" key="GridCell.Tab.0.center/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592404781531" />
     <state width="1632" height="7" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1592322760832" />
-    <state width="1632" height="270" key="GridCell.Tab.0.left" timestamp="1592404278537">
+    <state width="1632" height="269" key="GridCell.Tab.0.left" timestamp="1592404781530">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1038" height="169" key="GridCell.Tab.0.left/-1080.23.1080.1897/0.23.1680.1027@-1080.23.1080.1897" timestamp="1592105820706" />
-    <state width="1632" height="270" key="GridCell.Tab.0.left/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592404278537" />
+    <state width="1632" height="269" key="GridCell.Tab.0.left/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592404781530" />
     <state width="1632" height="7" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1592322760832" />
-    <state width="1632" height="270" key="GridCell.Tab.0.right" timestamp="1592404278539">
+    <state width="1632" height="269" key="GridCell.Tab.0.right" timestamp="1592404781531">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state width="1038" height="169" key="GridCell.Tab.0.right/-1080.23.1080.1897/0.23.1680.1027@-1080.23.1080.1897" timestamp="1592105820707" />
-    <state width="1632" height="270" key="GridCell.Tab.0.right/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592404278539" />
+    <state width="1632" height="269" key="GridCell.Tab.0.right/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592404781531" />
     <state width="1632" height="7" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1592322760833" />
     <state x="229" y="155" key="SettingsEditor" timestamp="1592115740118">
       <screen x="0" y="23" width="1680" height="1027" />

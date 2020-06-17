@@ -34,7 +34,7 @@ class RequestURL {
   static getStarredRepos(String userName) {
     return GithubHomeURL + "users/$userName/starred";
   }
-
+  //获取用户动态列表
   static getDevEvents(String userName){
     return GithubHomeURL + "users/$userName/events";
   }

@@ -25,7 +25,7 @@ class _UserEventPageState extends State<UserEventPage> {
 
   int page = 1;
   EasyRefreshController _controller;
-  List<Repoitems> itemsData = [];
+  List<Pubevents> itemsData = [];
 
   @override
   void initState() {
@@ -49,7 +49,7 @@ class _UserEventPageState extends State<UserEventPage> {
     }else{
       page++;
     }
-    List<Repoitems> items;
+    List<Pubevents> items = await HTTPManager().getAsync<List<Pubevents>>(url: RequestURL.getDevEvents(widget.devName),params: {})
     print("当前返回的信息==${items.length}");
     if (mounted) {
       setState(() {
@@ -72,7 +72,7 @@ class _UserEventPageState extends State<UserEventPage> {
         slivers: <Widget>[
           SliverList(
             delegate: SliverChildBuilderDelegate((context,index) {
-              return GitPubItems(itemsData[index]);
+              return Container();//GitPubItems(itemsData[index]);
             }, childCount: itemsData.length),
           ),
         ],

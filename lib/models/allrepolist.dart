@@ -2,7 +2,6 @@ import 'package:json_annotation/json_annotation.dart';
 import "repoitems.dart";
 part 'allrepolist.g.dart';
 
-
 @JsonSerializable()
 class Allrepolist {
     Allrepolist();
