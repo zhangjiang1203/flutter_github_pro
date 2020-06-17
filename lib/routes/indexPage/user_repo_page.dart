@@ -5,6 +5,7 @@
 */
 
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
 import 'package:fluttergithubpro/HttpManager/RequestAPI.dart';
@@ -37,9 +38,11 @@ class _UserRepoPageState extends State<UserRepoPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _controller = EasyRefreshController();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      EasyLoading.show(status: "玩命加载中……");
+    });
     _getItemPro();
   }
 
@@ -75,6 +78,7 @@ class _UserRepoPageState extends State<UserRepoPage> {
       _controller.finishLoad(noMore: items.length < 30);
     }
     _controller.resetLoadState();
+    EasyLoading.dismiss();
   }
 
   @override
