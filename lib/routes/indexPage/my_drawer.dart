@@ -121,6 +121,7 @@ class MyDrawer extends StatelessWidget {
               ]),
             trailing: Icon(Platform.isIOS ? Icons.arrow_forward_ios : Icons.arrow_forward,size: 12,),
             onTap: (){
+              Navigator.of(context).pop();
               //点击跳转逻辑
               if(e == "drawer_owner"){
                 Navigator.of(context).push(MaterialPageRoute(builder: (context){
