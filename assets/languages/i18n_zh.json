@@ -44,7 +44,15 @@
   "personal_stars":"星标",
   "personal_dynamic":"动态",
   "personal_focus":"关注",
-  "personal_fans":"粉丝"
+  "personal_fans":"粉丝",
+
+  "ONE_SECOND_AGO": " 秒前",
+  "ONE_MINUTE_AGO": " 分钟前",
+  "ONE_HOUR_AGO": " 小时前",
+  "ONE_DAY_AGO": " 天前",
+  "ONE_MONTH_AGO": " 月前",
+  "ONE_YEAR_AGO": " 年前",
+  "ONE_YESTODAY_AGO": "昨天"
 
 
 }

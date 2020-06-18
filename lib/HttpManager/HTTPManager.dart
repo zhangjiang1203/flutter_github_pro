@@ -15,7 +15,7 @@ import 'package:flutter_common_utils/log_util.dart';
 import 'package:fluttergithubpro/models/JsonConvert.test.dart';
 import 'package:fluttergithubpro/models/index.dart';
 
-
+Type typeOf<T>() => T;
 //设置成功回调
 typedef HttpSuccessCallback<T> = void Function(dynamic data);
 //失败回调
@@ -338,13 +338,15 @@ class HTTPManager {
         : options.merge(receiveTimeout: onSendProgress == null ? RECEIVE_TIMEOUT : 0);
 
     url = _restfulUrl(url, params);
+    print("当前的泛型类型为: ${typeOf<T>()}");
+    Response response;
     try{
       CancelToken cancelToken;
       if(tag != null){
         cancelToken = _cancelTokens[tag] == null ? CancelToken() : _cancelTokens[tag];
         _cancelTokens[tag] = cancelToken;
       }
-      Response response = await _client.request(
+      response = await _client.request(
         url,
         queryParameters: params,
         options: options,
@@ -356,30 +358,40 @@ class HTTPManager {
         return jsonParse(response.data);
       }else{
         var tempData = response.data;
-//        print("请求返回数据===${json.encode(tempData).toString()}");
         if (tempData is Map){
           print("当前是Map");
-          T data = ConvertTemplate.fromJson<T>(tempData) as T;
-//        print("转换的数据===$data");
+          T data = JsonConvert.fromJson<T>(tempData) as T;
           if (data != null){
             return data;
           }
         }else if (tempData is List){
-          print("当前是list");
-          T tem = ConvertTemplate.fromJsonAsT<T>(tempData);
+          T tem = JsonConvert.fromJsonAsT<T>(tempData);
           return tem;
+        }else if ((typeOf<T>() is int)){
+          print("当前返回的数据===${response.statusCode}");
+          return response.statusCode as T;
         }
-
+        print("请求出错:${response.data},${response.statusCode}");
         return response.data as T;
       }
     } on DioError catch(e,s) {
-      LogUtil.v("请求出错:${e.toString()}\n$s");
-      print("请求出错:${e.toString()}\n$s");
-      throw (HttpError.dioError(e));
+      print("请求出错:${e.toString()}\n$s,${response.statusCode}");
+      if (e.response.statusCode == 404){
+        switch(typeOf<T>()){
+          case int:
+            return response.statusCode as T;
+        }
+      }
+      LogUtil.v("请求出错:${e.toString()}\n$s,${response.statusCode}");
+
     } catch (e,s){
-      LogUtil.v("未知异常错误:$e\n$s");
-      print("未知异常错误:$e\n$s");
-      throw (HttpError(HttpError.UNKNOWN,'网络异常，请稍后再试11'));
+      print("是不是int: ${(typeOf<T>() is int)}");
+      switch(typeOf<T>()){
+        case int:
+          return response.statusCode as T;
+      }
+      LogUtil.v("未知异常错误:$e\n$s,${response.statusCode}");
+      print("未知异常错误:$e\n$s,${response.statusCode}");
     }
   }
 

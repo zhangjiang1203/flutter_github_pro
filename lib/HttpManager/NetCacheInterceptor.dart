@@ -25,7 +25,7 @@ class NetCacheInterceptor extends Interceptor {
   @override
   Future onRequest(RequestOptions options) async {
     // TODO: implement onRequest
-    zjPrint('''请求方式==${options.method}\n请求的url===${options.uri} \n请求参数===${options.queryParameters.toString()}
+    zjPrint('''请求方式==${options.method}\n请求的url===${options.uri} 请求参数===${options.queryParameters.toString()}
         ''',StackTrace.current);
     //不需要缓存直接返回
     if(!Global.profile.cache.enable) return options;
@@ -59,6 +59,8 @@ class NetCacheInterceptor extends Interceptor {
 
   @override
   Future onResponse(Response response) async{
+    zjPrint('''返回值==请求的url===${response.request.uri} 返回状态码===${response.statusCode} }
+        ''',StackTrace.current);
     if(Global.profile.cache.enable){
       RequestOptions options = response.request;
       if(options.extra["noCache"] != true && options.method.toLowerCase() == 'get'){
@@ -81,14 +83,14 @@ class HeaderInterceptor extends Interceptor {
   @override
   Future onRequest(RequestOptions options) async {
     if(Global.profile.user != null) {
-      print("拼接header");
-      String userName = Global.preferences.getString(CommentUse.loginName);
-      String password = Global.preferences.getString(CommentUse.loginPassword);
-      var temp = convert.base64Decode(password);
-      password =
-          convert.utf8.decode(temp).replaceFirst(CommentUse.base64Extra, "");
-      String basic = "Basic" +
-          base64.encode(utf8.encode('$userName:$password'));
+
+//      String userName = Global.preferences.getString(CommentUse.loginName);
+//      String password = Global.preferences.getString(CommentUse.loginPassword);
+//      var temp = convert.base64Decode(password);
+//      password =
+//          convert.utf8.decode(temp).replaceFirst(CommentUse.base64Extra, "");
+      String basic = await Global.preferences.get(CommentUse.basic);
+      print("拼接header==basic===$basic");
       options.headers.addAll({"Authorization": basic});
     }
 

@@ -13,6 +13,10 @@ import 'package:fluttergithubpro/models/index.dart';
 import 'RequestURLPath.dart';
 import 'CommentUse.dart';
 
+
+//设置成功回调
+typedef RequestSuccessCallback<T> = void Function(dynamic data);
+
 class GithubAPI{
 
   //github OAuth认证需要，没有认证某些接口访问次数限制为60次/小时，认证后为5000次/小时
@@ -43,8 +47,8 @@ class GithubAPI{
   //登录接口
   Future<User> login(String userName,String password) async {
     //组装请求的格式
-    String basic = "Basic" + base64.encode(utf8.encode('$userName:$password'));
-    print(basic);
+    String basic = "Basic " + base64.encode(utf8.encode('$userName:$password'));
+    print("当前的basic==$basic");
     //保存用户名和密码
     Global.preferences.setString(CommentUse.loginName, userName);
     Global.preferences.setString(CommentUse.loginPassword, base64.encode(utf8.encode(password+CommentUse.base64Extra)));
@@ -74,10 +78,20 @@ class GithubAPI{
   }
 
   /*是否关注*/
-  Future<int> checkIsFollowSomeone(String name) async{
+  void checkIsFollowSomeone(String name,RequestSuccessCallback callback) async{
     int follow = await HTTPManager().getAsync<int>(url: RequestURL.isFollowing(name));
+    print("试试$follow");
+    callback(follow);
+  }
+
+  /*RequestURL.isFollowing 接口根据请求方式不同设置功能不同*/
+  //取消或者添加对user的关注
+  Future<int> followOrUnfollow({String username,bool isFollow}) async{
+    int follow = await HTTPManager().getAsync<int>(url: RequestURL.isFollowing(username),options: Options(method: isFollow ? 'PUT':'Delete'));
     return follow;
   }
+
+
 }
 
 

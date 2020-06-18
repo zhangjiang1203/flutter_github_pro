@@ -1,6 +1,6 @@
 /*
-* user_repo_page created by zj 
-* on 2020/6/16 6:05 PM
+* user_event_page created by zj 
+* on 2020/6/17 2:52 PM
 * copyright on zhangjiang
 */
 
@@ -13,35 +13,34 @@ import 'package:fluttergithubpro/HttpManager/index.dart';
 import 'package:fluttergithubpro/models/index.dart';
 import 'package:fluttergithubpro/routes/indexPage/RepoItems.dart';
 
-enum UserRepoPageType{
-  personal, //个人仓库
-  starred,  //点赞仓库
-}
+import 'event_list_item.dart';
 
 
-class UserRepoPage extends StatefulWidget {
-  UserRepoPage({Key key,@required this.devName,this.type = UserRepoPageType.personal}) : super(key: key);
+class UserEventPage extends StatefulWidget {
+  UserEventPage({Key key,@required this.devName}) : super(key: key);
 
   final String devName;
-
-  final UserRepoPageType type;
-
   @override
-  _UserRepoPageState createState() => _UserRepoPageState();
+  _UserEventPageState createState() => _UserEventPageState();
 }
 
-class _UserRepoPageState extends State<UserRepoPage> {
+class _UserEventPageState extends State<UserEventPage> with AutomaticKeepAliveClientMixin {
 
   int page = 1;
   EasyRefreshController _controller;
-  List<Repoitems> itemsData = [];
+  List<Pubevents> itemsData = [];
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
     _controller = EasyRefreshController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      EasyLoading.show(status: "玩命加载中……");
+      EasyLoading.show(status: "玩命加载中…………");
     });
     _getItemPro();
   }
@@ -60,15 +59,7 @@ class _UserRepoPageState extends State<UserRepoPage> {
     }else{
       page++;
     }
-
-    List<Repoitems> items;
-    if(widget.type == UserRepoPageType.personal){
-      items = await HTTPManager().getAsync<List<Repoitems>>(url: RequestURL.getRepos(widget.devName),params: {'page':page,'pageSize':30});
-      print(items.first);
-    }else{
-      items = await RequestAPI.instance.getStarredRepos(userName:widget.devName,param:{'page':page,'pageSize':30});
-    }
-    print("当前返回的信息==${items.length}");
+    List<Pubevents> items = await HTTPManager().getAsync<List<Pubevents>>(url: RequestURL.getDevEvents(widget.devName),params: {'page':page,'page_size':30});
     if (mounted) {
       setState(() {
         itemsData.addAll(items);
@@ -83,18 +74,19 @@ class _UserRepoPageState extends State<UserRepoPage> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return MediaQuery.removePadding(
       removeTop: true,
       context: context,
       child: EasyRefresh.custom(
         controller: _controller,
-          slivers: <Widget>[
-            SliverList(
-              delegate: SliverChildBuilderDelegate((context,index) {
-                return GitPubItems(itemsData[index]);
-              }, childCount: itemsData.length),
-            ),
-          ],
+        slivers: <Widget>[
+          SliverList(
+            delegate: SliverChildBuilderDelegate((context,index) {
+              return EventListItem(events: itemsData[index]);
+            }, childCount: itemsData.length),
+          ),
+        ],
         onRefresh: () async{
           _getItemPro();
         },
@@ -105,3 +97,4 @@ class _UserRepoPageState extends State<UserRepoPage> {
     );
   }
 }
+

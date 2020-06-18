@@ -22,7 +22,11 @@ class NestScrollViewNotifier extends ChangeNotifier {
 
   NestScrollViewNotifier({@required this.maxOffset}):assert(maxOffset != null,'maxOffset不能为null'),super();
 
+  //滚动的距离
   final double maxOffset;
+
+  //是否关注
+  bool _isFollow = false;
 
   double _selectIndex = 0;
   bool get isShowNavBar => _selectIndex > maxOffset;
@@ -30,4 +34,12 @@ class NestScrollViewNotifier extends ChangeNotifier {
     _selectIndex = offset;
     notifyListeners();
   }
+
+  //过去关注
+  bool get isFollow => _isFollow;
+  set setIsFollow(bool follow){
+    _isFollow = follow;
+    notifyListeners();
+  }
+
 }

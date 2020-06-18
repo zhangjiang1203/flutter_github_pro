@@ -45,5 +45,13 @@
   "personal_stars":"Stars",
   "personal_dynamic":"dynamic",
   "personal_focus":"Focus",
-  "personal_fans":"Fans"
+  "personal_fans":"Fans",
+
+  "ONE_SECOND_AGO": " SEC",
+  "ONE_MINUTE_AGO": " MIN",
+  "ONE_HOUR_AGO": " HOUR",
+  "ONE_DAY_AGO": " Day",
+  "ONE_MONTH_AGO": " Mon",
+  "ONE_YEAR_AGO": " YEAR",
+  "ONE_YESTODAY_AGO": "Yestoday"
 }

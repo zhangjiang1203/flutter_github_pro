@@ -7,6 +7,15 @@
 
 //注册自己的OAuth Application，得到clientId和clientSecret，进行替换
 //注册地址： https://github.com/settings/applications/new
+//Github API https://developer.github.com/v3/
+/*
+* 微博 https://open.weibo.com/wiki/API
+* Twitter：https://dev.twitter.com/
+* Dribbble：Dribbble Developer
+* Angelist：API - AngelList
+* Nytimes https://developer.nytimes.com/apis
+* Instagram https://www.instagram.com/developer/
+* */
 
 
 class RequestURL {
@@ -37,6 +46,16 @@ class RequestURL {
   //获取用户动态列表
   static getDevEvents(String userName){
     return GithubHomeURL + "users/$userName/events";
+  }
+
+  //userName关注的人
+  static getUserFollowing(userName) {
+    return GithubHomeURL + "users/$userName/following";
+  }
+
+  //关注userName的人（粉丝）
+  static getUserFollower(userName) {
+    return GithubHomeURL + "users/$userName/followers";
   }
 
   //判断当前developer是否已follow
