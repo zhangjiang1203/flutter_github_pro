@@ -8,6 +8,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttergithubpro/common/index.dart';
 import 'package:fluttergithubpro/routes/indexPage/PersonalPage/my_personal_page.dart';
+import 'package:fluttergithubpro/routes/indexPage/search_list_page.dart';
 import 'package:provider/provider.dart';
 import 'dart:io';
 
@@ -16,8 +17,6 @@ class MyDrawer extends StatelessWidget {
   Map leftData = {
     "drawer_owner":Icons.lock,
     "drawer_search":Icons.search,
-    "drawer_star":Icons.star,
-    "drawer_fork":Icons.nature,
     "drawer_trend":Icons.train,
     'drawer_pub_address':Icons.add};
 
@@ -126,7 +125,10 @@ class MyDrawer extends StatelessWidget {
                 Navigator.of(context).push(MaterialPageRoute(builder: (context){
                   return PersonalRepoPage(userName:userP.user?.login ?? "");
                 }));
-
+              }else if (e == 'drawer_search'){
+                Navigator.of(context).push(MaterialPageRoute(builder: (_){
+                  return SearchListPage();
+                }));
               }
             },)).toList()
         );

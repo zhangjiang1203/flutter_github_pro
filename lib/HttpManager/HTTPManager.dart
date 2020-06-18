@@ -375,14 +375,14 @@ class HTTPManager {
         return response.data as T;
       }
     } on DioError catch(e,s) {
-      print("请求出错:${e.toString()}\n$s,${response.statusCode}");
+//      print("请求出错:${e.toString()}\n$s,${response.statusCode}");
       if (e.response.statusCode == 404){
         switch(typeOf<T>()){
           case int:
             return response.statusCode as T;
         }
       }
-      LogUtil.v("请求出错:${e.toString()}\n$s,${response.statusCode}");
+      LogUtil.v("请求出错:${e.toString()}\n$s");
 
     } catch (e,s){
       print("是不是int: ${(typeOf<T>() is int)}");

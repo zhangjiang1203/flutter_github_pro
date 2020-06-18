@@ -6,6 +6,7 @@
 
 import 'dart:convert' as convert;
 import 'dart:io';
+import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -44,7 +45,7 @@ class _LoginRoute extends State<LoginRoute> {
         // 因为登录页返回后，首页会build，所以我们传false，更新user后不触发更新
         Provider.of<UserProvider>(context).user = user;
       }catch (e){
-        print("用户登录失败===${e.message}");
+        print("用户登录失败===$e");
       } finally{
         EasyLoading.dismiss();
       }
@@ -87,6 +88,137 @@ class _LoginRoute extends State<LoginRoute> {
 
   @override
   Widget build(BuildContext context) {
+    return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      body: Stack(
+        children: <Widget>[
+          Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+              image:  ExactAssetImage("assets/images/login_back_ground.png"),
+                fit: BoxFit.cover,
+              ),
+             ),
+          ),
+          ClipRRect(
+             child: BackdropFilter(
+               filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+               child: Container(
+                 width: double.infinity,
+                 height: double.infinity,
+                 color: Colors.black.withOpacity(0.1),
+               ),
+             ),
+          ),
+          Center(
+            child: Form(
+              key: _formKey,
+              autovalidate: true,
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 100),
+                    child:ClipOval(
+                      child: Image.asset(
+                        "assets/images/github_logo.png",
+                        width: 100,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30,right: 30,top: 30),
+                    child: Container(
+                      height: 60,
+                      child: TextField(
+                        autofocus: true,
+                        style: TextStyle(color: Colors.white,fontSize: 18),
+                        controller: _nameController,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.person,color: Colors.white,),
+                          suffixIcon: !_isShowClear ? null : IconButton(
+                            icon: Icon(Icons.clear,color: Colors.white,),
+                            onPressed: ()=> setState(()=>_nameController.text = ""),
+                          ),
+                          isDense: true,
+                          fillColor: Color(0x30cccccc),
+                          filled: true,
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(25)),
+                              borderSide: BorderSide(color: Color(0x00ff0000))
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color:Color(0xffffffff)),
+                            borderRadius: BorderRadius.all(Radius.circular(25)),
+                          ),
+                          hintText: '请输入用户名',
+                          hintStyle: TextStyle(color: Color(0xffeeeeee)),
+                        ),
+                        onChanged: (v){
+                          setState(() {
+                            _isShowClear = v.length > 0;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30,right: 30,top: 30),
+                    child: Container(
+                      height: 60,
+                      child: TextField(
+                        obscureText: !_isPwdShow,
+                        style: TextStyle(color: Colors.white,fontSize: 18),
+                        controller: _passwordController,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.lock,color: Colors.white,),
+                          suffixIcon: !_isShowPWD ? null : IconButton(
+                            icon: Icon( !_isPwdShow ? Icons.visibility : Icons.visibility_off,color: Colors.white,),
+                            onPressed: ()=>setState(()=> _isPwdShow = !_isPwdShow),
+                          ),
+                          isDense: true,
+                          fillColor: Color(0x30cccccc),
+                          filled: true,
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(25)),
+                              borderSide: BorderSide(color: Color(0x00ff0000))
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color:Color(0xffffffff)),
+                            borderRadius: BorderRadius.all(Radius.circular(25)),
+                          ),
+                          hintText: '请输入密码',
+                          hintStyle: TextStyle(color: Color(0xffeeeeee)),
+                        ),
+                        onChanged: (v){
+                          setState(() {
+                            _isShowPWD = v.length > 0;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.only(left: 20,right: 20,top: 80),
+                      child: FlatButton(
+                        child: Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(25)),
+                            color: Provider.of<ThemeProvider>(context).theme,
+                          ),
+                          height: 50,
+                          child: Text('登录',style: TextStyle(color: Colors.white,fontSize: 18),),
+                        ),
+                        onPressed: _login,
+                      )
+                  ),
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
+    );
 
     //UI相关设置
     ScreenUtil.init(context,width: 750,height: 1334,allowFontScaling: true);
@@ -96,7 +228,7 @@ class _LoginRoute extends State<LoginRoute> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: ExactAssetImage("assets/images/login_back_ground.png"),
+            image:  ExactAssetImage("assets/images/login_back_ground.png"),
             fit: BoxFit.cover,
           ),
         ),

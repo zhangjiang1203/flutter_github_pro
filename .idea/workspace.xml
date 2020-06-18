@@ -10,44 +10,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a82fdc3-4e62-4e12-b0ca-be91f5310860" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/common/DateUtilTool.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/routes/indexPage/PersonalPage/event_list_item.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/routes/indexPage/PersonalPage/follow_user_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/routes/indexPage/PersonalPage/my_personal_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/routes/indexPage/PersonalPage/my_sliver_persistent_delegate.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/routes/indexPage/PersonalPage/person_list_cell.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/routes/indexPage/PersonalPage/user_event_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/routes/indexPage/PersonalPage/user_repo_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/book_background.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/routes/indexPage/search_list_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/languages/i18n_en.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/languages/i18n_en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/languages/i18n_zh.json" beforeDir="false" afterPath="$PROJECT_DIR$/assets/languages/i18n_zh.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/HttpManager/HTTPManager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HttpManager/HTTPManager.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/HttpManager/NetCacheInterceptor.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HttpManager/NetCacheInterceptor.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/HttpManager/RequestAPI.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HttpManager/RequestAPI.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/HttpManager/RequestURLPath.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HttpManager/RequestURLPath.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/Providers/ProvidersCollection.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/Providers/ProvidersCollection.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/Global.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/Global.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/JsonConvert.test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/JsonConvert.test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/index.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/Login/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/Login/login_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/my_drawer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/my_drawer.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/my_personal_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/my_sliver_persistent_delegate.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/user_event_page.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/user_repo_page.dart" beforeDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_XL_API_28" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_6_API_29" />
   <component name="FavoritesManager">
     <favorites_list name="flutter_github_pro" />
   </component>
@@ -93,18 +73,6 @@
       <recent name="$PROJECT_DIR$/lib/routes/BaseWidget" />
       <recent name="$PROJECT_DIR$/lib/routes/Login" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Flutter.main.dart">
     <configuration name="commandFile.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
