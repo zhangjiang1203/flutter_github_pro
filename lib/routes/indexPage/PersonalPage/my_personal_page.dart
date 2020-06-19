@@ -22,6 +22,8 @@ import 'package:provider/provider.dart';
 import '../../../Providers/ProvidersCollection.dart';
 
 
+
+
 class PersonalRepoPage extends StatefulWidget {
   PersonalRepoPage({Key key,@required this.userName}) : super(key: key);
 
@@ -35,6 +37,11 @@ class _PersonalRepoPageState extends State<PersonalRepoPage> with SingleTickerPr
 
   List<String> mTabs = <String>['personal_repos', "personal_stars", "personal_dynamic", "personal_focus", "personal_fans"];
 
+  var _personalKey = PageStorageKey('_personalKey');
+  var _starredKey = PageStorageKey('_starredKey');
+  var _eventKey = PageStorageKey('_eventKey');
+  var _followingKey = PageStorageKey('_followingKey');
+  var _followerKey = PageStorageKey('personalPage');
 
   TabController _controller;
   ScrollController _scrollController;
@@ -170,11 +177,11 @@ class _PersonalRepoPageState extends State<PersonalRepoPage> with SingleTickerPr
       body: TabBarView(
         controller: _controller,
         children: <Widget>[
-          UserRepoPage(devName: user.login),
-          UserRepoPage(devName: user.login,type: UserRepoPageType.starred,),
-          UserEventPage(devName: user.login),
-          FollowUserPage(userName: user.login),
-          FollowUserPage(userName: user.login,type: FollowType.follower,)
+          UserRepoPage(key: _personalKey,devName: user.login),
+          UserRepoPage(key: _starredKey,devName: user.login,type: UserRepoPageType.starred,),
+          UserEventPage(key: _eventKey,devName: user.login),
+          FollowUserPage(key: _followingKey,userName: user.login),
+          FollowUserPage(key: _followerKey,userName: user.login,type: FollowType.follower,)
         ],
       ),
     );

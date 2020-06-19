@@ -31,28 +31,23 @@ class _PersonListCell extends State<PersonListCell> {
         }));
       },
       child: Material(
+//        type: MaterialType.circle,
         color: Colors.white,
-        shape: BorderDirectional(
-            bottom: BorderSide(
-              color: Theme.of(context).dividerColor,
-              width: 1,
-            )
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 15),
-          child: Row(
-            children: <Widget>[
-              ClipOval(
-                child: CachedNetworkImage(
-                  imageUrl: widget.user.avatar_url,
-                  placeholder: (context,url)=>Global.placeholder(),
-                  width: 50,
-                ),
+        borderRadius: BorderRadius.all(Radius.circular(5)),
+        shadowColor: Colors.red,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            ClipOval(
+              child: CachedNetworkImage(
+                imageUrl: widget.user.avatar_url,
+                placeholder: (context,url)=>Global.placeholder(width: 80),
+                width: 80,
               ),
-              Padding(padding: const EdgeInsets.only(left: 5),),
-              Text(widget.user.login,style: TextStyle(color: Provider.of<ThemeProvider>(context).theme,fontSize: 20),maxLines: 2,),
-            ],
-          ),
+            ),
+            Padding(padding: const EdgeInsets.only(left: 5),),
+            Text(widget.user.login,style: TextStyle(color: Color(0xff999999),fontSize: 16),maxLines: 1,overflow: TextOverflow.ellipsis,),
+          ],
         ),
       ),
     );

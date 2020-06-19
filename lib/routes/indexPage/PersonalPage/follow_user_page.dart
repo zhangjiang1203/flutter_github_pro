@@ -91,11 +91,16 @@ class _FollowUserPageState extends State<FollowUserPage> with AutomaticKeepAlive
       child: EasyRefresh.custom(
         controller: _controller,
         slivers: <Widget>[
-          SliverList(
-            delegate: SliverChildBuilderDelegate((context,index) {
-              return PersonListCell(user: itemsData[index]);
-            }, childCount: itemsData.length),
+          SliverPadding(
+            padding: const EdgeInsets.all(5),
+            sliver: SliverGrid.count(
+              crossAxisCount: 3,
+              crossAxisSpacing: 5,
+              mainAxisSpacing: 5,
+              children: itemsData.map((e) => PersonListCell(user:e)).toList(),
+            ),
           ),
+
         ],
         onRefresh: () async{
           _getItemPro();

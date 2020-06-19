@@ -174,4 +174,11 @@
     </state>
     <state x="502" y="247" width="670" height="676" key="search.everywhere.popup/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592316301056" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="dart-exception" />
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
 </project>
