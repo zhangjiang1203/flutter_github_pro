@@ -35,7 +35,7 @@ class Global {
   static bool get isRelease => bool.fromEnvironment('dart.vm.product');
 
   //占位图
-  static Image placeholder({double width = 50}) => Image.asset("assets/images/placeholder_image.png",width: width,fit: BoxFit.cover,);
+  static Image placeholder({double width = 50}) => Image.asset("assets/images/placeholder_image.png",width: width,fit: BoxFit.fitWidth,);
 
   //无数据专用图
   static Image get emptyImage => Image.asset("assets/images/placeholder_image.png");

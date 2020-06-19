@@ -28,6 +28,10 @@ class JsonConvert {
        return Eventactor.fromJson(json) as T;
      case Repo:
        return Repo.fromJson(json) as T;
+     case Trendrepolist:
+       return Trendrepolist.fromJson(json) as T;
+     case Trenddeveloperlist:
+       return Trenddeveloperlist.fromJson(json) as T;
      case Pubevents:
        return Pubevents.fromJson(json) as T;
      case CacheConfig:
@@ -40,6 +44,8 @@ class JsonConvert {
        return TodayOilPrice.fromJson(json) as T;
      case Organization:
        return Organization.fromJson(json) as T;
+     case Buildercontribute:
+       return Buildercontribute.fromJson(json) as T;
      case Profile:
        return Profile.fromJson(json) as T;
      case Allrepolist:
@@ -67,6 +73,10 @@ class JsonConvert {
        return (data as Eventactor).toJson();
      case Repo:
        return (data as Repo).toJson();
+     case Trendrepolist:
+       return (data as Trendrepolist).toJson();
+     case Trenddeveloperlist:
+       return (data as Trenddeveloperlist).toJson();
      case Pubevents:
        return (data as Pubevents).toJson();
      case CacheConfig:
@@ -79,6 +89,8 @@ class JsonConvert {
        return (data as TodayOilPrice).toJson();
      case Organization:
        return (data as Organization).toJson();
+     case Buildercontribute:
+       return (data as Buildercontribute).toJson();
      case Profile:
        return (data as Profile).toJson();
      case Allrepolist:
@@ -106,6 +118,10 @@ class JsonConvert {
        return Eventactor.fromJson(json);
      case 'Repo':
        return Repo.fromJson(json);
+     case 'Trendrepolist':
+       return Trendrepolist.fromJson(json);
+     case 'Trenddeveloperlist':
+       return Trenddeveloperlist.fromJson(json);
      case 'Pubevents':
        return Pubevents.fromJson(json);
      case 'CacheConfig':
@@ -118,6 +134,8 @@ class JsonConvert {
        return TodayOilPrice.fromJson(json);
      case 'Organization':
        return Organization.fromJson(json);
+     case 'Buildercontribute':
+       return Buildercontribute.fromJson(json);
      case 'Profile':
        return Profile.fromJson(json);
      case 'Allrepolist':
@@ -146,6 +164,10 @@ class JsonConvert {
        return List<Eventactor>();
      case 'Repo':
        return List<Repo>();
+     case 'Trendrepolist':
+       return List<Trendrepolist>();
+     case 'Trenddeveloperlist':
+       return List<Trenddeveloperlist>();
      case 'Pubevents':
        return List<Pubevents>();
      case 'CacheConfig':
@@ -158,6 +180,8 @@ class JsonConvert {
        return List<TodayOilPrice>();
      case 'Organization':
        return List<Organization>();
+     case 'Buildercontribute':
+       return List<Buildercontribute>();
      case 'Profile':
        return List<Profile>();
      case 'Allrepolist':

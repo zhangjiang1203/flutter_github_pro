@@ -70,6 +70,16 @@ class RequestURL {
     return GithubHomeURL + "user/following/$developerName";
   }
 
+  //趋势项目
+  static getTrendingRepos(String since, String language) {
+    return "https://github-trending-api.now.sh/repositories?language=$language&since=$since";
+  }
+
+  //趋势用户
+  static getTrendDevelopers(String since, String language) {
+    return 'https://github-trending-api.now.sh/developers?language=$language&since=$since';
+  }
+
   ///新闻类请求地址
   static String getNewsData = 'http://v.juhe.cn/toutiao/index?key=c7655cd96dd673d8de4b3f043d23f3ef';
   ///星座请求地址

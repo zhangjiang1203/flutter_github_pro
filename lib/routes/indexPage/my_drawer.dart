@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttergithubpro/common/index.dart';
 import 'package:fluttergithubpro/routes/indexPage/PersonalPage/my_personal_page.dart';
 import 'package:fluttergithubpro/routes/indexPage/SearchPage/search_list_page.dart';
+import 'package:fluttergithubpro/routes/indexPage/TrendPage/trend_list_page.dart';
 import 'package:provider/provider.dart';
 import 'dart:io';
 
@@ -128,6 +129,10 @@ class MyDrawer extends StatelessWidget {
               }else if (e == 'drawer_search'){
                 Navigator.of(context).push(MaterialPageRoute(builder: (_){
                   return SearchListPage();
+                }));
+              }else if (e == 'drawer_trend'){
+                Navigator.of(context).push(MaterialPageRoute(builder: (_){
+                  return TrendListPage();
                 }));
               }
             },)).toList()

@@ -47,7 +47,6 @@ class SearchUserPageState extends State<SearchUserPage> with AutomaticKeepAliveC
     super.initState();
     _controller = EasyRefreshController();
     _searchText = widget.searchText;
-    print("user===$_searchText");
     if(_searchText != null){
       _getItemPro();
     }
