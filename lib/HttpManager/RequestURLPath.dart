@@ -27,7 +27,14 @@ class RequestURL {
   ///获取认证信息,不支持邮箱登录
   static String githubAuthirizations = GithubHomeURL + "authorizations";
   ///github 根据语言选择搜索仓库
+  ///搜索
+  //  ///type: repositories(搜索仓库)，users(搜索用户)
+  //  ///searchWords: 搜索的关键词
+  //  ///sort: 排序的方式，例如Best Match, Most Stars...
+  //  ///order ： desc(降序)， asc(升序)
   static String getGitHubPub = GithubHomeURL + "search/repositories";
+  //搜索用户
+  static String getGitHubUser = GithubHomeURL + "search/users";
 
   //登录获取用户信息
   static getUserInfo(String userName){
@@ -62,7 +69,6 @@ class RequestURL {
   static isFollowing(String developerName) {
     return GithubHomeURL + "user/following/$developerName";
   }
-
 
   ///新闻类请求地址
   static String getNewsData = 'http://v.juhe.cn/toutiao/index?key=c7655cd96dd673d8de4b3f043d23f3ef';

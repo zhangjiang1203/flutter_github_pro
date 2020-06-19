@@ -6,21 +6,27 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_easyrefresh/ball_pulse_footer.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:flutter_easyrefresh/phoenix_header.dart';
 import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
 import 'package:fluttergithubpro/HttpManager/RequestAPI.dart';
 import 'package:fluttergithubpro/HttpManager/index.dart';
+import 'package:fluttergithubpro/Providers/ProvidersCollection.dart';
+import 'package:fluttergithubpro/common/index.dart';
 import 'package:fluttergithubpro/models/index.dart';
+import 'package:fluttergithubpro/routes/BaseWidget/base_empty_page.dart';
 import 'package:fluttergithubpro/routes/indexPage/RepoItems.dart';
+import 'package:provider/provider.dart';
 
 enum UserRepoPageType{
   personal, //个人仓库
-  starred,  //点赞仓库
+  starred  //点赞仓库
 }
 
 
 class UserRepoPage extends StatefulWidget {
-  UserRepoPage({Key key,@required this.devName,this.type = UserRepoPageType.personal}) : super(key: key);
+  UserRepoPage({Key key,this.devName, this.type = UserRepoPageType.personal}) : super(key: key);
 
   final String devName;
 
@@ -33,8 +39,8 @@ class UserRepoPage extends StatefulWidget {
 class _UserRepoPageState extends State<UserRepoPage> with AutomaticKeepAliveClientMixin {
 
   int page = 1;
-  EasyRefreshController _controller;
-  List<Repoitems> itemsData = [];
+  EasyRefreshController _refreshController;
+  List<Repoitems> _itemsData = [];
 
   @override
   // TODO: implement wantKeepAlive
@@ -43,16 +49,16 @@ class _UserRepoPageState extends State<UserRepoPage> with AutomaticKeepAliveClie
   @override
   void initState() {
     super.initState();
-    _controller = EasyRefreshController();
+    _refreshController = EasyRefreshController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      EasyLoading.show(status: "玩命加载中……");
+        EasyLoading.show(status: "玩命加载中……");
     });
-    _getItemPro();
+      _getItemPro();
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _refreshController.dispose();
     super.dispose();
   }
 
@@ -60,7 +66,7 @@ class _UserRepoPageState extends State<UserRepoPage> with AutomaticKeepAliveClie
 
     if(isrefresh){
       page = 1;
-      itemsData.clear();
+      _itemsData.clear();
     }else{
       page++;
     }
@@ -72,16 +78,15 @@ class _UserRepoPageState extends State<UserRepoPage> with AutomaticKeepAliveClie
     }else{
       items = await RequestAPI.instance.getStarredRepos(userName:widget.devName,param:{'page':page,'pageSize':30});
     }
-    print("当前返回的信息==${items.length}");
     if (mounted) {
       setState(() {
-        itemsData.addAll(items);
+        _itemsData.addAll(items);
       });
     }
     if(!isrefresh){
-      _controller.finishLoad(noMore: items.length < 30);
+      _refreshController.finishLoad(noMore: items.length < 30);
     }
-    _controller.resetLoadState();
+    _refreshController.resetLoadState();
     EasyLoading.dismiss();
   }
 
@@ -91,21 +96,24 @@ class _UserRepoPageState extends State<UserRepoPage> with AutomaticKeepAliveClie
       removeTop: true,
       context: context,
       child: EasyRefresh.custom(
-        controller: _controller,
-          slivers: <Widget>[
-            SliverList(
-              delegate: SliverChildBuilderDelegate((context,index) {
-                return GitPubItems(itemsData[index]);
-              }, childCount: itemsData.length),
-            ),
-          ],
-        onRefresh: () async{
-          _getItemPro();
-        },
-        onLoad: () async{
-          _getItemPro(isrefresh: false);
-        },
-      ),
+            header: PhoenixHeader(),
+            footer: BallPulseFooter(),
+            controller: _refreshController,
+            slivers: <Widget>[
+              SliverList(
+                delegate: SliverChildBuilderDelegate((context,index) {
+                  return GitPubItems(_itemsData[index]);
+                }, childCount: _itemsData.length),
+              ),
+            ],
+            onRefresh: () async{
+              _getItemPro();
+            },
+            onLoad: () async{
+              _getItemPro(isrefresh: false);
+            },
+            emptyWidget:_itemsData.length > 0 ? null : BaseEmptyPage(),
+          ),
     );
   }
 }

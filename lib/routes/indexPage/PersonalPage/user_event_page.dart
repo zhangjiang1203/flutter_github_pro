@@ -8,10 +8,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
-import 'package:fluttergithubpro/HttpManager/RequestAPI.dart';
 import 'package:fluttergithubpro/HttpManager/index.dart';
 import 'package:fluttergithubpro/models/index.dart';
-import 'package:fluttergithubpro/routes/indexPage/RepoItems.dart';
+import 'package:flutter_easyrefresh/ball_pulse_footer.dart';
+import 'package:flutter_easyrefresh/phoenix_header.dart';
+import 'package:fluttergithubpro/routes/BaseWidget/base_empty_page.dart';
 
 import 'event_list_item.dart';
 
@@ -28,7 +29,7 @@ class _UserEventPageState extends State<UserEventPage> with AutomaticKeepAliveCl
 
   int page = 1;
   EasyRefreshController _controller;
-  List<Pubevents> itemsData = [];
+  List<Pubevents> _itemsData = [];
 
   @override
   // TODO: implement wantKeepAlive
@@ -55,14 +56,14 @@ class _UserEventPageState extends State<UserEventPage> with AutomaticKeepAliveCl
 
     if(isrefresh){
       page = 1;
-      itemsData.clear();
+      _itemsData.clear();
     }else{
       page++;
     }
     List<Pubevents> items = await HTTPManager().getAsync<List<Pubevents>>(url: RequestURL.getDevEvents(widget.devName),params: {'page':page,'page_size':30});
     if (mounted) {
       setState(() {
-        itemsData.addAll(items);
+        _itemsData.addAll(items);
       });
     }
     if(!isrefresh){
@@ -79,12 +80,14 @@ class _UserEventPageState extends State<UserEventPage> with AutomaticKeepAliveCl
       removeTop: true,
       context: context,
       child: EasyRefresh.custom(
+        header: PhoenixHeader(),
+        footer: BallPulseFooter(),
         controller: _controller,
         slivers: <Widget>[
           SliverList(
             delegate: SliverChildBuilderDelegate((context,index) {
-              return EventListItem(events: itemsData[index]);
-            }, childCount: itemsData.length),
+              return EventListItem(events: _itemsData[index]);
+            }, childCount: _itemsData.length),
           ),
         ],
         onRefresh: () async{
@@ -93,6 +96,7 @@ class _UserEventPageState extends State<UserEventPage> with AutomaticKeepAliveCl
         onLoad: () async{
           _getItemPro(isrefresh: false);
         },
+        emptyWidget: _itemsData.length > 0 ? null : BaseEmptyPage(),
       ),
     );
   }

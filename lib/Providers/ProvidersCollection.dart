@@ -41,5 +41,15 @@ class NestScrollViewNotifier extends ChangeNotifier {
     _isFollow = follow;
     notifyListeners();
   }
+}
+
+class SearchNotifier extends ChangeNotifier{
+
+   String _searchText;
+   String get searchText => _searchText;
+   set setSearchText(String text){
+     _searchText = text;
+     notifyListeners();
+   }
 
 }

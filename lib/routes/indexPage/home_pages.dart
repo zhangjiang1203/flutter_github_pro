@@ -9,15 +9,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_easyrefresh/ball_pulse_footer.dart';
-import 'package:flutter_easyrefresh/bezier_bounce_footer.dart';
-import 'package:flutter_easyrefresh/bezier_circle_header.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_easyrefresh/phoenix_header.dart';
-import 'package:flutter_easyrefresh/taurus_footer.dart';
 import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
-import 'package:fluttergithubpro/HttpManager/RequestAPI.dart';
 import 'package:fluttergithubpro/HttpManager/index.dart';
 import 'package:fluttergithubpro/Providers/ProvidersCollection.dart';
+import 'package:fluttergithubpro/routes/BaseWidget/base_empty_page.dart';
 import 'package:fluttergithubpro/routes/indexPage/RepoItems.dart';
 import 'package:provider/provider.dart';
 import 'my_drawer.dart';
@@ -47,7 +44,6 @@ class _HomePageState extends State<AppHomePage> {
   List<Repoitems> _itemsData;
   int _page = 1;
 
-
   //手动触发列表刷新的key
   final GlobalKey<RefreshIndicatorState> refreshIndicatorKey = new GlobalKey<RefreshIndicatorState>();
   final GlobalKey _button = GlobalKey();
@@ -61,7 +57,6 @@ class _HomePageState extends State<AppHomePage> {
       },
       onSelected: (value){
         if(!mounted) return;
-        print("开始加载");
         _chooseLang = value;
         _controller.animateTo(0, duration: const Duration(milliseconds: 200), curve: Curves.ease);
         //更新对应的listView
@@ -113,7 +108,6 @@ class _HomePageState extends State<AppHomePage> {
     _controller.addListener(() {
       _nestScrollViewNotifier.setOffset = _controller.offset;
     });
-
   }
 
   @override
@@ -182,7 +176,7 @@ class _HomePageState extends State<AppHomePage> {
 
   //创建视图
   Widget _buildBody() {
-    print("刷新===${_itemsData.length}");
+    print("首页返回的数据==${_itemsData.length}");
     return EasyRefresh(
       key: _pageKey,
       child:  ListView.builder(
@@ -201,7 +195,7 @@ class _HomePageState extends State<AppHomePage> {
       onRefresh: () async{
         _getItemData();
       },
-      emptyWidget: _itemsData.length > 0 ? null : Center(child: Text('暂无数据'),),
+      emptyWidget: _itemsData.length > 0 ? null : BaseEmptyPage(),
     );
 
       return SafeArea(

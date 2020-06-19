@@ -34,6 +34,8 @@ class JsonConvert {
        return CacheConfig.fromJson(json) as T;
      case User:
        return User.fromJson(json) as T;
+     case Alluserlist:
+       return Alluserlist.fromJson(json) as T;
      case TodayOilPrice:
        return TodayOilPrice.fromJson(json) as T;
      case Organization:
@@ -71,6 +73,8 @@ class JsonConvert {
        return (data as CacheConfig).toJson();
      case User:
        return (data as User).toJson();
+     case Alluserlist:
+       return (data as Alluserlist).toJson();
      case TodayOilPrice:
        return (data as TodayOilPrice).toJson();
      case Organization:
@@ -108,6 +112,8 @@ class JsonConvert {
        return CacheConfig.fromJson(json);
      case 'User':
        return User.fromJson(json);
+     case 'Alluserlist':
+       return Alluserlist.fromJson(json);
      case 'TodayOilPrice':
        return TodayOilPrice.fromJson(json);
      case 'Organization':
@@ -146,6 +152,8 @@ class JsonConvert {
        return List<CacheConfig>();
      case 'User':
        return List<User>();
+     case 'Alluserlist':
+       return List<Alluserlist>();
      case 'TodayOilPrice':
        return List<TodayOilPrice>();
      case 'Organization':

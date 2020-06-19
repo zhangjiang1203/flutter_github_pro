@@ -9,6 +9,7 @@ export 'repo.dart' ;
 export 'pubevents.dart' ; 
 export 'cacheConfig.dart' ; 
 export 'user.dart' ; 
+export 'alluserlist.dart' ; 
 export 'todayOilPrice.dart' ; 
 export 'organization.dart' ; 
 export 'profile.dart' ; 

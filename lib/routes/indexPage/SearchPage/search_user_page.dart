@@ -1,6 +1,6 @@
 /*
-* follow_user_page created by zj 
-* on 2020/6/18 2:57 PM
+* search_user_page created by zj 
+* on 2020/6/19 5:29 PM
 * copyright on zhangjiang
 */
 
@@ -9,11 +9,11 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
 import 'package:fluttergithubpro/HttpManager/index.dart';
+import 'package:fluttergithubpro/models/alluserlist.dart';
 import 'package:fluttergithubpro/models/user.dart';
 import 'package:fluttergithubpro/routes/BaseWidget/base_empty_page.dart';
 import 'package:fluttergithubpro/routes/indexPage/PersonalPage/person_list_cell.dart';
 import 'package:flutter_easyrefresh/ball_pulse_footer.dart';
-import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_easyrefresh/phoenix_header.dart';
 
 enum FollowType{
@@ -22,23 +22,20 @@ enum FollowType{
   search    //搜索
 }
 
-class FollowUserPage extends StatefulWidget {
-  FollowUserPage({Key key,this.userName,this.searchParams,this.type = FollowType.following}) : super(key: key);
+class SearchUserPage extends StatefulWidget {
+  SearchUserPage({Key key,this.searchText}) : super(key: key);
 
-  final String userName;
-
-  final FollowType type;
-
-  final Map<String,dynamic> searchParams;
-
+  final String searchText;
   @override
-  _FollowUserPageState createState() => _FollowUserPageState();
+  SearchUserPageState createState() => SearchUserPageState();
 }
 
-class _FollowUserPageState extends State<FollowUserPage> with AutomaticKeepAliveClientMixin{
-  int page = 1;
+class SearchUserPageState extends State<SearchUserPage> with AutomaticKeepAliveClientMixin{
+  int _page = 1;
   EasyRefreshController _controller;
   List<User> _itemsData = [];
+  //类型为搜索时才会用到
+  String _searchText;
 
   @override
   // TODO: implement wantKeepAlive
@@ -49,14 +46,17 @@ class _FollowUserPageState extends State<FollowUserPage> with AutomaticKeepAlive
     // TODO: implement initState
     super.initState();
     _controller = EasyRefreshController();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      if(widget.type != FollowType.search){
-        EasyLoading.show(status: "玩命加载中……");
-      }
-    });
-    if(widget.type != FollowType.search){
+    _searchText = widget.searchText;
+    print("user===$_searchText");
+    if(_searchText != null){
       _getItemPro();
     }
+  }
+
+  ///刷新列表
+  void reloadSearchResult(String text){
+    _searchText = text;
+    _getItemPro();
   }
 
   @override
@@ -68,31 +68,21 @@ class _FollowUserPageState extends State<FollowUserPage> with AutomaticKeepAlive
   void _getItemPro({bool isrefresh = true}) async{
 
     if(isrefresh){
-      page = 1;
+      _page = 1;
       _itemsData.clear();
     }else{
-      page++;
+      _page++;
     }
+    Map<String,dynamic> searchP = {'page':_page,'pageSize':30,'order':'desc','sort':'best match','q':_searchText};
+    Alluserlist data = await HTTPManager().getAsync<Alluserlist>(url: RequestURL.getGitHubUser,params: searchP);
 
-    List<User> items;
-    if(widget.type == FollowType.follower){
-      var url = RequestURL.getUserFollower(widget.userName);
-      items = await HTTPManager().getAsync<List<User>>(url: url,params: {'page':page,'page_size':30});
-    }else if(widget.type == FollowType.following){
-      var url = RequestURL.getUserFollowing(widget.userName);
-      items = await HTTPManager().getAsync<List<User>>(url: url,params: {'page':page,'page_size':30});
-    }else {
-      Map<String,dynamic> searchP = {'page':page,'pageSize':30,"order":"desc","sort":"best match"};
-      searchP.addAll(widget.searchParams);
-      items = await HTTPManager().getAsync<List<User>>(url: RequestURL.getGitHubUser,params: searchP);
-    }
     if (mounted) {
       setState(() {
-        _itemsData.addAll(items);
+        _itemsData.addAll(data.items);
       });
     }
     if(!isrefresh){
-      _controller.finishLoad(noMore: items.length < 30);
+      _controller.finishLoad(noMore: data.items.length < 30);
     }
     _controller.resetLoadState();
     EasyLoading.dismiss();
