@@ -11,45 +11,52 @@ class JsonConvert {
   }
 
   static _getFromJson<T>(Type type, data, json) {
-    switch (type) {
-         case Playloadmodel:
+    var typeStr = type.toString();
+    var instance = typeStr.split('<');
+    if(instance.length > 1){
+       typeStr = instance.first;
+    }
+    switch (typeStr) {
+         case 'Playloadmodel':
        return Playloadmodel.fromJson(json) as T;
-     case Eventcommits:
+     case 'Eventcommits':
        return Eventcommits.fromJson(json) as T;
-     case JokesData:
+     case 'JokesData':
        return JokesData.fromJson(json) as T;
-     case Newstopmodel:
+     case 'Newstopmodel':
        return Newstopmodel.fromJson(json) as T;
-     case TodayInHistory:
+     case 'TodayInHistory':
        return TodayInHistory.fromJson(json) as T;
-     case Repoitems:
+     case 'Repoitems':
        return Repoitems.fromJson(json) as T;
-     case Eventactor:
+     case 'Eventactor':
        return Eventactor.fromJson(json) as T;
-     case Repo:
+     case 'Repo':
        return Repo.fromJson(json) as T;
-     case Trendrepolist:
+     case 'Trendrepolist':
        return Trendrepolist.fromJson(json) as T;
-     case Trenddeveloperlist:
+     case 'Trenddeveloperlist':
        return Trenddeveloperlist.fromJson(json) as T;
-     case Pubevents:
+     case 'Pubevents':
        return Pubevents.fromJson(json) as T;
-     case CacheConfig:
+     case 'CacheConfig':
        return CacheConfig.fromJson(json) as T;
-     case User:
+     case 'User':
        return User.fromJson(json) as T;
-     case Alluserlist:
+     case 'Alluserlist':
        return Alluserlist.fromJson(json) as T;
-     case TodayOilPrice:
+     case 'TodayOilPrice':
        return TodayOilPrice.fromJson(json) as T;
-     case Organization:
+     case 'Organization':
        return Organization.fromJson(json) as T;
-     case Buildercontribute:
+     case 'Buildercontribute':
        return Buildercontribute.fromJson(json) as T;
-     case Profile:
+     case 'Profile':
        return Profile.fromJson(json) as T;
-     case Allrepolist:
+     case 'Allrepolist':
        return Allrepolist.fromJson(json) as T;
+       case 'CommonUseModel':
+        return CommonUseModel.fromJson(json) as T;
 
   }
     return data as T;
@@ -95,6 +102,8 @@ class JsonConvert {
        return (data as Profile).toJson();
      case Allrepolist:
        return (data as Allrepolist).toJson();
+      case CommonUseModel:
+        return (data as CommonUseModel).toJson();
 
     }
     return data as T;

@@ -8,6 +8,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
 import 'package:fluttergithubpro/HttpManager/RequestURLPath.dart';
 import 'package:fluttergithubpro/common/index.dart';
+import 'package:fluttergithubpro/models/JsonConvert.test.dart';
 import 'package:fluttergithubpro/models/index.dart';
 
 class JinRiYouJiaPage extends StatefulWidget {
@@ -20,7 +21,7 @@ class JinRiYouJiaPage extends StatefulWidget {
 class _JinRiYouJiaState extends State<JinRiYouJiaPage> {
 
   Future _getOilPrice(){
-    return HTTPManager().getAsync<List<TodayOilPrice>>(url: RequestURL.getTodayOilData);
+    return HTTPManager().getAsync<Map>(url: RequestURL.getTodayOilData);
   }
 
 
@@ -40,12 +41,20 @@ class _JinRiYouJiaState extends State<JinRiYouJiaPage> {
                     child: Text('获取油价信息失败',textScaleFactor: 2,),
                   );
                 }else{
-
-                  List<TodayOilPrice> showData = snapshot.data;
-                  print("油价信息成功==${showData.length}");
+                  Map<String,dynamic> showData = snapshot.data;
+                  List<TodayOilPrice> oils = [];
+                  print("获取到的数据===${showData['result']}");
+                  if(showData['result'] != null){
+                    oils.addAll(JsonConvert.fromJsonAsT<List<TodayOilPrice>>(showData['result']));
+                  }
+                  if(oils.length <= 0){
+                    return Center(
+                      child: Text('加载失败'),
+                    );
+                  }
                   return Container(
                     width: MediaQuery.of(context).size.width - 20,
-                    child: _buildChatWidget(showData)
+                    child: _buildChatWidget(oils)
                   );
                 }
               }else {

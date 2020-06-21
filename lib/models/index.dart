@@ -16,4 +16,5 @@ export 'todayOilPrice.dart' ;
 export 'organization.dart' ; 
 export 'buildercontribute.dart' ; 
 export 'profile.dart' ; 
-export 'allrepolist.dart' ; 
+export 'allrepolist.dart' ;
+export 'free_api_common_model.dart';

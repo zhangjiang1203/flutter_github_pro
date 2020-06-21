@@ -359,7 +359,11 @@ class HTTPManager {
       }else{
         var tempData = response.data;
         if (tempData is Map){
-          print("当前是Map");
+          print("当前是Map===${typeOf<T>()}");
+          if(typeOf<T>().toString() == 'Map'){
+            return tempData as T;
+          }
+
           T data = JsonConvert.fromJson<T>(tempData) as T;
           if (data != null){
             return data;
@@ -389,6 +393,8 @@ class HTTPManager {
       switch(typeOf<T>()){
         case int:
           return response.statusCode as T;
+        case Map:
+          return response.data as T;
       }
       LogUtil.v("未知异常错误:$e\n$s,${response.statusCode}");
       print("未知异常错误:$e\n$s,${response.statusCode}");
