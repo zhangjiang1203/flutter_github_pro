@@ -59,6 +59,8 @@ dependencies:
   flutter_markdown: 0.3.5
   #刷新组件
   flutter_easyrefresh: ^2.1.1
+  # 事件流处理
+  event_bus: ^1.1.1
 
 dev_dependencies:
   flutter_test:

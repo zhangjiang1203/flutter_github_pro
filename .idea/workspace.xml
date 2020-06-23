@@ -17,6 +17,17 @@
       <change beforePath="$PROJECT_DIR$/lib/models/JsonConvert.test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/JsonConvert.test.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/models/index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/index.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/routes/lifeToolsPage/jin_ri_you_jia_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/lifeToolsPage/jin_ri_you_jia_page.dart" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/lib/Providers/EventStreamSet.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/routes/indexPage/SearchPage/search_inherited_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/HttpManager/HTTPManager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HttpManager/HTTPManager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/SearchPage/search_list_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/SearchPage/search_list_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/SearchPage/search_repo_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/SearchPage/search_repo_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/SearchPage/search_user_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/SearchPage/search_user_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+>>>>>>> 添加eventbus
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,6 +189,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/routes/indexPage/SearchPage/search_user_page.dart</url>
+          <line>47</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="dart-exception" />
       </default-breakpoints>

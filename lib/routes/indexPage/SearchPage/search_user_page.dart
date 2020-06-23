@@ -4,11 +4,14 @@
 * copyright on zhangjiang
 */
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
 import 'package:fluttergithubpro/HttpManager/index.dart';
+import 'package:fluttergithubpro/Providers/EventStreamSet.dart';
 import 'package:fluttergithubpro/models/alluserlist.dart';
 import 'package:fluttergithubpro/models/user.dart';
 import 'package:fluttergithubpro/routes/BaseWidget/base_empty_page.dart';
@@ -16,11 +19,6 @@ import 'package:fluttergithubpro/routes/indexPage/PersonalPage/person_list_cell.
 import 'package:flutter_easyrefresh/ball_pulse_footer.dart';
 import 'package:flutter_easyrefresh/phoenix_header.dart';
 
-enum FollowType{
-  following, // username 关注的
-  follower, //关注username的
-  search    //搜索
-}
 
 class SearchUserPage extends StatefulWidget {
   SearchUserPage({Key key,this.searchText}) : super(key: key);
@@ -35,7 +33,9 @@ class SearchUserPageState extends State<SearchUserPage> with AutomaticKeepAliveC
   EasyRefreshController _controller;
   List<User> _itemsData = [];
   //类型为搜索时才会用到
-  String _searchText;
+  String searchText;
+  //监控搜索文字变化
+  StreamSubscription<SearchEvent> _subscription;
 
   @override
   // TODO: implement wantKeepAlive
@@ -46,21 +46,22 @@ class SearchUserPageState extends State<SearchUserPage> with AutomaticKeepAliveC
     // TODO: implement initState
     super.initState();
     _controller = EasyRefreshController();
-    _searchText = widget.searchText;
-    if(_searchText != null){
-      _getItemPro();
-    }
+    searchText = widget.searchText;
+    _subscription = eventBus.on<SearchEvent>().listen((event) {
+      reloadSearchResult(event.searchText);
+    });
   }
 
   ///刷新列表
   void reloadSearchResult(String text){
-    _searchText = text;
+    searchText = text;
     _getItemPro();
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    _subscription.cancel();
     super.dispose();
   }
 
@@ -72,7 +73,7 @@ class SearchUserPageState extends State<SearchUserPage> with AutomaticKeepAliveC
     }else{
       _page++;
     }
-    Map<String,dynamic> searchP = {'page':_page,'pageSize':30,'order':'desc','sort':'best match','q':_searchText};
+    Map<String,dynamic> searchP = {'page':_page,'pageSize':30,'order':'desc','sort':'best match','q':searchText};
     Alluserlist data = await HTTPManager().getAsync<Alluserlist>(url: RequestURL.getGitHubUser,params: searchP);
 
     if (mounted) {

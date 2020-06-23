@@ -4,6 +4,8 @@
 * copyright on zhangjiang
 */
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_easyrefresh/ball_pulse_footer.dart';
@@ -12,6 +14,7 @@ import 'package:flutter_easyrefresh/phoenix_header.dart';
 import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
 import 'package:fluttergithubpro/HttpManager/RequestAPI.dart';
 import 'package:fluttergithubpro/HttpManager/index.dart';
+import 'package:fluttergithubpro/Providers/EventStreamSet.dart';
 import 'package:fluttergithubpro/common/index.dart';
 import 'package:fluttergithubpro/models/index.dart';
 import 'package:fluttergithubpro/routes/BaseWidget/base_empty_page.dart';
@@ -34,6 +37,8 @@ class SearchRepoPageState extends State<SearchRepoPage> with AutomaticKeepAliveC
 
   //类型为搜索时才会用到
   String _searchText;
+  //监听数据的改变
+  StreamSubscription<SearchEvent> _subscription;
 
   @override
   // TODO: implement wantKeepAlive
@@ -44,10 +49,13 @@ class SearchRepoPageState extends State<SearchRepoPage> with AutomaticKeepAliveC
     super.initState();
     _refreshController = EasyRefreshController();
     _searchText = widget.searchText;
-    print("repo===$_searchText");
-    if(_searchText != null){
-      _getItemPro();
-    }
+    _subscription = eventBus.on<SearchEvent>().listen((event) {
+      reloadSearchResult(event.searchText);
+//      setState(() {
+//        _searchText = event.searchText;
+//        print("开始刷新===repo");
+//      });
+    });
   }
 
   ///刷新列表
@@ -59,6 +67,7 @@ class SearchRepoPageState extends State<SearchRepoPage> with AutomaticKeepAliveC
   @override
   void dispose() {
     _refreshController.dispose();
+    _subscription.cancel();
     super.dispose();
   }
 
