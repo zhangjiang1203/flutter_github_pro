@@ -32,7 +32,6 @@ class _TrendRepoPageState extends State<TrendRepoPage> with AutomaticKeepAliveCl
   EasyRefreshController _refreshController;
   ScrollController _scrollController;
   List<Trendrepolist> _itemsData;
-  int _page = 1;
 
   @override
   // TODO: implement wantKeepAlive
@@ -45,10 +44,10 @@ class _TrendRepoPageState extends State<TrendRepoPage> with AutomaticKeepAliveCl
     _scrollController = ScrollController();
     _itemsData = [];
 
-//    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-//      EasyLoading.show(status: "玩命加载中……");
-//    });
-
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      EasyLoading.show(status: "玩命加载中……");
+    });
+    _getTrendRepoData();
   }
   
   @override
@@ -58,14 +57,8 @@ class _TrendRepoPageState extends State<TrendRepoPage> with AutomaticKeepAliveCl
     super.dispose();
   }
   
-  _getTrendRepoData({bool isRefresh = true}) async{
-    if(isRefresh){
-      _page = 1;
-      _itemsData.clear();
-    }else{
-      _page++;
-    }
-    
+  _getTrendRepoData() async{
+    _itemsData.clear();
     var data = await HTTPManager().getAsync<List<Trendrepolist>>(
         url: RequestURL.getTrendingRepos("daily", widget.language ?? ""));
     if (mounted) {
@@ -73,11 +66,8 @@ class _TrendRepoPageState extends State<TrendRepoPage> with AutomaticKeepAliveCl
         _itemsData.addAll(data);
       });
     }
-    if(!isRefresh){
-      _refreshController.finishLoad(noMore: data.length < 30);
-    }
     _refreshController.resetLoadState();
-//    EasyLoading.dismiss();
+    EasyLoading.dismiss();
   }
   
 
@@ -88,7 +78,6 @@ class _TrendRepoPageState extends State<TrendRepoPage> with AutomaticKeepAliveCl
         removeTop: true, 
         context: context, 
         child: EasyRefresh(
-          firstRefresh: true,
           controller: _refreshController,
           header: PhoenixHeader(),
           footer: BallPulseFooter(),
@@ -99,7 +88,7 @@ class _TrendRepoPageState extends State<TrendRepoPage> with AutomaticKeepAliveCl
               itemCount: _itemsData.length,
               controller: _scrollController,
               itemBuilder: (context,index){
-                return TrendPubCell(_itemsData[index]);//Container(child: Text(_itemsData[index].name));//GitPubItems(_itemsData[index]);
+                return TrendPubCell(_itemsData[index]);
               }),
 //          emptyWidget: Center(child: Text('暂无数据'),),
         )
@@ -109,8 +98,6 @@ class _TrendRepoPageState extends State<TrendRepoPage> with AutomaticKeepAliveCl
 
 
 //TODO:添加对应的trendrepoitem
-
-
 class TrendPubCell extends StatefulWidget {
   TrendPubCell(@required this.repo):super(key:ValueKey(repo.name));
 
@@ -126,7 +113,7 @@ class _TrendPubCellState extends State<TrendPubCell>{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    var subtitle;
+
     return GestureDetector(
       onTap: (){
         Navigator.of(context).push(MaterialPageRoute(builder: (_){
@@ -148,63 +135,11 @@ class _TrendPubCellState extends State<TrendPubCell>{
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                ListTile(
-                  dense: true,
-                  leading: GestureDetector(
-                    onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (_){
-                        return PersonalRepoPage(userName: widget.repo.author,);
-                      }));
-                    },
-                    child:  CustomWidget.showHeaderImage(widget.repo.avatar,width: 40),//ZJAvatar(widget.repo.avatar,width: 40,borderRadius: BorderRadius.circular(20)),
-                  ),
-                  title: Text(widget.repo.author,textScaleFactor: 0.9,),
-                  subtitle: subtitle,
-                  trailing: Text(widget.repo.language ?? "",style: TextStyle(color: widget.repo.language == null ? Colors.white : Color(int.parse("0xff"+widget.repo.languageColor.substring(1)))),),
-                ),
+                _buildUserInfo(),
                 ///绘制标题和描述
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(widget.repo.name,
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            fontStyle:  FontStyle.italic
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 8,bottom: 12),
-                        child: widget.repo.description != null ?
-                        Text(widget.repo.description,maxLines: 3,
-                            style: TextStyle(height:1.15,color:Colors.blueGrey[700],fontSize: 13)) :
-                        Text(Translations.of(context).text("no_description"),
-                          style: TextStyle(fontStyle: FontStyle.italic,color: Colors.grey[700]),),
-                      ),
-                    ],
-                  ),
-                ),
+                _buildTitleAndDesc(),
                 //绘制其他贡献者
-                Padding(
-                  padding: const EdgeInsets.only(top: 10,left: 15,right: 15,bottom: 10),
-                  child: SingleChildScrollView(
-                    child: Row(
-                      children: widget.repo.builtBy.map((e) => GestureDetector(
-                        onTap: (){
-                          Navigator.of(context).push(MaterialPageRoute(builder: (_){
-                            return PersonalRepoPage(userName: widget.repo.author,);
-                          }));
-                        },
-                        child:Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: CustomWidget.showHeaderImage(e.avatar,width: 30)
-                        )
-                      )).toList(),
-                    ),
-                  ),
-                ),
+                _buildOtherbuilter(),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: Container(
@@ -220,7 +155,81 @@ class _TrendPubCellState extends State<TrendPubCell>{
         ),
       ),
     );
+  }
 
+  Widget _buildUserInfo(){
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: Row(
+        children: <Widget>[
+          Padding(padding: const EdgeInsets.only(left: 15,right: 5),),
+          GestureDetector(
+              onTap: (){},
+              child: CustomWidget.showHeaderImage(widget.repo.avatar,width: 40)
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 5,right: 5),
+            child: Text(widget.repo.author,textScaleFactor: 0.9),
+          ),
+          Spacer(),
+          Padding(
+            padding: const EdgeInsets.only(left: 5,right: 15),
+            child: Text(widget.repo.language ?? "",
+              style: TextStyle(color: widget.repo.language == null ?
+              Colors.white : Color(int.parse("0xff"+widget.repo.languageColor.substring(1)))),),
+          )
+        ],
+      )
+    );
+  }
+
+  //绘制标题和描述
+  Widget _buildTitleAndDesc(){
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(widget.repo.name,
+            style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                fontStyle:  FontStyle.italic
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 8,bottom: 12),
+            child: widget.repo.description != null ?
+            Text(widget.repo.description,maxLines: 3,
+                style: TextStyle(height:1.15,color:Colors.blueGrey[700],fontSize: 13)) :
+            Text(Translations.of(context).text("no_description"),
+              style: TextStyle(fontStyle: FontStyle.italic,color: Colors.grey[700]),),
+          ),
+        ],
+      ),
+    );
+  }
+
+  //绘制其他贡献者
+  Widget _buildOtherbuilter(){
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 0,horizontal: 15),
+      child: SingleChildScrollView(
+        child: Row(
+          children: widget.repo.builtBy.map((e) => GestureDetector(
+              onTap: (){
+                Navigator.of(context).push(MaterialPageRoute(builder: (_){
+                  return PersonalRepoPage(userName: widget.repo.author,);
+                }));
+              },
+              child:Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: CustomWidget.showHeaderImage(e.avatar,width: 30)
+              )
+          )).toList(),
+        ),
+      )
+    );
   }
 
   Widget _builderBottom(){

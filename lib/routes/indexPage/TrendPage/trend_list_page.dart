@@ -32,7 +32,9 @@ class _TrendListPageState extends State<TrendListPage> with SingleTickerProvider
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.category),
-              onPressed: (){},
+              onPressed: (){
+
+              },
             )
           ],
           title:Container(

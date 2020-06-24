@@ -14,3 +14,10 @@ class SearchEvent {
   SearchEvent({this.searchText});
 
 }
+
+//选择对应的language
+class ChangeLanguageEvent{
+  String language;
+
+  ChangeLanguageEvent({this.language});
+}

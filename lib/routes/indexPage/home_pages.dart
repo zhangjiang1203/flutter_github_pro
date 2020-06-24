@@ -16,6 +16,7 @@ import 'package:fluttergithubpro/HttpManager/index.dart';
 import 'package:fluttergithubpro/Providers/ProvidersCollection.dart';
 import 'package:fluttergithubpro/routes/BaseWidget/base_empty_page.dart';
 import 'package:fluttergithubpro/routes/indexPage/RepoItems.dart';
+import 'package:fluttergithubpro/widgets/pop_up_menu.dart';
 import 'package:provider/provider.dart';
 import 'my_drawer.dart';
 import '../../models/index.dart';
@@ -43,6 +44,8 @@ class _HomePageState extends State<AppHomePage> {
   //缓存数据
   List<Repoitems> _itemsData;
   int _page = 1;
+  //弹出视图
+  PopUpMenu _popUpMenu;
 
   //手动触发列表刷新的key
   final GlobalKey<RefreshIndicatorState> refreshIndicatorKey = new GlobalKey<RefreshIndicatorState>();
@@ -56,6 +59,7 @@ class _HomePageState extends State<AppHomePage> {
         print("取消了");
       },
       onSelected: (value){
+        print("开始回调 22222");
         if(!mounted) return;
         _chooseLang = value;
         _controller.animateTo(0, duration: const Duration(milliseconds: 200), curve: Curves.ease);
@@ -82,12 +86,14 @@ class _HomePageState extends State<AppHomePage> {
         position: position,
         items:_pop.itemBuilder(context)
     ).then((value){
+      print("开始回调 1111");
       if(!mounted) return null;
       if(value == null) {
         if(_pop.onCanceled != null) _pop.onCanceled();
         return null;
       }
       if(_pop.onSelected != null) _pop.onSelected(value);
+      print("开始回调 3333");
     });
   }
 
@@ -101,6 +107,8 @@ class _HomePageState extends State<AppHomePage> {
     _refreshController = EasyRefreshController();
     _nestScrollViewNotifier = NestScrollViewNotifier(maxOffset: 1000);
     _controller = new ScrollController();
+    //初始化popMenu
+    _popUpMenu = PopUpMenu(buttonKey: _button,itemsList:["Swift","Objective-C","Python","Dart","JavaScript","Java","Ruby","Shell","C","C++"],chooseStr: 'Swift');
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       EasyLoading.show(status: "玩命加载中……");
     });
@@ -128,7 +136,12 @@ class _HomePageState extends State<AppHomePage> {
           IconButton(
             key: _button,
             icon: Icon(Icons.category),
-            onPressed: () => _showPopMenu(context),
+            onPressed: () => _popUpMenu.showPopMenu(context,_chooseLang, (value) {
+              _chooseLang = value;
+              _controller.animateTo(0, duration: const Duration(milliseconds: 200), curve: Curves.ease);
+              //更新对应的listView
+              _refreshController.callRefresh();
+            })//_showPopMenu(context),
           )
         ],
       ),
