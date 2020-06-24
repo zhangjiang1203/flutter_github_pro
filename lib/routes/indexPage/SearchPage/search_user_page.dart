@@ -53,9 +53,17 @@ class SearchUserPageState extends State<SearchUserPage> with AutomaticKeepAliveC
   }
 
   ///刷新列表
-  void reloadSearchResult(String text){
-    searchText = text;
-    _getItemPro();
+  void reloadSearchResult(String text,{bool isNotice = false}){
+    if(isNotice ){
+      //当前的搜索文字判断
+      if(searchText.length == 0){
+        searchText = text;
+        _getItemPro();
+      }
+    }else{
+      searchText = text;
+      _getItemPro();
+    }
   }
 
   @override

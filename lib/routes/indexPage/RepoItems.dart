@@ -7,6 +7,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttergithubpro/models/index.dart';
 import 'package:fluttergithubpro/routes/BaseWidget/base_web_page.dart';
+import 'package:fluttergithubpro/widgets/Custom_widget.dart';
 import '../../common/index.dart';
 
 class GitPubItems extends StatefulWidget {
@@ -48,7 +49,7 @@ class _GitPubState extends State<GitPubItems>{
               children: <Widget>[
                 ListTile(
                   dense: true,
-                  leading: ZJAvatar(widget.repo.owner.avatar_url,width: 24,borderRadius: BorderRadius.circular(12)),
+                  leading: CustomWidget.showHeaderImage(widget.repo.owner.avatar_url,width: 30) ,//ZJAvatar(widget.repo.owner.avatar_url,width: 24,borderRadius: BorderRadius.circular(12)),
                   title: Text(widget.repo.owner.login,textScaleFactor: 0.9,),
                   subtitle: subtitle,
                   trailing: Text(widget.repo.language ?? ""),

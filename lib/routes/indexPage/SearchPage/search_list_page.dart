@@ -37,11 +37,7 @@ class _SearchListPageState extends State<SearchListPage> with SingleTickerProvid
     super.initState();
     _tabController = TabController(length: 2 ,vsync: this);
     _tabController.addListener(() {
-      print("开始滚动了${_tabController.index}");
-      if(_userKey.currentState.searchText == null){
-        _userKey.currentState.reloadSearchResult(_searchCon.text);
-      }
-      print("当前的searchText===${_userKey.currentState.searchText}===滚动距离===${_tabController.offset}");
+      _userKey.currentState.reloadSearchResult(_searchCon.text,isNotice: true);
     });
   }
 

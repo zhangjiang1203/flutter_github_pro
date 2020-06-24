@@ -56,7 +56,7 @@ class _EventListItemState extends State<EventListItem> with AutomaticKeepAliveCl
                           child: CachedNetworkImage(
                             width: 50,
                             imageUrl: widget.events.actor.avatar_url ?? "",
-                            placeholder: (context,url) => Global.placeholder(),
+                            placeholder: (context,url) => Global.defaultHeaderImage(),
                           ),
                         ),
                       onTap: (){

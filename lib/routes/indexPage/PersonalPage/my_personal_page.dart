@@ -18,6 +18,7 @@ import 'package:fluttergithubpro/routes/indexPage/PersonalPage/follow_user_page.
 import 'package:fluttergithubpro/routes/indexPage/PersonalPage/my_sliver_persistent_delegate.dart';
 import 'package:fluttergithubpro/routes/indexPage/PersonalPage/user_event_page.dart';
 import 'package:fluttergithubpro/routes/indexPage/PersonalPage/user_repo_page.dart';
+import 'package:fluttergithubpro/widgets/Custom_widget.dart';
 import 'package:provider/provider.dart';
 import '../../../Providers/ProvidersCollection.dart';
 
@@ -218,15 +219,7 @@ class _PersonalRepoPageState extends State<PersonalRepoPage> with SingleTickerPr
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        ClipOval(
-                          child: CachedNetworkImage(
-                            width: 100,
-                            imageUrl: user.avatar_url,
-                            placeholder: (context,url){
-                              return Global.placeholder();
-                            },
-                          ),
-                        ),
+                        CustomWidget.showHeaderImage(user.avatar_url ?? "",width: 100),
                         Expanded(
                           child:  Padding(
                             padding: const EdgeInsets.only(left: 10,),

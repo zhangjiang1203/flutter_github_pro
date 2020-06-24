@@ -99,7 +99,7 @@ class _TrendDeveloperPageState extends State<TrendDeveloperPage> with AutomaticK
                       child: CachedNetworkImage(
                         width: 80,
                         imageUrl: e.avatar,
-                        placeholder: (context,url)=>Global.placeholder(width: 80),
+                        placeholder: (context,url)=>Global.defaultHeaderImage(width: 80),
                         fit: BoxFit.fitWidth,
                       ),
                     ),
@@ -149,7 +149,7 @@ class _TrendDeveloperPageState extends State<TrendDeveloperPage> with AutomaticK
                             child: CachedNetworkImage(
                               width: 80,
                               imageUrl: _developList[index].avatar,
-                              placeholder: (context,url)=>Global.placeholder(width: 80),
+                              placeholder: (context,url)=>Global.defaultHeaderImage(width: 80),
                               fit: BoxFit.fitWidth,
                             ),
                           ),

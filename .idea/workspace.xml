@@ -10,31 +10,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a82fdc3-4e62-4e12-b0ca-be91f5310860" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/models/free_api_common_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/2.0x/default_avator.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/3.0x/default_avater.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/HttpManager/HTTPManager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HttpManager/HTTPManager.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/JsonConvert.test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/JsonConvert.test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/index.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/index.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/lifeToolsPage/jin_ri_you_jia_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/lifeToolsPage/jin_ri_you_jia_page.dart" afterDir="false" />
-=======
-      <change afterPath="$PROJECT_DIR$/lib/Providers/EventStreamSet.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/routes/indexPage/SearchPage/search_inherited_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/HttpManager/HTTPManager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HttpManager/HTTPManager.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/book_background.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/book_background.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/chengyucidian.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/chengyucidian.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/default_avator.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/github_logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/github_logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/goodnight.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/goodnight.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/goods_share_btn_weiixn.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/goods_share_btn_weiixn.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/guoqu.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/guoqu.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/jiayouzhan.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/jiayouzhan.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/jiazhao.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/jiazhao.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/jinriyunshi.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/jinriyunshi.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/login_back_ground.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/login_back_ground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/no_data_empty.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/no_data_empty.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/no_data_empty_emo.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/no_data_empty_emo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/placeholder_image.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/placeholder_image.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/request_error.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/request_error.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/toutiao.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/toutiao.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/weather.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/weather.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/xiaohuadaquan.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/xiaohuadaquan.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/yiguoqu.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/yiguoqu.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/SearchPage/search_list_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/SearchPage/search_list_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/SearchPage/search_repo_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/SearchPage/search_repo_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/SearchPage/search_user_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/SearchPage/search_user_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
->>>>>>> 添加eventbus
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_6_API_29" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_XL_API_28" />
   <component name="FavoritesManager">
     <favorites_list name="flutter_github_pro" />
   </component>
@@ -74,12 +84,24 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/images/3.0x" />
+      <recent name="$PROJECT_DIR$/assets/images/2.0x" />
       <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/lib/routes/indexPage" />
       <recent name="$PROJECT_DIR$/lib/convertModelTool" />
-      <recent name="$PROJECT_DIR$/lib/routes/BaseWidget" />
-      <recent name="$PROJECT_DIR$/lib/routes/Login" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Flutter.main.dart">
     <configuration name="commandFile.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">

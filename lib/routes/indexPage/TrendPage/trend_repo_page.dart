@@ -16,6 +16,7 @@ import 'package:fluttergithubpro/common/index.dart';
 import 'package:fluttergithubpro/models/index.dart';
 import 'package:fluttergithubpro/routes/BaseWidget/base_web_page.dart';
 import 'package:fluttergithubpro/routes/indexPage/PersonalPage/my_personal_page.dart';
+import 'package:fluttergithubpro/widgets/Custom_widget.dart';
 
 class TrendRepoPage extends StatefulWidget {
   TrendRepoPage({Key key,this.language}) : super(key: key);
@@ -155,7 +156,7 @@ class _TrendPubCellState extends State<TrendPubCell>{
                         return PersonalRepoPage(userName: widget.repo.author,);
                       }));
                     },
-                    child:  ZJAvatar(widget.repo.avatar,width: 40,borderRadius: BorderRadius.circular(20)),
+                    child:  CustomWidget.showHeaderImage(widget.repo.avatar,width: 40),//ZJAvatar(widget.repo.avatar,width: 40,borderRadius: BorderRadius.circular(20)),
                   ),
                   title: Text(widget.repo.author,textScaleFactor: 0.9,),
                   subtitle: subtitle,
@@ -198,14 +199,7 @@ class _TrendPubCellState extends State<TrendPubCell>{
                         },
                         child:Padding(
                           padding: const EdgeInsets.only(right: 10),
-                          child: ClipOval(
-                            child: CachedNetworkImage(
-                              width: 30,
-                              height: 30,
-                              imageUrl: e.avatar,
-                              placeholder:(context,url)=> Global.placeholder(width: 30),
-                            ),
-                          ),
+                          child: CustomWidget.showHeaderImage(e.avatar,width: 30)
                         )
                       )).toList(),
                     ),

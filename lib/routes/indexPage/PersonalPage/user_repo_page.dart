@@ -12,12 +12,9 @@ import 'package:flutter_easyrefresh/phoenix_header.dart';
 import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
 import 'package:fluttergithubpro/HttpManager/RequestAPI.dart';
 import 'package:fluttergithubpro/HttpManager/index.dart';
-import 'package:fluttergithubpro/Providers/ProvidersCollection.dart';
-import 'package:fluttergithubpro/common/index.dart';
 import 'package:fluttergithubpro/models/index.dart';
 import 'package:fluttergithubpro/routes/BaseWidget/base_empty_page.dart';
 import 'package:fluttergithubpro/routes/indexPage/RepoItems.dart';
-import 'package:provider/provider.dart';
 
 enum UserRepoPageType{
   personal, //个人仓库

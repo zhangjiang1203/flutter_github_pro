@@ -10,6 +10,7 @@ import 'package:fluttergithubpro/common/index.dart';
 import 'package:fluttergithubpro/routes/indexPage/PersonalPage/my_personal_page.dart';
 import 'package:fluttergithubpro/routes/indexPage/SearchPage/search_list_page.dart';
 import 'package:fluttergithubpro/routes/indexPage/TrendPage/trend_list_page.dart';
+import 'package:fluttergithubpro/widgets/Custom_widget.dart';
 import 'package:provider/provider.dart';
 import 'dart:io';
 
@@ -78,12 +79,13 @@ class MyDrawer extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(8,30 , 8, 10),
               child: Row(
                 children: <Widget>[
-                  ClipOval(
-                    child: CachedNetworkImage(
-                      imageUrl: userP.user?.avatar_url ?? "",
-                      width: 60,
-                    ),
-                  ),
+//                  ClipOval(
+//                    child: CachedNetworkImage(
+//                      imageUrl: userP.user?.avatar_url ?? "",
+//                      width: 60,
+//                    ),
+//                  ),
+                  CustomWidget.showHeaderImage(userP.user.avatar_url ?? "",width: 60,borderWidth: 1),
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsetsDirectional.only(start: 5),
