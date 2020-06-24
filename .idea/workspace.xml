@@ -10,41 +10,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a82fdc3-4e62-4e12-b0ca-be91f5310860" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/images/2.0x/default_avator.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/3.0x/default_avater.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/book_background.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/book_background.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/chengyucidian.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/chengyucidian.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/default_avator.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/github_logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/github_logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/goodnight.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/goodnight.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/goods_share_btn_weiixn.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/goods_share_btn_weiixn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/guoqu.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/guoqu.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/jiayouzhan.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/jiayouzhan.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/jiazhao.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/jiazhao.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/jinriyunshi.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/jinriyunshi.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/login_back_ground.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/login_back_ground.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/no_data_empty.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/no_data_empty.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/no_data_empty_emo.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/no_data_empty_emo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/placeholder_image.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/placeholder_image.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/request_error.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/request_error.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/toutiao.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/toutiao.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/weather.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/weather.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/xiaohuadaquan.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/xiaohuadaquan.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/yiguoqu.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/2.0x/yiguoqu.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/HttpManager/HTTPManager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HttpManager/HTTPManager.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/SearchPage/search_list_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/SearchPage/search_list_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/SearchPage/search_user_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/SearchPage/search_user_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/TrendPage/trend_developer_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/TrendPage/trend_developer_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/TrendPage/trend_list_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/TrendPage/trend_list_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/TrendPage/trend_repo_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/TrendPage/trend_repo_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/home_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/home_pages.dart" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_XL_API_28" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_6_API_29" />
   <component name="FavoritesManager">
     <favorites_list name="flutter_github_pro" />
   </component>
@@ -90,18 +74,6 @@
       <recent name="$PROJECT_DIR$/lib/routes/indexPage" />
       <recent name="$PROJECT_DIR$/lib/convertModelTool" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Flutter.main.dart">
     <configuration name="commandFile.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
@@ -168,29 +140,33 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="466" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592411925696" />
-    <state width="1632" height="118" key="GridCell.Tab.0.bottom" timestamp="1592587564097">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state width="1449" height="268" key="GridCell.Tab.0.bottom" timestamp="1593015818567">
+      <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
     <state width="1038" height="169" key="GridCell.Tab.0.bottom/-1080.23.1080.1897/0.23.1680.1027@-1080.23.1080.1897" timestamp="1592105820708" />
     <state width="1632" height="118" key="GridCell.Tab.0.bottom/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592587564097" />
+    <state width="1449" height="268" key="GridCell.Tab.0.bottom/-1920.23.1920.1057/0.23.1680.1027@-1920.23.1920.1057" timestamp="1593015818567" />
     <state width="1632" height="7" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1592322760833" />
-    <state width="1632" height="118" key="GridCell.Tab.0.center" timestamp="1592587564096">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state width="1449" height="268" key="GridCell.Tab.0.center" timestamp="1593015818566">
+      <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
     <state width="1038" height="169" key="GridCell.Tab.0.center/-1080.23.1080.1897/0.23.1680.1027@-1080.23.1080.1897" timestamp="1592105820707" />
     <state width="1632" height="118" key="GridCell.Tab.0.center/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592587564096" />
+    <state width="1449" height="268" key="GridCell.Tab.0.center/-1920.23.1920.1057/0.23.1680.1027@-1920.23.1920.1057" timestamp="1593015818566" />
     <state width="1632" height="7" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1592322760832" />
-    <state width="1632" height="118" key="GridCell.Tab.0.left" timestamp="1592587564096">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state width="1449" height="268" key="GridCell.Tab.0.left" timestamp="1593015818566">
+      <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
     <state width="1038" height="169" key="GridCell.Tab.0.left/-1080.23.1080.1897/0.23.1680.1027@-1080.23.1080.1897" timestamp="1592105820706" />
     <state width="1632" height="118" key="GridCell.Tab.0.left/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592587564096" />
+    <state width="1449" height="268" key="GridCell.Tab.0.left/-1920.23.1920.1057/0.23.1680.1027@-1920.23.1920.1057" timestamp="1593015818566" />
     <state width="1632" height="7" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1592322760832" />
-    <state width="1632" height="118" key="GridCell.Tab.0.right" timestamp="1592587564097">
-      <screen x="0" y="23" width="1680" height="1027" />
+    <state width="1449" height="268" key="GridCell.Tab.0.right" timestamp="1593015818567">
+      <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
     <state width="1038" height="169" key="GridCell.Tab.0.right/-1080.23.1080.1897/0.23.1680.1027@-1080.23.1080.1897" timestamp="1592105820707" />
     <state width="1632" height="118" key="GridCell.Tab.0.right/-1080.23.1080.1897/0.23.1680.1027@0.23.1680.1027" timestamp="1592587564097" />
+    <state width="1449" height="268" key="GridCell.Tab.0.right/-1920.23.1920.1057/0.23.1680.1027@-1920.23.1920.1057" timestamp="1593015818567" />
     <state width="1632" height="7" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1592322760833" />
     <state x="229" y="155" key="SettingsEditor" timestamp="1592115740118">
       <screen x="0" y="23" width="1680" height="1027" />

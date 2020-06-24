@@ -380,7 +380,7 @@ class HTTPManager {
       }
     } on DioError catch(e,s) {
 //      print("请求出错:${e.toString()}\n$s,${response.statusCode}");
-    var code = e.response.statusCode ?? 404;
+    var code = e.response?.statusCode ?? 404;
       if (code == 404){
         switch(typeOf<T>()){
           case int:

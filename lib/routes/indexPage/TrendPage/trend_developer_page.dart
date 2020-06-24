@@ -4,14 +4,15 @@
 * copyright on zhangjiang
 */
 
-import 'package:cached_network_image/cached_network_image.dart';
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_easyrefresh/ball_pulse_footer.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_easyrefresh/phoenix_header.dart';
 import 'package:fluttergithubpro/HttpManager/index.dart';
-import 'package:fluttergithubpro/common/Global.dart';
+import 'package:fluttergithubpro/Providers/EventStreamSet.dart';
 import 'package:fluttergithubpro/models/index.dart';
 import 'package:fluttergithubpro/routes/BaseWidget/base_empty_page.dart';
 import 'package:fluttergithubpro/routes/indexPage/PersonalPage/my_personal_page.dart';
@@ -23,15 +24,16 @@ class TrendDeveloperPage extends StatefulWidget {
   final String language;
 
   @override
-  _TrendDeveloperPageState createState() => _TrendDeveloperPageState();
+  TrendDeveloperPageState createState() => TrendDeveloperPageState();
 }
 
-class _TrendDeveloperPageState extends State<TrendDeveloperPage> with AutomaticKeepAliveClientMixin {
+class TrendDeveloperPageState extends State<TrendDeveloperPage> with AutomaticKeepAliveClientMixin {
 
   EasyRefreshController _refreshController;
   ScrollController _scrollController;
-
   List<Trenddeveloperlist> _developList;
+  String _chooseLanguage;
+  StreamSubscription<ChangeLanguageEvent> _subscription;
 
   @override
   // TODO: implement wantKeepAlive
@@ -43,23 +45,47 @@ class _TrendDeveloperPageState extends State<TrendDeveloperPage> with AutomaticK
     _refreshController = EasyRefreshController();
     _scrollController = ScrollController();
     _developList = [];
+    _chooseLanguage = widget.language;
+    _subscription = eventBus.on<ChangeLanguageEvent>().listen((event) {
+      //选中的语言
+      _chooseLanguage = event.language;
+      _getTrendDeveloperData();
+      print('选中的语言$event');
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       EasyLoading.show(status: "玩命加载中……");
     });
-    _getTrendDeveloperData();
+    if(_chooseLanguage != null && _chooseLanguage.length > 0){
+      _getTrendDeveloperData();
+    }
+  }
+
+  ///刷新列表
+  void reloadEventResult(String text,{bool isNotice = false}){
+    if(isNotice){
+      //当前的搜索文字判断
+      if(_chooseLanguage.length == 0){
+        _chooseLanguage = text;
+        _getTrendDeveloperData();
+      }
+    }else{
+      _chooseLanguage = text;
+      _getTrendDeveloperData();
+    }
   }
 
   @override
   void dispose() {
     _refreshController.dispose();
     _scrollController.dispose();
+    _subscription.cancel();
     super.dispose();
   }
 
   _getTrendDeveloperData() async{
     _developList.clear();
-    var data = await HTTPManager().getAsync<List<Trenddeveloperlist>>(url: RequestURL.getTrendDevelopers("daily", widget.language ?? ""));
+    var data = await HTTPManager().getAsync<List<Trenddeveloperlist>>(url: RequestURL.getTrendDevelopers("daily", _chooseLanguage ?? ""));
     if (mounted) {
       setState(() {
         _developList.addAll(data);
@@ -112,7 +138,8 @@ class _TrendDeveloperPageState extends State<TrendDeveloperPage> with AutomaticK
           children: <Widget>[
             CustomWidget.showHeaderImage(e.avatar,width: 80),
             Padding(padding: const EdgeInsets.only(top: 5),),
-            Text(e.username,style: TextStyle(color: Color(0xff999999),fontSize: 16),maxLines: 1,overflow: TextOverflow.ellipsis,),
+            Text(e.username,style: TextStyle(color: Color(0xff999999),fontSize: 16),
+              maxLines: 1,overflow: TextOverflow.ellipsis,),
           ],
         ),
       ),

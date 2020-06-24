@@ -52,51 +52,6 @@ class _HomePageState extends State<AppHomePage> {
   final GlobalKey _button = GlobalKey();
   final _pageKey = PageStorageKey('pub_load_page');
 
-  PopupMenuButton _popupMenuButton(){
-    return PopupMenuButton(
-      itemBuilder: (context) => _getPopMenuButton(context),
-      onCanceled: (){
-        print("取消了");
-      },
-      onSelected: (value){
-        print("开始回调 22222");
-        if(!mounted) return;
-        _chooseLang = value;
-        _controller.animateTo(0, duration: const Duration(milliseconds: 200), curve: Curves.ease);
-        //更新对应的listView
-        _refreshController.callRefresh();
-      },
-    );
-  }
-
-   List<PopupMenuEntry<String>> _getPopMenuButton(BuildContext context) {
-    return ["Swift","Objective-C","Python","Dart","JavaScript","Java","Ruby","Shell","C","C++"]
-        .map((e) => PopupMenuItem<String>(value: e,child: Text(e),)).toList();
-  }
-
-  void _showPopMenu(BuildContext context) {
-    //获取Position和items
-    final RenderBox button = _button.currentContext.findRenderObject();
-    final Offset offsetA = button.localToGlobal(Offset.zero);
-    //获取到按钮点击的位置信息，去绘制showView的位置
-    RelativeRect position = RelativeRect.fromLTRB(offsetA.dx, offsetA.dy+button.size.height,0,0);// position.right, position.bottom);
-    var _pop = _popupMenuButton();
-    showMenu<String>(
-        context: context,
-        position: position,
-        items:_pop.itemBuilder(context)
-    ).then((value){
-      print("开始回调 1111");
-      if(!mounted) return null;
-      if(value == null) {
-        if(_pop.onCanceled != null) _pop.onCanceled();
-        return null;
-      }
-      if(_pop.onSelected != null) _pop.onSelected(value);
-      print("开始回调 3333");
-    });
-  }
-
   @override
   void initState() {
     // TODO: implement initState
@@ -108,7 +63,9 @@ class _HomePageState extends State<AppHomePage> {
     _nestScrollViewNotifier = NestScrollViewNotifier(maxOffset: 1000);
     _controller = new ScrollController();
     //初始化popMenu
-    _popUpMenu = PopUpMenu(buttonKey: _button,itemsList:["Swift","Objective-C","Python","Dart","JavaScript","Java","Ruby","Shell","C","C++"],chooseStr: 'Swift');
+    _popUpMenu = PopUpMenu(buttonKey: _button,
+        itemsList:["Swift","Objective-C","Python","Dart","JavaScript","Java","Ruby","Shell","C","C++"],
+        chooseStr: 'Swift');
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       EasyLoading.show(status: "玩命加载中……");
     });
@@ -138,7 +95,9 @@ class _HomePageState extends State<AppHomePage> {
             icon: Icon(Icons.category),
             onPressed: () => _popUpMenu.showPopMenu(context,_chooseLang, (value) {
               _chooseLang = value;
-              _controller.animateTo(0, duration: const Duration(milliseconds: 200), curve: Curves.ease);
+              _controller.animateTo(0,
+                  duration: const Duration(milliseconds: 200),
+                  curve: Curves.ease);
               //更新对应的listView
               _refreshController.callRefresh();
             })//_showPopMenu(context),
@@ -153,7 +112,9 @@ class _HomePageState extends State<AppHomePage> {
             return !nestNoti.isShowNavBar ? Container() : FloatingActionButton(
               child: Icon(Icons.arrow_upward),
               onPressed: (){
-                _controller.animateTo(0, duration: const Duration(milliseconds: 200), curve: Curves.ease);
+                _controller.animateTo(0,
+                    duration: const Duration(milliseconds: 200),
+                    curve: Curves.ease);
               },
             );
           })
@@ -210,45 +171,6 @@ class _HomePageState extends State<AppHomePage> {
       },
       emptyWidget: _itemsData.length > 0 ? null : BaseEmptyPage(),
     );
-
-      return SafeArea(
-        child: MyInfiniteListView<Repoitems>(
-          emptyBuilder: (refresh,context){
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Image.asset("",),
-                  Text('暂无数据')
-                ],
-              ),
-            );
-          },
-          refreshKey: refreshIndicatorKey,
-          scrollController: _controller,
-          onRetrieveData: (int page,List<Repoitems> items,bool refresh) async{
-            var data = await HTTPManager().getAsync<Allrepolist>(url: RequestURL.getGitHubPub,params: {
-              'page':page,
-              'q':'language:$_chooseLang',
-              'sort':'stars'
-            },options: Options(extra: {"refresh":refresh}));
-
-            //获取个人仓库信息
-//            var data = await RequestAPI().getUserRepo(userName:Global.profile.user.login,param:{"page":page,'page_size': 30});
-
-//            var dataLength = data.items.length;
-            items.addAll(data.items);
-            //返回的数据是否是20，不是的话就没有下一页了
-            return data.items.length == 30;
-          },
-          initFailBuilder: (refresh,error,context){
-            return Center(child:Text(error.toString()));
-          },
-          itemBuilder: (List<Repoitems> data,int index,BuildContext context){
-            return GitPubItems(data[index]);
-          },
-        ),
-      );
   }
 }
 

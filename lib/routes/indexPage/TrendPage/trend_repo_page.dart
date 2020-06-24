@@ -4,6 +4,8 @@
 * copyright on zhangjiang
 */
 
+import 'dart:async';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -12,6 +14,7 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_easyrefresh/phoenix_header.dart';
 import 'package:fluttergithubpro/HttpManager/HTTPManager.dart';
 import 'package:fluttergithubpro/HttpManager/index.dart';
+import 'package:fluttergithubpro/Providers/EventStreamSet.dart';
 import 'package:fluttergithubpro/common/index.dart';
 import 'package:fluttergithubpro/models/index.dart';
 import 'package:fluttergithubpro/routes/BaseWidget/base_web_page.dart';
@@ -32,6 +35,8 @@ class _TrendRepoPageState extends State<TrendRepoPage> with AutomaticKeepAliveCl
   EasyRefreshController _refreshController;
   ScrollController _scrollController;
   List<Trendrepolist> _itemsData;
+  String _chooseLanguage;
+  StreamSubscription<ChangeLanguageEvent> _subscription;
 
   @override
   // TODO: implement wantKeepAlive
@@ -43,6 +48,11 @@ class _TrendRepoPageState extends State<TrendRepoPage> with AutomaticKeepAliveCl
     _refreshController = EasyRefreshController();
     _scrollController = ScrollController();
     _itemsData = [];
+    _chooseLanguage = widget.language;
+    _subscription = eventBus.on<ChangeLanguageEvent>().listen((event) {
+      _chooseLanguage = event.language;
+      _getTrendRepoData();
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       EasyLoading.show(status: "玩命加载中……");
@@ -54,13 +64,14 @@ class _TrendRepoPageState extends State<TrendRepoPage> with AutomaticKeepAliveCl
   void dispose() {
     _refreshController.dispose();
     _scrollController.dispose();
+    _subscription.cancel();
     super.dispose();
   }
   
   _getTrendRepoData() async{
     _itemsData.clear();
     var data = await HTTPManager().getAsync<List<Trendrepolist>>(
-        url: RequestURL.getTrendingRepos("daily", widget.language ?? ""));
+        url: RequestURL.getTrendingRepos("daily", _chooseLanguage ?? ""));
     if (mounted) {
       setState(() {
         _itemsData.addAll(data);

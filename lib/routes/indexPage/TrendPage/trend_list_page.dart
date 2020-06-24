@@ -5,8 +5,10 @@
 */
 
 import 'package:flutter/material.dart';
+import 'package:fluttergithubpro/Providers/EventStreamSet.dart';
 import 'package:fluttergithubpro/routes/indexPage/TrendPage/trend_developer_page.dart';
 import 'package:fluttergithubpro/routes/indexPage/TrendPage/trend_repo_page.dart';
+import 'package:fluttergithubpro/widgets/pop_up_menu.dart';
 
 class TrendListPage extends StatefulWidget {
   TrendListPage({Key key}) : super(key: key);
@@ -15,14 +17,34 @@ class TrendListPage extends StatefulWidget {
   _TrendListPageState createState() => _TrendListPageState();
 }
 
-class _TrendListPageState extends State<TrendListPage> with SingleTickerProviderStateMixin{
+class _TrendListPageState extends State<TrendListPage> with SingleTickerProviderStateMixin,AutomaticKeepAliveClientMixin{
 
+  GlobalKey _globalKey = GlobalKey();
+  GlobalKey<TrendDeveloperPageState> _trendKey = GlobalKey<TrendDeveloperPageState>();
   TabController _tabController ;
+  PopUpMenu _popUpMenu;
+  String _chooseLang;
+
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 2,vsync: this);
+    _tabController.addListener(() {
+      if(_tabController.index == 1){
+        print("当前的text===$_chooseLang");
+        _trendKey.currentState.reloadEventResult(_chooseLang == 'All' ? '' : _chooseLang,isNotice: true);
+      }
+    });
+
+    _popUpMenu = PopUpMenu(buttonKey:_globalKey,
+        itemsList:["All","Swift","Objective-C","Python","Dart","JavaScript","Java","Ruby","Shell","C","C++"],
+        chooseStr: 'All');
+    _chooseLang = 'All';
   }
 
   @override
@@ -31,9 +53,13 @@ class _TrendListPageState extends State<TrendListPage> with SingleTickerProvider
         appBar: AppBar(
           actions: <Widget>[
             IconButton(
+              key: _globalKey,
               icon: Icon(Icons.category),
               onPressed: (){
-
+                _popUpMenu.showPopMenu(context, _chooseLang, (value) {
+                  _chooseLang = value == 'All' ? '' : value;
+                  eventBus.fire(ChangeLanguageEvent(language:_chooseLang));
+                });
               },
             )
           ],
@@ -54,8 +80,8 @@ class _TrendListPageState extends State<TrendListPage> with SingleTickerProvider
           child: TabBarView(
             controller: _tabController,
             children: <Widget>[
-              TrendRepoPage(),
-              TrendDeveloperPage()
+              TrendRepoPage(language: _chooseLang == 'All' ? "" : _chooseLang,),
+              TrendDeveloperPage(key:_trendKey,language: _chooseLang == 'All' ? "" : _chooseLang,)
             ],
           ),
         ) // This trailing comma makes auto-formatting nicer for build methods.

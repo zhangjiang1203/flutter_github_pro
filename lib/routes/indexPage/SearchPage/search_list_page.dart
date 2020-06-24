@@ -37,7 +37,9 @@ class _SearchListPageState extends State<SearchListPage> with SingleTickerProvid
     super.initState();
     _tabController = TabController(length: 2 ,vsync: this);
     _tabController.addListener(() {
-      _userKey.currentState.reloadSearchResult(_searchCon.text,isNotice: true);
+      if(_tabController.index == 1){
+        _userKey.currentState.reloadSearchResult(_searchCon.text,isNotice: true);
+      }
     });
   }
 
