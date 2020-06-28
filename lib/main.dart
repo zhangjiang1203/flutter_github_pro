@@ -88,7 +88,7 @@ class _MyAppState extends State<MyApp> {
                   if(supportedLocales.contains(deviceLocal)){
                     locale = deviceLocal;
                   }else{
-                    locale = Locale('en','US');
+                    locale = Locale('zh','CN');
                   }
                   return locale;
                 }

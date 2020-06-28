@@ -16,19 +16,17 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/HttpManager/HTTPManager.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HttpManager/HTTPManager.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/SearchPage/search_list_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/SearchPage/search_list_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/TrendPage/trend_developer_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/TrendPage/trend_developer_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/TrendPage/trend_list_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/TrendPage/trend_list_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/TrendPage/trend_repo_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/TrendPage/trend_repo_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/home_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/home_pages.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/MinePage/change_local_route.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/MinePage/change_local_route.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/MinePage/mine_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/MinePage/mine_page.dart" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_6_API_29" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_XL_API_28" />
   <component name="FavoritesManager">
     <favorites_list name="flutter_github_pro" />
   </component>
@@ -74,6 +72,18 @@
       <recent name="$PROJECT_DIR$/lib/routes/indexPage" />
       <recent name="$PROJECT_DIR$/lib/convertModelTool" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Flutter.main.dart">
     <configuration name="commandFile.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">

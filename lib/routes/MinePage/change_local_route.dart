@@ -35,6 +35,7 @@ class ChangeLocalRoute extends StatelessWidget {
           children: <Widget>[
             _buildLanguageItem("中文简体", "zh"),
             _buildLanguageItem("Englist", "en"),
+            _buildLanguageItem("跟随系统", null),
           ],
         ) // This trailing comma makes auto-formatting nicer for build methods.
     );
