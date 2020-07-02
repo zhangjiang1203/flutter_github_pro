@@ -4,11 +4,12 @@
 * copyright on zhangjiang
 */
 
-import 'Global.dart';
+//是否是release
+bool get isRelease => bool.fromEnvironment('dart.vm.product');
 
 void zjPrint(Object message, StackTrace current) {
   ///release 模式下不打印
-  if(!Global.isRelease){
+  if(!isRelease){
     ZJCustomTrace programInfo = ZJCustomTrace(current);
     print("所在文件: ${programInfo.fileName}, 所在行: ${programInfo.lineNumber}, 打印信息: $message");
   }

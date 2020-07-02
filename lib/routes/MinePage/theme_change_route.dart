@@ -17,23 +17,41 @@ class ThemeChangeRoute extends StatelessWidget {
           title: Text("ThemeChangeRoute"),
         ),
         body: ListView(
-          children: Global.themes.keys.map<Widget>((e){
-            return GestureDetector(
-              child: Padding(
+          children: <Widget>[
+            Column(
+              children:Global.themes.keys.map<Widget>((e){
+                return GestureDetector(
+                  child: Padding(
+                    padding:const EdgeInsets.symmetric(vertical: 5,horizontal: 16),
+                    child: Container(
+                      color: Global.themes[e],
+                      height: 40,
+                      alignment: Alignment.center,
+                      child: Text(e,style: TextStyle(color: Colors.white,fontSize: 18),),
+                    ),
+                  ),
+                  onTap: (){
+                    //更新主题
+                    Provider.of<ThemeProvider>(context).theme = Global.themes[e];
+                  },
+                );
+              }).toList(),
+            ),
+            //特殊的灰色处理
+            GestureDetector(
+              onTap: ()=> Provider.of<GrayFilterProvider>(context).setGrayFilter(),
+              child:  Padding(
                 padding:const EdgeInsets.symmetric(vertical: 5,horizontal: 16),
                 child: Container(
-                  color: Global.themes[e],
+                  color: Colors.grey,
                   height: 40,
                   alignment: Alignment.center,
-                  child: Text(e,style: TextStyle(color: Colors.white,fontSize: 18),),
-                  ),
+                  child: Text('grey',style: TextStyle(color: Colors.white,fontSize: 18),),
                 ),
-              onTap: (){
-                //更新主题
-                Provider.of<ThemeProvider>(context).theme = Global.themes[e];
-              },
-            );
-          }).toList(),
+              ),
+            ),
+
+          ]
         ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

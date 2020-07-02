@@ -31,9 +31,6 @@ class Global {
 
   static Map<String,MaterialColor> get themes => _themes;
 
-  //是否是release
-  static bool get isRelease => bool.fromEnvironment('dart.vm.product');
-
   //头像专用placeholder
   static Image defaultHeaderImage({double width = 50}) => Image.asset("assets/images/default_avator.png",width: width,fit: BoxFit.fitWidth,);
 

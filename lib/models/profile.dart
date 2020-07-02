@@ -13,6 +13,7 @@ class Profile {
     CacheConfig cache;
     String lastLogin;
     String locale;
+    bool isGrayFilter = false;
     
     factory Profile.fromJson(Map<String,dynamic> json) => _$ProfileFromJson(json);
     Map<String, dynamic> toJson() => _$ProfileToJson(this);

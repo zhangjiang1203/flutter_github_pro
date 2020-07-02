@@ -55,64 +55,77 @@ class _MyAppState extends State<MyApp> {
           ChangeNotifierProvider.value(value: UserProvider()),
           ChangeNotifierProvider.value(value: ThemeProvider()),
           ChangeNotifierProvider.value(value: LocaleProvider()),
+          ChangeNotifierProvider.value(value: GrayFilterProvider())
         ],
-        child: Consumer2<ThemeProvider,LocaleProvider>(
-          builder: (BuildContext context,themeProvider,localeProvider,Widget child){
+        child: Consumer4<UserProvider,ThemeProvider,LocaleProvider,GrayFilterProvider>(
+          builder: (context,userProvider,themeProvider,localeProvider,grayProvider,child){
             //初始化展示的loading
             Global.configLoading(context);
-            return MaterialApp(
-              debugShowCheckedModeBanner: false,
-              theme: ThemeData(
-                primarySwatch: themeProvider.theme,
-                appBarTheme: AppBarTheme(elevation: 0),
-                visualDensity: VisualDensity.adaptivePlatformDensity,
-              ),
-              ///多语言设置
-              onGenerateTitle: (context) {
-                return Translations.of(context).text("home_title");
-              },
-              localizationsDelegates: [
-                const TranslationsDelegate(),
-                GlobalMaterialLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-              ],
-              supportedLocales: localTool.supportLocales(),
-              localeResolutionCallback: (deviceLocal, supportedLocales) {
-                ///当前的系统语言，和支持的语言
-                if(localeProvider.getLocale() != null){
-                  return localeProvider.getLocale();
-                }else{
-                  Locale locale;
-                  //跟随系统语言
-                  if(supportedLocales.contains(deviceLocal)){
-                    locale = deviceLocal;
-                  }else{
-                    locale = Locale('zh','CN');
-                  }
-                  return locale;
-                }
-              },
-              ///多语言支持---end
-              /// 初始化当前的路由，命名路由
-              initialRoute: Provider.of<UserProvider>(context).isLogin ?  "/" : "Login_route",
-              /// 配置对应的路由信息
-              routes: _setUpWidgetRoutes(context),
-              /// 判断路由跳转的权限
-              onGenerateRoute: (RouteSettings settings){
-                return MaterialPageRoute(
-                    builder: (context){
-                      if(settings.name == ""){
-                        return null;
-                      }
-                      return null;
-                    }
-                );
-              },
-            );
+            if(grayProvider.isGrayFilter){
+              return ColorFiltered(
+                colorFilter: ColorFilter.mode(Colors.white, BlendMode.color),
+                child: _buildRootWidget(themeProvider,localeProvider,userProvider),
+              );
+            }
+            return _buildRootWidget(themeProvider,localeProvider,userProvider);
           },
         ),
       )
     );
   }
+
+  //单独抽出来，做其他逻辑
+  Widget _buildRootWidget(ThemeProvider themeProvider,LocaleProvider localeProvider,UserProvider userProvider){
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: themeProvider.theme,
+        appBarTheme: AppBarTheme(elevation: 0),
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      ///多语言设置
+      onGenerateTitle: (context) {
+        return Translations.of(context).text("home_title");
+      },
+      localizationsDelegates: [
+        const TranslationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: localTool.supportLocales(),
+      localeResolutionCallback: (deviceLocal, supportedLocales) {
+        ///当前的系统语言，和支持的语言
+        if(localeProvider.getLocale() != null){
+          return localeProvider.getLocale();
+        }else{
+          Locale locale;
+          //跟随系统语言
+          if(supportedLocales.contains(deviceLocal)){
+            locale = deviceLocal;
+          }else{
+            locale = Locale('zh','CN');
+          }
+          return locale;
+        }
+      },
+      ///多语言支持---end
+      /// 初始化当前的路由，命名路由
+      initialRoute: userProvider.isLogin ?  "/" : "Login_route",
+      /// 配置对应的路由信息
+      routes: _setUpWidgetRoutes(context),
+      /// 判断路由跳转的权限
+      onGenerateRoute: (RouteSettings settings){
+        return MaterialPageRoute(
+            builder: (context){
+              if(settings.name == ""){
+                return null;
+              }
+              return null;
+            }
+        );
+      },
+    );
+  }
+
 }

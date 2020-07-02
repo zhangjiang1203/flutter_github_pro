@@ -10,15 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a82fdc3-4e62-4e12-b0ca-be91f5310860" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/Global.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/Global.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/ProfileChangeNotifier.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/ProfileChangeNotifier.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common/ZJLogTool.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/ZJLogTool.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/MinePage/change_local_route.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/MinePage/change_local_route.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/MinePage/mine_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/MinePage/mine_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/profile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/BaseWidget/base_tabbar_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/BaseWidget/base_tabbar_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/MinePage/theme_change_route.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/MinePage/theme_change_route.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

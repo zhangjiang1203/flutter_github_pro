@@ -52,6 +52,19 @@ class ThemeProvider extends ProfileChangeNotifier {
   }
 }
 
+//是否展示全灰处理，用于特殊场景
+class GrayFilterProvider extends ProfileChangeNotifier {
+
+  bool get isGrayFilter => Global.profile.isGrayFilter;
+
+  void setGrayFilter(){
+    Global.profile.isGrayFilter = !Global.profile.isGrayFilter;
+    notifyListeners();
+  }
+
+}
+
+
 ///当前语言发生变化
 class LocaleProvider extends ProfileChangeNotifier {
 
