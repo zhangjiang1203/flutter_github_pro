@@ -14,6 +14,8 @@ class Profile {
     String lastLogin;
     String locale;
     bool isGrayFilter = false;
+    //是否是暗黑模式
+    bool isDark = false;
     
     factory Profile.fromJson(Map<String,dynamic> json) => _$ProfileFromJson(json);
     Map<String, dynamic> toJson() => _$ProfileToJson(this);

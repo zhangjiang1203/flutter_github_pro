@@ -19,7 +19,7 @@ import 'package:fluttergithubpro/common/index.dart';
 import 'package:fluttergithubpro/models/index.dart';
 import 'package:fluttergithubpro/routes/BaseWidget/base_web_page.dart';
 import 'package:fluttergithubpro/routes/indexPage/PersonalPage/my_personal_page.dart';
-import 'package:fluttergithubpro/widgets/Custom_widget.dart';
+import 'package:fluttergithubpro/widgets/custom_widget.dart';
 
 class TrendRepoPage extends StatefulWidget {
   TrendRepoPage({Key key,this.language}) : super(key: key);

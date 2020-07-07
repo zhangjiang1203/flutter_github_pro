@@ -10,7 +10,7 @@ import 'package:fluttergithubpro/common/index.dart';
 import 'package:fluttergithubpro/routes/indexPage/PersonalPage/my_personal_page.dart';
 import 'package:fluttergithubpro/routes/indexPage/SearchPage/search_list_page.dart';
 import 'package:fluttergithubpro/routes/indexPage/TrendPage/trend_list_page.dart';
-import 'package:fluttergithubpro/widgets/Custom_widget.dart';
+import 'package:fluttergithubpro/widgets/custom_widget.dart';
 import 'package:provider/provider.dart';
 import 'dart:io';
 

@@ -18,7 +18,7 @@ import 'package:fluttergithubpro/routes/indexPage/PersonalPage/follow_user_page.
 import 'package:fluttergithubpro/routes/indexPage/PersonalPage/my_sliver_persistent_delegate.dart';
 import 'package:fluttergithubpro/routes/indexPage/PersonalPage/user_event_page.dart';
 import 'package:fluttergithubpro/routes/indexPage/PersonalPage/user_repo_page.dart';
-import 'package:fluttergithubpro/widgets/Custom_widget.dart';
+import 'package:fluttergithubpro/widgets/custom_widget.dart';
 import 'package:provider/provider.dart';
 import '../../../Providers/ProvidersCollection.dart';
 

@@ -20,8 +20,8 @@
 
 class RequestURL {
 
-  static String GithubClientId = '**********';
-  static String GithubClientSecret ='**********';
+  static String GithubClientId = 'b6bffcdce925652cd1ea';
+  static String GithubClientSecret ='1e27a5c41f59e466b566305a1d197d31fbed2661';
 
   static String GithubHomeURL = "https://api.github.com/";
   ///获取认证信息,不支持邮箱登录

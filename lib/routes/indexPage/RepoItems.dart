@@ -7,7 +7,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttergithubpro/models/index.dart';
 import 'package:fluttergithubpro/routes/BaseWidget/base_web_page.dart';
-import 'package:fluttergithubpro/widgets/Custom_widget.dart';
+import 'package:fluttergithubpro/widgets/custom_widget.dart';
 import '../../common/index.dart';
 
 class GitPubItems extends StatefulWidget {

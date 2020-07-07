@@ -16,7 +16,7 @@ import 'package:fluttergithubpro/Providers/EventStreamSet.dart';
 import 'package:fluttergithubpro/models/index.dart';
 import 'package:fluttergithubpro/routes/BaseWidget/base_empty_page.dart';
 import 'package:fluttergithubpro/routes/indexPage/PersonalPage/my_personal_page.dart';
-import 'package:fluttergithubpro/widgets/Custom_widget.dart';
+import 'package:fluttergithubpro/widgets/custom_widget.dart';
 
 class TrendDeveloperPage extends StatefulWidget {
   TrendDeveloperPage({Key key,this.language}) : super(key: key);

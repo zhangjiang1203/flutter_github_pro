@@ -10,7 +10,7 @@ import 'package:fluttergithubpro/common/Global.dart';
 import 'package:fluttergithubpro/common/index.dart';
 import 'package:fluttergithubpro/models/index.dart';
 import 'package:fluttergithubpro/routes/indexPage/PersonalPage/my_personal_page.dart';
-import 'package:fluttergithubpro/widgets/Custom_widget.dart';
+import 'package:fluttergithubpro/widgets/custom_widget.dart';
 import 'package:provider/provider.dart';
 
 class PersonListCell extends StatefulWidget {

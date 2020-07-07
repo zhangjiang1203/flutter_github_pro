@@ -16,6 +16,7 @@ import 'package:fluttergithubpro/HttpManager/index.dart';
 import 'package:fluttergithubpro/Providers/ProvidersCollection.dart';
 import 'package:fluttergithubpro/routes/BaseWidget/base_empty_page.dart';
 import 'package:fluttergithubpro/routes/indexPage/RepoItems.dart';
+import 'package:fluttergithubpro/widgets/custom_skeleton.dart';
 import 'package:fluttergithubpro/widgets/pop_up_menu.dart';
 import 'package:provider/provider.dart';
 import 'my_drawer.dart';
@@ -66,9 +67,6 @@ class _HomePageState extends State<AppHomePage> {
     _popUpMenu = PopUpMenu(buttonKey: _button,
         itemsList:["Swift","Objective-C","Python","Dart","JavaScript","Java","Ruby","Shell","C","C++"],
         chooseStr: 'Swift');
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      EasyLoading.show(status: "玩命加载中……");
-    });
     _getItemData();
     _controller.addListener(() {
       _nestScrollViewNotifier.setOffset = _controller.offset;
@@ -145,13 +143,12 @@ class _HomePageState extends State<AppHomePage> {
       _refreshController.finishLoad(noMore: data.items.length < 30);
     }
     _refreshController.resetLoadState();
-    EasyLoading.dismiss();
   }
 
   //创建视图
   Widget _buildBody() {
     print("首页返回的数据==${_itemsData.length}");
-    return EasyRefresh(
+    return _itemsData.length <= 0 ? CustomSkeleton.multiCardListSkeleton() : EasyRefresh(
       key: _pageKey,
       child:  ListView.builder(
         //ListView的Item

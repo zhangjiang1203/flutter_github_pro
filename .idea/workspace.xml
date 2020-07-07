@@ -10,15 +10,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a82fdc3-4e62-4e12-b0ca-be91f5310860" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/assets/images/github-404.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/widgets/custom_skeleton.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/Global.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/Global.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/ProfileChangeNotifier.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/ProfileChangeNotifier.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common/ZJLogTool.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common/ZJLogTool.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/HttpManager/RequestURLPath.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/HttpManager/RequestURLPath.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/models/profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/profile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/BaseWidget/base_tabbar_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/BaseWidget/base_tabbar_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/routes/MinePage/theme_change_route.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/MinePage/theme_change_route.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/PersonalPage/my_personal_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/PersonalPage/my_personal_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/PersonalPage/person_list_cell.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/PersonalPage/person_list_cell.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/RepoItems.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/RepoItems.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/TrendPage/trend_developer_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/TrendPage/trend_developer_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/TrendPage/trend_repo_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/TrendPage/trend_repo_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/home_pages.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/home_pages.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes/indexPage/my_drawer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes/indexPage/my_drawer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/Custom_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
